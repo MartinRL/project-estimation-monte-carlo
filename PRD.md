@@ -633,7 +633,7 @@ const AD_UNITS = {
 9. "What to Do When Your Monte Carlo Forecast Shows a 6-Month Delay"
 10. "Building a Culture of Forecasting: Metrics That Matter"
 
-**Publishing Schedule:** 2 posts/month initially, 1/week at scale
+**Publishing:** As capacity allows
 
 **Guest Post Targets:**
 - MindTheProduct.com
@@ -721,17 +721,17 @@ const AD_UNITS = {
   - r/ProductManagement (140K members)
 - Share blog posts (follow subreddit rules)
 - Answer questions, provide value first
-- Monthly "Ask Me Anything" sessions
+- Periodic "Ask Me Anything" sessions
 
 **LinkedIn Strategy:**
-- Founder/creator posts 3x/week
+- Posts as capacity allows
 - Share tool tips, forecasting insights
 - Engage with PM influencers
 - LinkedIn polls for engagement
-- Sponsored content ($500/month budget)
+- Sponsored content (if/when budget allows)
 
 **Workshop & Webinars:**
-- Free monthly webinar: "Probabilistic Forecasting 101"
+- Free webinar: "Probabilistic Forecasting 101"
 - Lead generation for Premium conversions
 - Partner with agile training companies
 - Recording becomes evergreen content
@@ -850,94 +850,7 @@ const AD_UNITS = {
 
 ---
 
-## 10. Financial Projections (Year 1)
-
-### Conservative Scenario
-
-**Assumptions:**
-- Slow organic growth
-- 1-2% Premium conversion rate
-- Low ad CTR (1%)
-- Minimal viral growth
-
-| Month   | Daily Users | Premium Subs | MRR (Subs) | Ad Revenue | Total Monthly |
-|---------|-------------|--------------|------------|------------|---------------|
-| 1-2     | 100         | 1            | $9         | $20        | $29           |
-| 3       | 500         | 5            | $45        | $90        | $135          |
-| 4-5     | 1,000       | 15           | $135       | $180       | $315          |
-| 6       | 2,000       | 30           | $270       | $360       | $630          |
-| 7-8     | 3,000       | 60           | $540       | $540       | $1,080        |
-| 9-10    | 5,000       | 100          | $900       | $900       | $1,800        |
-| 11-12   | 7,000       | 150          | $1,350     | $1,260     | $2,610        |
-
-**Year 1 Total Revenue: ~$15,000-20,000**
-**Operating Costs:** ~$1,000 (domain, hosting, tools)
-**Net Profit Year 1: ~$14,000-19,000**
-
----
-
-### Optimistic Scenario (Viral Growth)
-
-**Assumptions:**
-- ProductHunt #1 Product of the Day
-- Viral blog post or social mention
-- 3-5% Premium conversion
-- High engagement, good word-of-mouth
-
-| Month   | Daily Users | Premium Subs | MRR (Subs) | Ad Revenue | Enterprise | Total Monthly |
-|---------|-------------|--------------|------------|------------|------------|---------------|
-| 1-2     | 500         | 10           | $90        | $90        | $0         | $180          |
-| 3       | 2,000       | 60           | $540       | $360       | $0         | $900          |
-| 4-5     | 5,000       | 150          | $1,350     | $900       | $0         | $2,250        |
-| 6       | 10,000      | 300          | $2,700     | $1,800     | $500       | $5,000        |
-| 7-8     | 15,000      | 500          | $4,500     | $2,700     | $1,000     | $8,200        |
-| 9-10    | 20,000      | 700          | $6,300     | $3,600     | $1,500     | $11,400       |
-| 11-12   | 25,000      | 900          | $8,100     | $4,500     | $2,000     | $14,600       |
-
-**Year 1 Total Revenue: ~$70,000-90,000**
-**Operating Costs:** ~$3,000 (hosting, ads, tools, part-time support)
-**Net Profit Year 1: ~$67,000-87,000**
-
----
-
-### Year 2-3 Projections (Optimistic Path)
-
-**Year 2:**
-- 50K daily users
-- 2,000 Premium subscribers ($18K MRR)
-- 50 Enterprise customers ($2.5K MRR)
-- Ad revenue: $9K/month
-- Affiliate revenue: $2K/month
-- **Total MRR: ~$31K** → **$372K annual revenue**
-
-**Year 3:**
-- 100K daily users
-- 5,000 Premium subscribers ($45K MRR)
-- 150 Enterprise customers ($7.5K MRR)
-- Ad revenue: $18K/month
-- Affiliate + partnerships: $5K/month
-- **Total MRR: ~$75K** → **$900K annual revenue**
-
----
-
-### Break-Even Analysis
-
-**Fixed Monthly Costs:**
-- Domain: $1.25/month ($15/year)
-- Hosting (Netlify/Supabase): $25/month
-- Email (SendGrid): $0-15/month
-- Tools (analytics, monitoring): $10/month
-- **Total: ~$50/month**
-
-**Break-Even Point:**
-- 6 Premium subscribers ($54 MRR) = profitable
-- OR 8,300 daily users (ad revenue alone)
-
-**Expected Time to Break-Even:** Month 2-3
-
----
-
-## 11. Next Actions (Pull-Based)
+## 10. Next Actions (Pull-Based)
 
 ### Foundation & Setup
 - [x] **Domain Registration**

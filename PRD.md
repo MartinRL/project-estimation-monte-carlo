@@ -17,10 +17,51 @@
 - Status: Configuring DNS & GitHub Pages
 
 **Active Tasks (Week 1):**
-- [ ] Domain Registration (Day 1-3)
-- [ ] GitHub Pages Setup (Day 2-3)
-- [ ] DNS Configuration (Day 3-4)
+- [x] ✅ Domain Registration (Day 1-3) - **Completed 2025-10-10**
+  - Domain: montecarloestimation.com
+  - Registrar: Porkbun
+- [x] ✅ CNAME file created and pushed to GitHub
+- [ ] 🔄 **NEXT: DNS Configuration at Porkbun** (via Browser MCP after restart)
+- [ ] GitHub Pages Custom Domain Setup
+- [ ] Enable HTTPS on GitHub Pages
 - [ ] Google Analytics 4 Setup (Day 5)
+
+---
+
+## 🛠️ Pending DNS Configuration (Execute After CC Restart)
+
+**Domain:** montecarloestimation.com
+**Registrar:** Porkbun (https://porkbun.com/account/domains)
+**GitHub Pages Target:** martinrl.github.io/project-estimation-monte-carlo
+
+### DNS Records to Add:
+
+#### Step 1: Add 4 A Records for GitHub Pages
+Navigate to: Porkbun → montecarloestimation.com → DNS Management
+
+| Type | Host | Answer | TTL |
+|------|------|--------|-----|
+| A | @ | 185.199.108.153 | 600 |
+| A | @ | 185.199.109.153 | 600 |
+| A | @ | 185.199.110.153 | 600 |
+| A | @ | 185.199.111.153 | 600 |
+
+#### Step 2: Add CNAME Record for www Subdomain
+| Type | Host | Answer | TTL |
+|------|------|--------|-----|
+| CNAME | www | martinrl.github.io | 600 |
+
+### GitHub Pages Configuration (After DNS)
+1. Go to: https://github.com/MartinRL/project-estimation-monte-carlo/settings/pages
+2. Under "Custom domain", enter: `montecarloestimation.com`
+3. Click "Save"
+4. Wait for DNS check (1-5 minutes)
+5. ✅ Enable "Enforce HTTPS" once available (may take 15min-24hrs)
+
+### Verification
+- Test: https://montecarloestimation.com
+- Test: https://www.montecarloestimation.com
+- Verify HTTPS green padlock
 
 ---
 

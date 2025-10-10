@@ -8,7 +8,19 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="Free Monte Carlo simulation tool for project estimation. Calculate realistic completion dates with confidence levels. Better than traditional Gantt charts.">
     <meta name="keywords" content="project estimation, monte carlo simulation, agile planning, project management, risk assessment">
-    
+
+    <!-- Google Analytics 4 -->
+    <!-- TODO: Replace G-XXXXXXXXXX with your actual Measurement ID from analytics.google.com -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
+
     <style>
         * {
             margin: 0;
@@ -794,6 +806,14 @@
         let mode = 'data';
         let risks = [];
         let results = [];
+
+        // Google Analytics 4 Helper Function
+        // Safely calls gtag only if it's defined (when GA4 is enabled)
+        function trackEvent(eventName, eventParams) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, eventParams);
+            }
+        }
         
         const helpContent = {
             overview: {
@@ -1274,6 +1294,12 @@
                 document.getElementById('modalBody').innerHTML = content.content;
                 document.getElementById('helpModal').classList.add('active');
                 document.body.style.overflow = 'hidden';
+
+                // Track help modal views
+                trackEvent('view_help', {
+                    'event_category': 'engagement',
+                    'help_topic': topic
+                });
             }
         }
         
@@ -1299,9 +1325,15 @@
             mode = newMode;
             document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            
+
             document.getElementById('dataSection').style.display = mode === 'data' ? 'block' : 'none';
             document.getElementById('estimateSection').style.display = mode === 'estimate' ? 'block' : 'none';
+
+            // Track estimation method selection
+            trackEvent('select_estimation_mode', {
+                'event_category': 'configuration',
+                'method': newMode === 'data' ? 'historical' : 'three_point'
+            });
         }
         
         function addRisk() {
@@ -1316,6 +1348,12 @@
                     description: ''
                 });
                 renderRisks();
+
+                // Track risk addition
+                trackEvent('add_risk', {
+                    'event_category': 'configuration',
+                    'risk_count': risks.length
+                });
             }
         }
         
@@ -1462,7 +1500,14 @@
             
             results.sort((a, b) => a - b);
             displayResults();
-            
+
+            // Track forecast generation (most important event!)
+            trackEvent('generate_forecast', {
+                'event_category': 'engagement',
+                'event_label': mode,
+                'value': 1
+            });
+
             button.disabled = false;
             button.textContent = 'Generate Forecast';
         }
@@ -1660,6 +1705,30 @@
         
         // Initialize
         renderRisks();
+
+        // TODO: Ad Viewability Tracking (uncomment after implementing AdSense ads)
+        /*
+        // Intersection Observer to track when ads enter viewport
+        const adObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                    const adUnit = entry.target.dataset.adUnit || 'unknown';
+                    trackEvent('ad_viewable', {
+                        'event_category': 'ad_performance',
+                        'ad_unit': adUnit,
+                        'non_interaction': true
+                    });
+                }
+            });
+        }, { threshold: [0.5] });
+
+        // Observe all ad containers after page load
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.ad-sidebar-bottom, .ad-results-section').forEach(ad => {
+                adObserver.observe(ad);
+            });
+        });
+        */
     </script>
 
     <footer>

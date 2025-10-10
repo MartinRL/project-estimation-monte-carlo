@@ -49,3 +49,5 @@ This is a single-file web application for project estimation using Monte Carlo s
 ## Deployment
 
 Static hosting only - no server-side logic. Deploy to any static host (GitHub Pages, Netlify, S3, etc.).
+- keep things as super-simple as possible at all times. don't jump to any complex conclusions. KISS!!!
+- never ask me to do something you can do yourself! NB. this includes being able to perform the task but ask me to add permissions, tools, etc first!!

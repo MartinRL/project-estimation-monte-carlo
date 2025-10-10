@@ -4,7 +4,7 @@
 **Date:** 2025-10-10
 **Last Updated:** 2025-10-10
 **Status:** 🚀 Week 1 - Foundation Phase
-**Progress:** 1/7 tasks complete (14%)
+**Progress:** 3/7 tasks complete (43%)
 
 ---
 
@@ -21,7 +21,8 @@
   - Domain: montecarloestimation.com
   - Registrar: Porkbun
 - [x] ✅ CNAME file created and pushed to GitHub
-- [ ] 🔄 **NEXT: DNS Configuration at Porkbun** (via Browser MCP after restart)
+- [x] ✅ Browser MCP configured and connected
+- [x] 🔄 **NEXT: Restart Claude Code, then configure DNS via Browser MCP**
 - [ ] GitHub Pages Custom Domain Setup
 - [ ] Enable HTTPS on GitHub Pages
 - [ ] Google Analytics 4 Setup (Day 5)
@@ -33,6 +34,14 @@
 **Domain:** montecarloestimation.com
 **Registrar:** Porkbun (https://porkbun.com/account/domains)
 **GitHub Pages Target:** martinrl.github.io/project-estimation-monte-carlo
+
+**✅ Setup Complete:**
+- Browser MCP server added to Claude Code
+- Browser MCP extension running in Chrome browser
+- Need to restart Claude Code for tools to be available
+
+**🔄 After Restart - Tell Claude:**
+> "Use Browser MCP to configure DNS for montecarloestimation.com at Porkbun"
 
 ### DNS Records to Add:
 

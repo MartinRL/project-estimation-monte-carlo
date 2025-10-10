@@ -27,11 +27,28 @@
             color: white;
             padding: 2rem;
             text-align: center;
+            position: relative;
         }
         
         h1 {
             font-size: 2rem;
             font-weight: 300;
+        }
+        
+        .header-help {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .header-help:hover {
+            background: rgba(255,255,255,0.2);
         }
         
         .container {
@@ -69,6 +86,9 @@
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #e1e4e8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         .form-group {
@@ -76,7 +96,8 @@
         }
         
         label {
-            display: block;
+            display: inline-flex;
+            align-items: center;
             font-size: 0.9rem;
             font-weight: 500;
             margin-bottom: 0.25rem;
@@ -89,6 +110,12 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 0.9rem;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
         
         textarea {
@@ -125,6 +152,149 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
+        /* Info Icon Styles */
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: transform 0.2s;
+            user-select: none;
+        }
+        
+        .info-icon:hover {
+            transform: scale(1.2);
+            background: #0056b3;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6c757d;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .modal-close:hover {
+            background: #f0f0f0;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .modal-body h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+        
+        .modal-body p {
+            margin-bottom: 1rem;
+            color: #495057;
+            line-height: 1.6;
+        }
+        
+        .modal-body ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+        
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border-left: 3px solid #007bff;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .example-box strong {
+            color: #2c3e50;
+        }
+        
         /* Risk Card Styles */
         .risk-card {
             background: #f8f9fa;
@@ -144,6 +314,8 @@
         .risk-title {
             font-weight: 600;
             color: #2c3e50;
+            display: flex;
+            align-items: center;
         }
         
         .risk-remove {
@@ -154,6 +326,10 @@
             border-radius: 3px;
             cursor: pointer;
             font-size: 0.8rem;
+        }
+        
+        .risk-remove:hover {
+            background: #c82333;
         }
         
         .risk-fields {
@@ -167,6 +343,8 @@
             font-size: 0.75rem;
             color: #666;
             margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
         }
         
         .risk-field input {
@@ -189,6 +367,10 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.9rem;
+        }
+        
+        .add-risk-btn:hover {
+            background: #5a6268;
         }
         
         .run-btn {
@@ -247,6 +429,9 @@
             font-size: 0.85rem;
             color: #666;
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .result-value {
@@ -421,12 +606,22 @@
     <header>
         <h1>Project Estimation</h1>
         <p>Probabilistic Forecasting with Monte Carlo Simulations</p>
+        <div class="header-help" onclick="showHelp('overview')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9 9a3 3 0 1 1 6 0c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+        </div>
     </header>
     
     <div class="container">
         <div class="sidebar">
             <div class="section">
-                <div class="section-title">Estimation Method</div>
+                <div class="section-title">
+                    Estimation Method
+                    <span class="info-icon" onclick="showHelp('forecastMethod')">i</span>
+                </div>
                 <div class="toggle-group">
                     <button class="toggle-btn active" onclick="setMode('data')">Historical Data</button>
                     <button class="toggle-btn" onclick="setMode('estimate')">Three-Point Estimate</button>
@@ -434,8 +629,15 @@
             </div>
             
             <div class="section" id="dataSection">
-                <div class="section-title">Historical Weekly Throughput</div>
+                <div class="section-title">
+                    Historical Weekly Throughput
+                    <span class="info-icon" onclick="showHelp('historicalData')">i</span>
+                </div>
                 <div class="form-group">
+                    <label>
+                        Weekly Samples
+                        <span class="info-icon" onclick="showHelp('weeklySamples')">i</span>
+                    </label>
                     <textarea id="historicalData" placeholder="Enter one value per line&#10;Example:&#10;3&#10;5&#10;2&#10;7&#10;4">3
 5
 2
@@ -446,43 +648,68 @@
 8
 5
 4</textarea>
-                    <div class="help-text">Stories completed per week</div>
+                    <div class="help-text">Stories completed per week from past sprints</div>
                 </div>
             </div>
             
             <div class="section" id="estimateSection" style="display: none;">
-                <div class="section-title">Throughput Estimates</div>
+                <div class="section-title">
+                    Throughput Estimates
+                    <span class="info-icon" onclick="showHelp('estimates')">i</span>
+                </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Pessimistic</label>
+                        <label>
+                            Pessimistic
+                            <span class="info-icon" onclick="showHelp('pessimistic')">i</span>
+                        </label>
                         <input type="number" id="throughputLow" value="1" min="0" step="0.5">
                     </div>
                     <div class="form-group">
-                        <label>Optimistic</label>
+                        <label>
+                            Optimistic
+                            <span class="info-icon" onclick="showHelp('optimistic')">i</span>
+                        </label>
                         <input type="number" id="throughputHigh" value="10" min="0" step="0.5">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Most Likely</label>
+                    <label>
+                        Most Likely
+                        <span class="info-icon" onclick="showHelp('mostLikely')">i</span>
+                    </label>
                     <input type="number" id="throughputMostLikely" value="3" min="0" step="0.5">
+                    <div class="help-text">Leave empty for uniform distribution</div>
                 </div>
             </div>
             
             <div class="section">
-                <div class="section-title">Project Scope</div>
+                <div class="section-title">
+                    Project Scope
+                    <span class="info-icon" onclick="showHelp('scope')">i</span>
+                </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Min Stories</label>
+                        <label>
+                            Min Stories
+                            <span class="info-icon" onclick="showHelp('minStories')">i</span>
+                        </label>
                         <input type="number" id="storyCountLow" value="20" min="1">
                     </div>
                     <div class="form-group">
-                        <label>Max Stories</label>
+                        <label>
+                            Max Stories
+                            <span class="info-icon" onclick="showHelp('maxStories')">i</span>
+                        </label>
                         <input type="number" id="storyCountHigh" value="40" min="1">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Split Factor Min</label>
+                        <label>
+                            Split Factor Min
+                            <span class="info-icon" onclick="showHelp('splitRate')">i</span>
+                        </label>
                         <input type="number" id="splitRateLow" value="1.0" min="1" step="0.1">
                     </div>
                     <div class="form-group">
@@ -490,19 +717,29 @@
                         <input type="number" id="splitRateHigh" value="1.5" min="1" step="0.1">
                     </div>
                 </div>
+                <div class="help-text">Split factor accounts for stories discovered during development</div>
             </div>
             
             <div class="section">
-                <div class="section-title">Team Capacity</div>
+                <div class="section-title">
+                    Team Capacity
+                    <span class="info-icon" onclick="showHelp('teamFocus')">i</span>
+                </div>
                 <div class="form-group">
-                    <label>Team Allocation (%)</label>
+                    <label>
+                        Team Allocation (%)
+                        <span class="info-icon" onclick="showHelp('teamAllocation')">i</span>
+                    </label>
                     <input type="number" id="focusPercentage" value="80" min="0" max="100" step="10">
-                    <div class="help-text">Account for meetings, support, etc.</div>
+                    <div class="help-text">Percentage of team capacity dedicated to this work</div>
                 </div>
             </div>
             
             <div class="section">
-                <div class="section-title">Project Risks (Optional)</div>
+                <div class="section-title">
+                    Project Risks (Optional)
+                    <span class="info-icon" onclick="showHelp('risks')">i</span>
+                </div>
                 <div id="riskContainer"></div>
                 <button class="add-risk-btn" onclick="addRisk()">+ Add Risk</button>
             </div>
@@ -517,7 +754,21 @@
                 <div class="empty-state">
                     <h2>Ready to Forecast</h2>
                     <p>Configure your parameters and click "Generate Forecast"</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">This tool runs 500 Monte Carlo simulations to provide<br>realistic project timelines with confidence intervals</p>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for help content -->
+    <div class="modal" id="helpModal" onclick="closeModalOnBackground(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Help</h2>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be inserted here -->
             </div>
         </div>
     </div>
@@ -526,6 +777,506 @@
         let mode = 'data';
         let risks = [];
         let results = [];
+        
+        const helpContent = {
+            overview: {
+                title: "How Monte Carlo Project Estimation Works",
+                content: `
+                    <h3>What is Monte Carlo Simulation?</h3>
+                    <p>Instead of giving you a single "best guess" deadline, this tool runs hundreds of possible scenarios based on your data. It's like playing out your project 500 times with different combinations of good days, bad days, and unexpected events.</p>
+                    
+                    <h3>Why is this better than traditional estimation?</h3>
+                    <p>Traditional planning assumes everything goes according to plan. This tool acknowledges that:</p>
+                    <ul>
+                        <li>Some weeks you'll complete more work than others</li>
+                        <li>Scope might grow as you discover complexity</li>
+                        <li>Unexpected issues will arise</li>
+                        <li>Team capacity varies due to meetings, holidays, and other commitments</li>
+                    </ul>
+                    
+                    <h3>How to use this tool</h3>
+                    <p>1. Choose whether to use your historical data (recommended) or estimates</p>
+                    <p>2. Enter your scope range (minimum to maximum stories)</p>
+                    <p>3. Adjust team allocation based on realistic availability</p>
+                    <p>4. Add any known risks that might add work</p>
+                    <p>5. Generate your forecast to see likely completion dates</p>
+                    
+                    <div class="example-box">
+                        <strong>Pro tip:</strong> The "85% Confidence" estimate is what you should communicate to stakeholders. The "50% Confidence" is essentially a coin flip - half the time you'll finish earlier, half the time later.
+                    </div>
+                `
+            },
+            forecastMethod: {
+                title: "Choosing Your Forecast Method",
+                content: `
+                    <h3>Use Historical Data (Recommended)</h3>
+                    <p>If you have tracked how many stories your team completed in past weeks, use this method. It's the most accurate because it's based on what your team actually achieves, not what you hope to achieve.</p>
+                    
+                    <div class="example-box">
+                        <strong>Example:</strong> If in the last 10 weeks you completed: 3, 5, 2, 7, 4, 6, 3, 8, 5, 4 stories, the simulation will randomly sample from these values for each simulated week.
+                    </div>
+                    
+                    <h3>Use Three-Point Estimates</h3>
+                    <p>If you're starting fresh or don't have historical data, use estimates. You'll provide:</p>
+                    <ul>
+                        <li><strong>Pessimistic:</strong> The worst-case weekly throughput</li>
+                        <li><strong>Optimistic:</strong> The best-case weekly throughput</li>
+                        <li><strong>Most Likely:</strong> What you typically expect</li>
+                    </ul>
+                    
+                    <p>The tool uses a triangular distribution, which means values near "Most Likely" occur more often than extreme values.</p>
+                `
+            },
+            historicalData: {
+                title: "Using Historical Throughput Data",
+                content: `
+                    <h3>What is throughput?</h3>
+                    <p>Throughput is the number of stories (or work items) your team completes in a time period. For this tool, we typically use weekly throughput.</p>
+                    
+                    <h3>How to collect this data</h3>
+                    <p>Look back at your last 4-12 weeks and count how many stories were marked "Done" each week. Include:</p>
+                    <ul>
+                        <li>Weeks with holidays or team absences (these are realistic)</li>
+                        <li>Both good and bad weeks</li>
+                        <li>Any week that represents normal operations</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Example data entry:</strong><br>
+                        3 (week with a holiday)<br>
+                        5 (normal week)<br>
+                        2 (someone was sick)<br>
+                        7 (great week)<br>
+                        4 (normal week)
+                    </div>
+                    
+                    <h3>Why this works</h3>
+                    <p>Your past performance is the best predictor of future performance. This method automatically accounts for all the hidden factors that affect productivity: meetings, context switching, technical debt, etc.</p>
+                `
+            },
+            weeklySamples: {
+                title: "Weekly Throughput Samples",
+                content: `
+                    <h3>What to enter here</h3>
+                    <p>Enter the actual number of stories your team completed each week. One number per line.</p>
+                    
+                    <h3>How many weeks of data?</h3>
+                    <ul>
+                        <li><strong>Minimum:</strong> 4 weeks (less reliable)</li>
+                        <li><strong>Recommended:</strong> 8-12 weeks (good balance)</li>
+                        <li><strong>Maximum useful:</strong> 20 weeks (older data may not reflect current reality)</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Data quality tips:</strong><br>
+                        • Use consistent story sizes (or use story points)<br>
+                        • Include all types of weeks (good and bad)<br>
+                        • Don't cherry-pick only your best weeks<br>
+                        • If story sizes vary wildly, consider using story points instead
+                    </div>
+                `
+            },
+            estimates: {
+                title: "Understanding Throughput Estimates",
+                content: `
+                    <h3>When to use estimates</h3>
+                    <p>Use estimates when you don't have historical data, such as:</p>
+                    <ul>
+                        <li>New team formations</li>
+                        <li>New type of work</li>
+                        <li>Significant process changes</li>
+                    </ul>
+                    
+                    <h3>The three-point estimation technique</h3>
+                    <p>Instead of one number, you provide three to capture uncertainty:</p>
+                    
+                    <div class="example-box">
+                        <strong>Example for a team of 4 developers:</strong><br>
+                        • Pessimistic: 1 story/week (everything goes wrong)<br>
+                        • Most Likely: 3 stories/week (normal pace)<br>
+                        • Optimistic: 10 stories/week (everything goes perfectly)
+                    </div>
+                    
+                    <p>The simulation will use these to create a realistic distribution of possible throughputs, with values near "Most Likely" occurring most often.</p>
+                `
+            },
+            pessimistic: {
+                title: "Pessimistic Throughput",
+                content: `
+                    <h3>What is pessimistic throughput?</h3>
+                    <p>This is your team's throughput during the worst reasonable weeks. Not catastrophic failure, but when things are genuinely difficult.</p>
+                    
+                    <h3>Consider these factors:</h3>
+                    <ul>
+                        <li>Key team members absent</li>
+                        <li>Difficult technical challenges</li>
+                        <li>High meeting load</li>
+                        <li>Integration issues</li>
+                        <li>Learning curve on new technology</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>How to estimate:</strong> Think about your worst productive week in the last quarter (excluding complete shutdowns). How many stories did you complete?
+                    </div>
+                `
+            },
+            optimistic: {
+                title: "Optimistic Throughput",
+                content: `
+                    <h3>What is optimistic throughput?</h3>
+                    <p>This is your team's throughput when everything goes smoothly. Not miracles, but when you're in the flow.</p>
+                    
+                    <h3>This assumes:</h3>
+                    <ul>
+                        <li>No blockers or dependencies</li>
+                        <li>Clear requirements</li>
+                        <li>Minimal meetings</li>
+                        <li>Team at full strength</li>
+                        <li>Work that plays to team strengths</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>How to estimate:</strong> Think about your best week in the last quarter. How many stories did you complete when everything clicked?
+                    </div>
+                    
+                    <p><strong>Warning:</strong> Don't use your absolute best week ever. Pick something sustainable that could happen again.</p>
+                `
+            },
+            mostLikely: {
+                title: "Most Likely Throughput",
+                content: `
+                    <h3>What is most likely throughput?</h3>
+                    <p>This is your typical, average week. Not good, not bad, just normal operations with the usual mix of progress and obstacles.</p>
+                    
+                    <h3>Why this matters</h3>
+                    <p>When provided, the simulation uses a triangular distribution, making values near this "most likely" number occur more frequently than extreme values. This creates more realistic forecasts.</p>
+                    
+                    <div class="example-box">
+                        <strong>Leaving it empty:</strong> If you don't provide this value, the simulation assumes all values between pessimistic and optimistic are equally likely (uniform distribution), which is less realistic.
+                    </div>
+                    
+                    <h3>How to estimate</h3>
+                    <p>Look at your last 10 weeks and pick the median value, or ask: "If I had to bet on our throughput next week, what would I guess?"</p>
+                `
+            },
+            scope: {
+                title: "Understanding Project Scope",
+                content: `
+                    <h3>Why a range instead of a fixed number?</h3>
+                    <p>Scope is rarely fixed in reality. Using a range acknowledges that:</p>
+                    <ul>
+                        <li>Requirements may be incomplete</li>
+                        <li>Some stories will be simpler than expected</li>
+                        <li>Some stories will reveal hidden complexity</li>
+                        <li>Stakeholders might add or remove features</li>
+                    </ul>
+                    
+                    <h3>How to estimate your range</h3>
+                    <p><strong>Minimum:</strong> Count only the stories you're absolutely certain about. Must-haves with clear requirements.</p>
+                    <p><strong>Maximum:</strong> Include all must-haves, likely additions, and stories that might be discovered during development.</p>
+                    
+                    <div class="example-box">
+                        <strong>Example:</strong><br>
+                        Minimum: 20 stories (core features everyone agrees on)<br>
+                        Maximum: 40 stories (core + nice-to-haves + likely discoveries)
+                    </div>
+                `
+            },
+            minStories: {
+                title: "Minimum Stories",
+                content: `
+                    <h3>What to include in minimum</h3>
+                    <p>Only count stories that are:</p>
+                    <ul>
+                        <li>Definitely required (true must-haves)</li>
+                        <li>Well understood</li>
+                        <li>Unlikely to be descoped</li>
+                    </ul>
+                    
+                    <h3>Common mistake</h3>
+                    <p>Don't use the "official" scope number here if you know it's optimistic. Be honest about the absolute minimum viable delivery.</p>
+                    
+                    <div class="example-box">
+                        <strong>Think:</strong> "If we had to ship tomorrow due to an emergency, what's the absolute minimum that would be acceptable?"
+                    </div>
+                `
+            },
+            maxStories: {
+                title: "Maximum Stories",
+                content: `
+                    <h3>What to include in maximum</h3>
+                    <p>Include everything that might reasonably end up in scope:</p>
+                    <ul>
+                        <li>All must-haves</li>
+                        <li>Likely scope creep</li>
+                        <li>Technical debt that might be addressed</li>
+                        <li>Stories that will likely split into multiple stories</li>
+                        <li>"Nice-to-haves" that stakeholders keep mentioning</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Rule of thumb:</strong> If there's a 20% or higher chance something will be included, count it here.
+                    </div>
+                    
+                    <h3>Don't go crazy</h3>
+                    <p>This isn't about worst-case scenario planning. Just be realistic about what typically happens to scope during projects.</p>
+                `
+            },
+            splitRate: {
+                title: "Story Split Factor",
+                content: `
+                    <h3>What is story splitting?</h3>
+                    <p>During development, teams often discover that a single story is too large and needs to be split into multiple smaller stories. This is normal and healthy, but affects timeline.</p>
+                    
+                    <h3>How split factor works</h3>
+                    <p>A split factor of 1.5 means that for every 10 stories you planned, you'll actually end up doing 15 stories worth of work.</p>
+                    
+                    <div class="example-box">
+                        <strong>Example:</strong><br>
+                        Original: "User can manage profile"<br>
+                        After splitting:<br>
+                        • "User can view profile"<br>
+                        • "User can edit profile"<br>
+                        • "User can upload avatar"
+                    </div>
+                    
+                    <h3>Typical values</h3>
+                    <ul>
+                        <li><strong>1.0-1.2:</strong> Well-groomed backlog, experienced team</li>
+                        <li><strong>1.2-1.5:</strong> Some uncertainty, normal discovery</li>
+                        <li><strong>1.5-2.0:</strong> High uncertainty, new domain</li>
+                    </ul>
+                `
+            },
+            teamFocus: {
+                title: "Understanding Team Focus",
+                content: `
+                    <h3>What is team focus?</h3>
+                    <p>Teams rarely spend 100% of their time on a single project. Team focus accounts for the realistic percentage of time your team can dedicate to this specific work.</p>
+                    
+                    <h3>Common distractions include:</h3>
+                    <ul>
+                        <li>Supporting production issues</li>
+                        <li>Meetings not related to this project</li>
+                        <li>Other projects or initiatives</li>
+                        <li>Training and development time</li>
+                        <li>Administrative tasks</li>
+                    </ul>
+                    
+                    <h3>How to estimate</h3>
+                    <p>Track where time actually goes for one week, or use these guidelines:</p>
+                    <ul>
+                        <li><strong>100%:</strong> Dedicated team, no other responsibilities</li>
+                        <li><strong>70-80%:</strong> Primary project, some maintenance work</li>
+                        <li><strong>50-60%:</strong> Significant other responsibilities</li>
+                        <li><strong>30-40%:</strong> This is one of several priorities</li>
+                    </ul>
+                `
+            },
+            teamAllocation: {
+                title: "Team Allocation Percentage",
+                content: `
+                    <h3>Be realistic, not optimistic</h3>
+                    <p>This is about actual time spent making progress on stories, not time "assigned" to the project.</p>
+                    
+                    <div class="example-box">
+                        <strong>Example calculation:</strong><br>
+                        40 hours/week per person<br>
+                        -8 hours of meetings<br>
+                        -4 hours of code reviews<br>
+                        -4 hours of production support<br>
+                        -4 hours of helping others<br>
+                        = 20 hours (50%) actual project time
+                    </div>
+                    
+                    <h3>Common mistake</h3>
+                    <p>Teams often overestimate their focus. If unsure, track actual time for one week. You'll likely be surprised how fragmented attention really is.</p>
+                    
+                    <h3>Impact on forecast</h3>
+                    <p>If you set 80%, the simulation will apply 80% of your throughput each week. So if you could do 5 stories with full focus, you'll complete 4 stories.</p>
+                `
+            },
+            risks: {
+                title: "Project Risk Management",
+                content: `
+                    <h3>What are risks in this context?</h3>
+                    <p>Risks are events that might happen and would add extra work to your project. Not disasters, but realistic possibilities that would expand scope.</p>
+                    
+                    <h3>Examples of project risks</h3>
+                    <ul>
+                        <li>Need to refactor legacy code (30% chance, adds 5-10 stories)</li>
+                        <li>New regulatory requirement (20% chance, adds 10-20 stories)</li>
+                        <li>Major integration issues (15% chance, adds 3-8 stories)</li>
+                        <li>Additional browser/device support (40% chance, adds 5-7 stories)</li>
+                    </ul>
+                    
+                    <h3>How risks work in the simulation</h3>
+                    <p>For each simulation run, the tool "rolls the dice" for each risk:</p>
+                    <ul>
+                        <li>If a 30% risk is defined, it will occur in roughly 150 out of 500 simulations</li>
+                        <li>When it occurs, a random number of stories between min and max impact is added</li>
+                        <li>Multiple risks can trigger in the same simulation</li>
+                    </ul>
+                    
+                    <h3>Don't overdo it</h3>
+                    <p>Include 2-5 meaningful risks. Too many risks make the forecast overly pessimistic and less useful.</p>
+                `
+            },
+            riskProbability: {
+                title: "Risk Probability",
+                content: `
+                    <h3>What is risk probability?</h3>
+                    <p>The likelihood that this risk will actually occur during your project, expressed as a percentage (0-100%).</p>
+                    
+                    <h3>How to estimate probability</h3>
+                    <ul>
+                        <li><strong>10-20%:</strong> Unlikely but possible</li>
+                        <li><strong>30-40%:</strong> Moderate chance</li>
+                        <li><strong>50-60%:</strong> Likely to happen</li>
+                        <li><strong>70%+:</strong> Very likely (consider if this should just be in scope)</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Example:</strong> If you've needed to support IE11 on 3 out of your last 10 projects, that's a 30% probability for browser compatibility risk.
+                    </div>
+                    
+                    <h3>Common mistake</h3>
+                    <p>Don't use 100% probability - if something is certain, it should be in your min/max scope range, not a risk.</p>
+                `
+            },
+            riskImpact: {
+                title: "Risk Impact (Stories Added)",
+                content: `
+                    <h3>What is risk impact?</h3>
+                    <p>The number of additional stories that would be added to your project if this risk occurs.</p>
+                    
+                    <h3>Min vs Max impact</h3>
+                    <ul>
+                        <li><strong>Min Impact:</strong> Best case if the risk occurs (minor complication)</li>
+                        <li><strong>Max Impact:</strong> Worst case if the risk occurs (major complication)</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Example - Integration Risk:</strong><br>
+                        Min Impact: 3 stories (simple API adjustments)<br>
+                        Max Impact: 10 stories (complete redesign of integration layer)
+                    </div>
+                    
+                    <h3>Sizing guidance</h3>
+                    <p>Think in terms of your normal story size. If a risk could add a week of work and you typically complete 5 stories per week, that's 5 stories of impact.</p>
+                `
+            },
+            confidence50: {
+                title: "50% Confidence Level",
+                content: `
+                    <h3>What does 50% confidence mean?</h3>
+                    <p>You have a 50/50 chance of completing by this date. It's like flipping a coin - half the simulations finished before this date, half finished after.</p>
+                    
+                    <h3>When to use this estimate</h3>
+                    <ul>
+                        <li>Internal planning discussions</li>
+                        <li>Best-case scenarios</li>
+                        <li>When you have flexibility to adjust</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Warning:</strong> Never commit to external stakeholders using 50% confidence. You'll miss the deadline half the time!
+                    </div>
+                `
+            },
+            confidence85: {
+                title: "85% Confidence Level",
+                content: `
+                    <h3>What does 85% confidence mean?</h3>
+                    <p>You have an 85% chance of completing by this date. Only 15% of simulations (75 out of 500) finished later than this.</p>
+                    
+                    <h3>When to use this estimate</h3>
+                    <ul>
+                        <li><strong>External commitments</strong></li>
+                        <li><strong>Stakeholder communications</strong></li>
+                        <li><strong>Contract negotiations</strong></li>
+                        <li><strong>Public announcements</strong></li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Best practice:</strong> This is the sweet spot for commitments. High confidence without excessive padding.
+                    </div>
+                `
+            },
+            confidence95: {
+                title: "95% Confidence Level",
+                content: `
+                    <h3>What does 95% confidence mean?</h3>
+                    <p>You're almost certain to complete by this date. Only 5% of simulations (25 out of 500) finished later.</p>
+                    
+                    <h3>When to use this estimate</h3>
+                    <ul>
+                        <li>Fixed deadlines with severe consequences</li>
+                        <li>Regulatory compliance dates</li>
+                        <li>Major public events</li>
+                        <li>When failure is not an option</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Trade-off:</strong> While very safe, this estimate might be too conservative for regular use. Reserve it for critical deadlines.
+                    </div>
+                `
+            },
+            distributionChart: {
+                title: "Understanding the Distribution Chart",
+                content: `
+                    <h3>What this chart shows</h3>
+                    <p>The distribution of all 500 simulation results. Each bar shows how many simulations completed in that time frame.</p>
+                    
+                    <h3>How to read it</h3>
+                    <ul>
+                        <li><strong>Height (Y-axis):</strong> Frequency - what percentage of simulations finished in this timeframe</li>
+                        <li><strong>Position (X-axis):</strong> Weeks to completion</li>
+                        <li><strong>Tall bars:</strong> More likely completion times</li>
+                        <li><strong>Short bars:</strong> Less likely completion times</li>
+                    </ul>
+                    
+                    <h3>What to look for</h3>
+                    <ul>
+                        <li><strong>Narrow distribution:</strong> More certainty about timeline</li>
+                        <li><strong>Wide distribution:</strong> High uncertainty, many variables</li>
+                        <li><strong>Skewed right:</strong> Risk of delays is higher than chance of early completion</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <strong>Insight:</strong> If the distribution has a long tail to the right, you have more downside risk than upside opportunity.
+                    </div>
+                `
+            }
+        };
+        
+        function showHelp(topic) {
+            const content = helpContent[topic];
+            if (content) {
+                document.getElementById('modalTitle').textContent = content.title;
+                document.getElementById('modalBody').innerHTML = content.content;
+                document.getElementById('helpModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeModal() {
+            document.getElementById('helpModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function closeModalOnBackground(event) {
+            if (event.target === event.currentTarget) {
+                closeModal();
+            }
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
         
         function setMode(newMode) {
             mode = newMode;
@@ -573,26 +1324,35 @@
             const container = document.getElementById('riskContainer');
             
             if (risks.length === 0) {
-                container.innerHTML = '<p style="color: #666; font-size: 0.9rem;">No risks added yet</p>';
+                container.innerHTML = '<p style="color: #666; font-size: 0.9rem; text-align: center; padding: 1rem;">No risks added yet. Risks are optional but help create more realistic forecasts.</p>';
                 return;
             }
             
             container.innerHTML = risks.map(risk => `
                 <div class="risk-card">
                     <div class="risk-header">
-                        <div class="risk-title">${risk.name}</div>
+                        <div class="risk-title">
+                            ${risk.name}
+                            <span class="info-icon" onclick="showHelp('riskCard')" style="margin-left: 0.5rem;">i</span>
+                        </div>
                         <button class="risk-remove" onclick="removeRisk(${risk.id})">Remove</button>
                     </div>
                     <div class="risk-fields">
                         <div class="risk-field">
-                            <label>Chance (%)</label>
+                            <label>
+                                Chance (%)
+                                <span class="info-icon" onclick="showHelp('riskProbability')">i</span>
+                            </label>
                             <input type="number" 
                                    value="${risk.probability}" 
                                    min="0" max="100" step="5"
                                    onchange="updateRisk(${risk.id}, 'probability', this.value)">
                         </div>
                         <div class="risk-field">
-                            <label>Min Stories</label>
+                            <label>
+                                Min Stories
+                                <span class="info-icon" onclick="showHelp('riskImpact')">i</span>
+                            </label>
                             <input type="number" 
                                    value="${risk.minImpact}" 
                                    min="0"
@@ -608,13 +1368,38 @@
                     </div>
                     <div class="risk-description">
                         <input type="text" 
-                               placeholder="Describe this risk (e.g., 'Integration issues')"
+                               placeholder="Describe this risk (e.g., 'Integration complexity', 'Scope creep')"
                                value="${risk.description}"
                                onchange="updateRisk(${risk.id}, 'description', this.value)">
                     </div>
                 </div>
             `).join('');
         }
+        
+        // Add new help content for risk card
+        helpContent.riskCard = {
+            title: "Risk Card",
+            content: `
+                <h3>How to define a risk</h3>
+                <p>Each risk card represents something that might happen during your project that would add work.</p>
+                
+                <h3>Fields to fill in:</h3>
+                <ul>
+                    <li><strong>Chance (%):</strong> How likely is this risk? (0-100%)</li>
+                    <li><strong>Min Stories:</strong> If it happens, minimum stories added</li>
+                    <li><strong>Max Stories:</strong> If it happens, maximum stories added</li>
+                    <li><strong>Description:</strong> What is this risk? (for your reference)</li>
+                </ul>
+                
+                <div class="example-box">
+                    <strong>Example Risk:</strong><br>
+                    Chance: 30%<br>
+                    Min Stories: 5<br>
+                    Max Stories: 15<br>
+                    Description: "Legacy system integration issues"
+                </div>
+            `
+        };
         
         function getHistoricalSamples() {
             const text = document.getElementById('historicalData').value;
@@ -626,7 +1411,7 @@
         async function runSimulation() {
             const button = document.getElementById('runButton');
             button.disabled = true;
-            button.textContent = 'Running...';
+            button.textContent = 'Running Simulations...';
             
             await new Promise(resolve => setTimeout(resolve, 100));
             
@@ -732,20 +1517,32 @@
             
             document.getElementById('results').innerHTML = `
                 <div class="section">
-                    <div class="section-title">Forecast Results</div>
+                    <div class="section-title">
+                        Forecast Results
+                        <span class="info-icon" onclick="showHelp('results')">i</span>
+                    </div>
                     <div class="result-cards">
                         <div class="result-card likely">
-                            <div class="result-label">50% Confidence</div>
+                            <div class="result-label">
+                                50% Confidence
+                                <span class="info-icon" onclick="showHelp('confidence50')">i</span>
+                            </div>
                             <div class="result-value">${Math.round(p50)} weeks</div>
                             <div class="result-date">${p50Date.toLocaleDateString('en-US', dateOptions)}</div>
                         </div>
                         <div class="result-card safe">
-                            <div class="result-label">85% Confidence</div>
+                            <div class="result-label">
+                                85% Confidence
+                                <span class="info-icon" onclick="showHelp('confidence85')">i</span>
+                            </div>
                             <div class="result-value">${Math.round(p85)} weeks</div>
                             <div class="result-date">${p85Date.toLocaleDateString('en-US', dateOptions)}</div>
                         </div>
                         <div class="result-card conservative">
-                            <div class="result-label">95% Confidence</div>
+                            <div class="result-label">
+                                95% Confidence
+                                <span class="info-icon" onclick="showHelp('confidence95')">i</span>
+                            </div>
                             <div class="result-value">${Math.round(p95)} weeks</div>
                             <div class="result-date">${p95Date.toLocaleDateString('en-US', dateOptions)}</div>
                         </div>
@@ -753,7 +1550,10 @@
                 </div>
                 
                 <div class="chart-container">
-                    <div class="section-title">Probability Distribution</div>
+                    <div class="section-title">
+                        Probability Distribution
+                        <span class="info-icon" onclick="showHelp('distributionChart')">i</span>
+                    </div>
                     <div class="chart">
                         <div class="chart-inner">
                             <div class="y-axis">
@@ -777,7 +1577,7 @@
                                 <div class="bars">
                                     ${histogram.map(bar => `
                                         <div class="bar" style="height: ${bar.height}%">
-                                            <div class="bar-tooltip">${bar.weeks} weeks: ${bar.count} runs</div>
+                                            <div class="bar-tooltip">${bar.weeks} weeks: ${bar.count} runs (${(bar.count/5).toFixed(1)}%)</div>
                                         </div>
                                     `).join('')}
                                 </div>
@@ -787,6 +1587,30 @@
                 </div>
             `;
         }
+        
+        // Add help content for results
+        helpContent.results = {
+            title: "Understanding Your Results",
+            content: `
+                <h3>What the confidence levels mean</h3>
+                <p>Each result shows a confidence level - the probability that you'll finish by that date:</p>
+                <ul>
+                    <li><strong>50% (Likely):</strong> You have a 50/50 chance of finishing by this date</li>
+                    <li><strong>85% (Safe):</strong> You have an 85% chance of finishing by this date</li>
+                    <li><strong>95% (Conservative):</strong> Almost certainly done by this date</li>
+                </ul>
+                
+                <h3>Which estimate should I use?</h3>
+                <div class="example-box">
+                    <strong>For external commitments:</strong> Use 85% (Safe Estimate)<br>
+                    <strong>For internal planning:</strong> Use 50% (Likely) but plan for variance<br>
+                    <strong>For critical deadlines:</strong> Use 95% (Conservative)
+                </div>
+                
+                <h3>Why these percentages?</h3>
+                <p>These are industry-standard confidence levels that balance accuracy with practicality. 85% is particularly popular because it provides high confidence without excessive padding.</p>
+            `
+        };
         
         function createHistogram() {
             const buckets = 25;

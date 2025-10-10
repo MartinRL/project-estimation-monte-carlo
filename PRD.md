@@ -3,12 +3,12 @@
 **Version:** 1.0
 **Date:** 2025-10-10
 **Last Updated:** 2025-10-10
-**Status:** 🚀 Week 1 - Foundation Phase
-**Progress:** 3/7 tasks complete (43%)
+**Status:** 🚀 Foundation Phase
+**Progress:** Pull-based hobby project
 
 ---
 
-## 🎯 Current Sprint Status
+## 🎯 Current Status
 
 **Domain Decision:** ✅ **montecarloestimation.com**
 - Purchased: 2025-10-10 via Porkbun
@@ -16,16 +16,18 @@
 - SEO Score: 32/40 (.com trust + exact keyword match)
 - Status: Configuring DNS & GitHub Pages
 
-**Active Tasks (Week 1):**
-- [x] ✅ Domain Registration (Day 1-3) - **Completed 2025-10-10**
+**Recent Progress:**
+- [x] ✅ Domain Registration - **Completed 2025-10-10**
   - Domain: montecarloestimation.com
   - Registrar: Porkbun
 - [x] ✅ CNAME file created and pushed to GitHub
-- [x] ✅ Browser MCP configured and connected
-- [x] 🔄 **NEXT: Restart Claude Code, then configure DNS via Browser MCP**
-- [ ] GitHub Pages Custom Domain Setup
-- [ ] Enable HTTPS on GitHub Pages
-- [ ] Google Analytics 4 Setup (Day 5)
+- [x] ✅ DNS configured at Porkbun (via Claude Desktop + Browser MCP)
+- [x] ✅ Custom domain configured in GitHub Pages
+
+**Up Next:**
+- [ ] Enable HTTPS on GitHub Pages (waiting for DNS propagation)
+- [ ] Google Analytics 4 Setup
+- [ ] Google AdSense Application
 
 ---
 
@@ -199,7 +201,121 @@ Navigate to: Porkbun → montecarloestimation.com → DNS Management
 
 ---
 
-## 3. Google AdSense Implementation Strategy
+## 3. Google Analytics 4 Setup (Free Tier)
+
+### Overview
+Google Analytics 4 (GA4) is completely free and provides comprehensive tracking and insights for understanding user behavior.
+
+### Setup Steps
+
+**Step 1: Create GA4 Property**
+1. Go to https://analytics.google.com
+2. Click "Admin" (gear icon, bottom left)
+3. Under "Property" column, click "Create Property"
+4. Enter property name: "Monte Carlo Estimation Tool"
+5. Set timezone and currency
+6. Click "Next" → Choose "Web" → Enter: `montecarloestimation.com`
+7. Complete setup → Get Measurement ID (format: `G-XXXXXXXXXX`)
+
+**Step 2: Add Tracking Code**
+Add this code to `<head>` section of `index.html`:
+
+```html
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+```
+
+**Step 3: Set Up Custom Events**
+Track user interactions by adding event tracking:
+
+```javascript
+// Track when user generates a forecast
+function trackForecastGenerated() {
+  gtag('event', 'generate_forecast', {
+    'event_category': 'simulation',
+    'event_label': 'forecast_generated',
+    'value': 1
+  });
+}
+
+// Track estimation mode used
+function trackEstimationMode(mode) {
+  gtag('event', 'select_mode', {
+    'event_category': 'simulation',
+    'event_label': mode, // 'historical' or 'three_point'
+  });
+}
+
+// Track risk additions
+function trackRiskAdded() {
+  gtag('event', 'add_risk', {
+    'event_category': 'risk_modeling',
+    'event_label': 'risk_added',
+  });
+}
+
+// Track export attempts (for conversion tracking)
+function trackExportAttempt(type) {
+  gtag('event', 'export_attempt', {
+    'event_category': 'conversion',
+    'event_label': type, // 'pdf' or 'csv'
+  });
+}
+```
+
+### Key Metrics to Track
+
+**Engagement Metrics:**
+- Daily/Weekly/Monthly Active Users
+- Session duration
+- Pages per session
+- Bounce rate
+
+**Feature Usage:**
+- Forecast generation count
+- Historical vs Three-Point mode preference
+- Number of risks added per simulation
+- Help modal interactions
+
+**Conversion Tracking:**
+- Export button clicks (PDF/CSV)
+- "Upgrade to Premium" CTA clicks
+- Pricing page views
+- Outbound link clicks (AdSense/affiliates)
+
+### GA4 Reports to Monitor
+
+1. **Realtime Report**: See live user activity
+2. **Acquisition Report**: Where users come from (Google, Reddit, ProductHunt, etc.)
+3. **Engagement Report**: Which features users interact with most
+4. **Retention Report**: How many users return after first visit
+5. **Demographics**: User location, device, browser
+
+### Privacy Compliance
+
+Add this to privacy policy:
+- "We use Google Analytics to understand how visitors use our site"
+- "Analytics collects anonymous usage data via cookies"
+- "Users can opt-out via browser settings or Google Analytics opt-out add-on"
+
+### Integration Points
+
+Call tracking functions in these locations:
+- `runSimulation()` → `trackForecastGenerated()`
+- `toggleMode()` → `trackEstimationMode(mode)`
+- `addRisk()` → `trackRiskAdded()`
+- Export buttons → `trackExportAttempt(type)`
+- Help modal open → `gtag('event', 'help_view')`
+
+---
+
+## 4. Google AdSense Implementation Strategy
 
 ### Ad Placement Locations
 
@@ -256,7 +372,7 @@ const AD_UNITS = {
 
 ---
 
-## 4. Additional Revenue Streams
+## 5. Additional Revenue Streams
 
 ### Affiliate Partnerships
 
@@ -336,7 +452,7 @@ const AD_UNITS = {
 
 ---
 
-## 5. Premium Feature Implementation Roadmap
+## 6. Premium Feature Implementation Roadmap
 
 ### Phase 1: Quick Wins (Month 1-2)
 **Goal:** Launch Premium tier with minimal backend complexity
@@ -453,7 +569,7 @@ const AD_UNITS = {
 
 ---
 
-## 6. Competitive Analysis & Pricing
+## 7. Competitive Analysis & Pricing
 
 ### Direct Competitors
 
@@ -507,7 +623,7 @@ const AD_UNITS = {
 
 ---
 
-## 7. Growth & Marketing Strategy
+## 8. Growth & Marketing Strategy
 
 ### Content Marketing Plan
 
@@ -634,29 +750,29 @@ const AD_UNITS = {
 
 ---
 
-## 8. Technical Implementation Plan
+## 9. Technical Implementation Plan
 
 ### Immediate Phase: No Backend Required
 
-**Week 1-2:**
-1. Register domain (forecast.tools or alternative)
-2. Set up GitHub Pages deployment
-3. Configure custom domain DNS
-4. Add Google Analytics 4 tracking
-5. Add Google AdSense account + ad units
-6. Implement client-side save/load (LocalStorage)
+**Foundation (Completed):**
+1. ✅ Register domain (montecarloestimation.com)
+2. ✅ Set up GitHub Pages deployment
+3. ✅ Configure custom domain DNS
+4. [ ] Add Google Analytics 4 tracking
+5. [ ] Add Google AdSense account + ad units
+6. [ ] Implement client-side save/load (LocalStorage)
 
-**Week 3-4:**
-7. Build PDF export (jsPDF)
-8. Build CSV export (client-side)
-9. Create paywall modal UI
-10. Add Stripe Checkout integration (redirect to hosted page)
+**Phase 1 - Core Features:**
+7. [ ] Build PDF export (jsPDF)
+8. [ ] Build CSV export (client-side)
+9. [ ] Create paywall modal UI
+10. [ ] Add Stripe Checkout integration (redirect to hosted page)
 
-**Week 5-6:**
-11. Test payment flow end-to-end
-12. Create pricing page
-13. Add "Powered by" branding for free tier
-14. Launch Beta + ProductHunt submission
+**Phase 2 - Launch:**
+11. [ ] Test payment flow end-to-end
+12. [ ] Create pricing page
+13. [ ] Add "Powered by" branding for free tier
+14. [ ] Launch Beta + ProductHunt submission
 
 **Technology Stack (Immediate):**
 - Hosting: GitHub Pages (free) or Netlify (free tier)
@@ -671,9 +787,9 @@ const AD_UNITS = {
 
 ---
 
-### Short-Term Phase: Backend Required
+### Phase 3: Backend & Cloud Features
 
-**Month 2-3:**
+**When Ready:**
 1. Set up Supabase project (PostgreSQL + Auth + Storage)
 2. Migrate from LocalStorage to cloud database
 3. Implement user authentication (email/password + Google OAuth)
@@ -696,9 +812,9 @@ const AD_UNITS = {
 
 ---
 
-### Long-Term Phase: Scale Infrastructure
+### Phase 4: Scale Infrastructure
 
-**Month 4-6:**
+**Future Enhancement:**
 1. Team features database schema
 2. API infrastructure (REST endpoints)
 3. API authentication (JWT tokens)
@@ -740,7 +856,7 @@ const AD_UNITS = {
 
 ---
 
-## 9. Financial Projections (Year 1)
+## 10. Financial Projections (Year 1)
 
 ### Conservative Scenario
 
@@ -827,119 +943,87 @@ const AD_UNITS = {
 
 ---
 
-## 10. Immediate Action Items (Next 30 Days)
+## 11. Next Actions (Pull-Based)
 
-### Week 1: Foundation
-- [ ] **Domain Registration**
-  - Research availability: forecast.tools, montecarlo.tools
-  - Purchase domain (Porkbun/Namecheap)
-  - Configure DNS for GitHub Pages
-  - **Owner:** You
-  - **Deadline:** Day 3
-
-- [ ] **GitHub Pages Setup**
-  - Enable GitHub Pages on repo
-  - Add CNAME file to repository
-  - Test deployment and custom domain
-  - **Owner:** You
-  - **Deadline:** Day 5
+### Foundation & Setup
+- [x] **Domain Registration**
+  - ✅ Purchased montecarloestimation.com via Porkbun
+  - ✅ DNS configured at Porkbun
+  - ✅ CNAME file created and pushed to GitHub
+  - ✅ Custom domain configured in GitHub Pages
+  - [ ] Enable HTTPS (waiting for DNS propagation)
 
 - [ ] **Analytics & Ads Setup**
-  - Create Google Analytics 4 property
-  - Add GA4 tracking code to index.html
-  - Apply for Google AdSense account
-  - **Owner:** You
-  - **Deadline:** Day 7
+  - [ ] Create Google Analytics 4 property
+  - [ ] Add GA4 tracking code to index.html
+  - [ ] Add GA4 custom event tracking
+  - [ ] Create privacy policy page
+  - [ ] Apply for Google AdSense account
+  - [ ] Add AdSense ad placement divs
 
 ---
 
-### Week 2: Monetization Foundation
+### Monetization Foundation
 - [ ] **Stripe Account Setup**
-  - Create Stripe account
-  - Set up Premium subscription product ($9/month)
-  - Set up annual subscription ($79/year)
-  - Create Lifetime purchase ($249)
-  - Test webhook endpoints (local testing)
-  - **Owner:** You
-  - **Deadline:** Day 10
+  - [ ] Create Stripe account
+  - [ ] Set up Premium subscription product ($9/month)
+  - [ ] Set up annual subscription ($79/year)
+  - [ ] Create Lifetime purchase ($249)
+  - [ ] Test webhook endpoints
 
 - [ ] **Paywall Modal UI**
-  - Design upgrade modal
-  - Feature comparison table
-  - "Upgrade" CTAs in strategic locations
-  - **Owner:** You
-  - **Deadline:** Day 14
+  - [ ] Design upgrade modal
+  - [ ] Feature comparison table
+  - [ ] Add "Upgrade" CTAs in strategic locations
 
 ---
 
-### Week 3: Premium Features (Phase 1)
+### Premium Features (Phase 1)
 - [ ] **LocalStorage Save/Load**
-  - Save simulation configuration to LocalStorage
-  - Load saved simulations (max 5 for free tier)
-  - UI for managing saved simulations
-  - **Owner:** You
-  - **Deadline:** Day 18
+  - [ ] Save simulation configuration to LocalStorage
+  - [ ] Load saved simulations (max 5 for free tier)
+  - [ ] UI for managing saved simulations
 
 - [ ] **PDF Export (Premium Feature)**
-  - Integrate jsPDF library
-  - Design professional PDF template
-  - Generate report with charts (canvas to image)
-  - **Owner:** You
-  - **Deadline:** Day 21
+  - [ ] Integrate jsPDF library
+  - [ ] Design professional PDF template
+  - [ ] Generate report with charts (canvas to image)
 
 - [ ] **CSV Export (Premium Feature)**
-  - Client-side CSV generation
-  - Export raw simulation results
-  - Export summary statistics
-  - **Owner:** You
-  - **Deadline:** Day 21
+  - [ ] Client-side CSV generation
+  - [ ] Export raw simulation results
+  - [ ] Export summary statistics
 
 ---
 
-### Week 4: Launch Preparation
+### Launch Preparation
 - [ ] **Create Pricing Page**
-  - Build `/pricing.html` or modal
-  - Free vs Premium vs Enterprise comparison
-  - FAQ section
-  - Testimonials section (prepare placeholders)
-  - **Owner:** You
-  - **Deadline:** Day 24
+  - [ ] Build `/pricing.html` or modal
+  - [ ] Free vs Premium vs Enterprise comparison
+  - [ ] FAQ section
 
 - [ ] **Marketing Preparation**
-  - Write ProductHunt launch post
-  - Create Twitter announcement thread
-  - Draft LinkedIn post
-  - Prepare launch email for personal network
-  - **Owner:** You
-  - **Deadline:** Day 26
+  - [ ] Write ProductHunt launch post
+  - [ ] Create Twitter announcement thread
+  - [ ] Draft LinkedIn post
 
 - [ ] **Beta Testing**
-  - Test full payment flow (test mode)
-  - Test ad placements (don't click own ads!)
-  - Cross-browser testing
-  - Mobile responsiveness check
-  - **Owner:** You
-  - **Deadline:** Day 28
-
-- [ ] **Soft Launch**
-  - Deploy all changes to production
-  - Test live payment flow (small amount)
-  - Monitor analytics and errors
-  - **Owner:** You
-  - **Deadline:** Day 30
+  - [ ] Test full payment flow (test mode)
+  - [ ] Test ad placements
+  - [ ] Cross-browser testing
+  - [ ] Mobile responsiveness check
 
 ---
 
-### Success Metrics (30-Day Goals)
+### Success Metrics
 
-| Metric                  | Target        | Stretch Goal  |
-|-------------------------|---------------|---------------|
-| Daily users             | 50            | 200           |
-| AdSense approval        | Approved      | Approved      |
-| Premium signups         | 1             | 5             |
-| ProductHunt upvotes     | 50            | 100           |
-| Email subscribers       | 20            | 50            |
-| Blog posts published    | 1             | 2             |
+| Metric                  | Initial Target | Growth Target |
+|-------------------------|----------------|---------------|
+| Daily users             | 50             | 500           |
+| AdSense approval        | Approved       | -             |
+| Premium signups         | 1              | 10            |
+| ProductHunt upvotes     | 50             | 200           |
+| Blog posts published    | 1              | 5             |
 
 ---
 

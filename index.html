@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Estimation — Probabilistic Forecasting with Monte Carlo Simulations</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Free Monte Carlo simulation tool for project estimation. Calculate realistic completion dates with confidence levels. Better than traditional Gantt charts.">
+    <meta name="keywords" content="project estimation, monte carlo simulation, agile planning, project management, risk assessment">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+        
+        .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .results {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e1e4e8;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        textarea {
+            min-height: 100px;
+            font-family: monospace;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .toggle-group {
+            display: flex;
+            background: #e9ecef;
+            border-radius: 4px;
+            padding: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .toggle-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            background: transparent;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn.active {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Risk Card Styles */
+        .risk-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .risk-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .risk-remove {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .risk-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .risk-field label {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+        
+        .risk-field input {
+            width: 100%;
+            padding: 0.3rem;
+            font-size: 0.85rem;
+        }
+        
+        .risk-description input {
+            width: 100%;
+            padding: 0.3rem;
+            font-size: 0.85rem;
+        }
+        
+        .add-risk-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .run-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .run-btn:hover {
+            background: #218838;
+        }
+        
+        .run-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        /* Results */
+        .result-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .result-card {
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+            border-left: 4px solid;
+        }
+        
+        .result-card.likely {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        
+        .result-card.safe {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        
+        .result-card.conservative {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+        
+        .result-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .result-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        /* Chart */
+        .chart-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+        
+        .chart {
+            position: relative;
+            height: 400px;
+            margin-top: 1rem;
+        }
+        
+        .chart-inner {
+            position: relative;
+            height: 100%;
+            padding-left: 60px;
+            padding-bottom: 60px;
+        }
+        
+        .y-axis {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 60px;
+            width: 60px;
+        }
+        
+        .y-axis-label {
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: rotate(-90deg);
+            transform-origin: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .y-ticks {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .y-tick {
+            font-size: 0.75rem;
+            color: #666;
+        }
+        
+        .x-axis {
+            position: absolute;
+            left: 60px;
+            right: 0;
+            bottom: 0;
+            height: 60px;
+        }
+        
+        .x-axis-label {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .x-ticks {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 5px;
+        }
+        
+        .x-tick {
+            font-size: 0.75rem;
+            color: #666;
+        }
+        
+        .bars-container {
+            position: absolute;
+            left: 60px;
+            right: 10px;
+            top: 0;
+            bottom: 60px;
+            border-left: 2px solid #ddd;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .bars {
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            gap: 1px;
+            padding: 0 2px;
+        }
+        
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, #667eea, #9f7aea);
+            border-radius: 2px 2px 0 0;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .bar:hover {
+            opacity: 0.8;
+        }
+        
+        .bar-tooltip {
+            position: absolute;
+            bottom: calc(100% + 5px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 0.3rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 10;
+        }
+        
+        .bar:hover .bar-tooltip {
+            opacity: 1;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem;
+            color: #666;
+        }
+        
+        .help-text {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Estimation</h1>
+        <p>Probabilistic Forecasting with Monte Carlo Simulations</p>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="section">
+                <div class="section-title">Estimation Method</div>
+                <div class="toggle-group">
+                    <button class="toggle-btn active" onclick="setMode('data')">Historical Data</button>
+                    <button class="toggle-btn" onclick="setMode('estimate')">Three-Point Estimate</button>
+                </div>
+            </div>
+            
+            <div class="section" id="dataSection">
+                <div class="section-title">Historical Weekly Throughput</div>
+                <div class="form-group">
+                    <textarea id="historicalData" placeholder="Enter one value per line&#10;Example:&#10;3&#10;5&#10;2&#10;7&#10;4">3
+5
+2
+7
+4
+6
+3
+8
+5
+4</textarea>
+                    <div class="help-text">Stories completed per week</div>
+                </div>
+            </div>
+            
+            <div class="section" id="estimateSection" style="display: none;">
+                <div class="section-title">Throughput Estimates</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pessimistic</label>
+                        <input type="number" id="throughputLow" value="1" min="0" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Optimistic</label>
+                        <input type="number" id="throughputHigh" value="10" min="0" step="0.5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Most Likely</label>
+                    <input type="number" id="throughputMostLikely" value="3" min="0" step="0.5">
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Project Scope</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Min Stories</label>
+                        <input type="number" id="storyCountLow" value="20" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Max Stories</label>
+                        <input type="number" id="storyCountHigh" value="40" min="1">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Split Factor Min</label>
+                        <input type="number" id="splitRateLow" value="1.0" min="1" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label>Split Factor Max</label>
+                        <input type="number" id="splitRateHigh" value="1.5" min="1" step="0.1">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Team Capacity</div>
+                <div class="form-group">
+                    <label>Team Allocation (%)</label>
+                    <input type="number" id="focusPercentage" value="80" min="0" max="100" step="10">
+                    <div class="help-text">Account for meetings, support, etc.</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Project Risks (Optional)</div>
+                <div id="riskContainer"></div>
+                <button class="add-risk-btn" onclick="addRisk()">+ Add Risk</button>
+            </div>
+            
+            <button class="run-btn" id="runButton" onclick="runSimulation()">
+                Generate Forecast
+            </button>
+        </div>
+        
+        <div class="results">
+            <div id="results">
+                <div class="empty-state">
+                    <h2>Ready to Forecast</h2>
+                    <p>Configure your parameters and click "Generate Forecast"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let mode = 'data';
+        let risks = [];
+        let results = [];
+        
+        function setMode(newMode) {
+            mode = newMode;
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('dataSection').style.display = mode === 'data' ? 'block' : 'none';
+            document.getElementById('estimateSection').style.display = mode === 'estimate' ? 'block' : 'none';
+        }
+        
+        function addRisk() {
+            if (risks.length < 5) {
+                const riskId = Date.now();
+                risks.push({
+                    id: riskId,
+                    name: `Risk ${risks.length + 1}`,
+                    probability: 20,
+                    minImpact: 5,
+                    maxImpact: 10,
+                    description: ''
+                });
+                renderRisks();
+            }
+        }
+        
+        function removeRisk(id) {
+            risks = risks.filter(r => r.id !== id);
+            renderRisks();
+        }
+        
+        function updateRisk(id, field, value) {
+            const risk = risks.find(r => r.id === id);
+            if (risk) {
+                if (field === 'probability') {
+                    risk[field] = Math.min(100, Math.max(0, parseFloat(value) || 0));
+                } else if (field === 'minImpact' || field === 'maxImpact') {
+                    risk[field] = Math.max(0, parseInt(value) || 0);
+                } else {
+                    risk[field] = value;
+                }
+            }
+        }
+        
+        function renderRisks() {
+            const container = document.getElementById('riskContainer');
+            
+            if (risks.length === 0) {
+                container.innerHTML = '<p style="color: #666; font-size: 0.9rem;">No risks added yet</p>';
+                return;
+            }
+            
+            container.innerHTML = risks.map(risk => `
+                <div class="risk-card">
+                    <div class="risk-header">
+                        <div class="risk-title">${risk.name}</div>
+                        <button class="risk-remove" onclick="removeRisk(${risk.id})">Remove</button>
+                    </div>
+                    <div class="risk-fields">
+                        <div class="risk-field">
+                            <label>Chance (%)</label>
+                            <input type="number" 
+                                   value="${risk.probability}" 
+                                   min="0" max="100" step="5"
+                                   onchange="updateRisk(${risk.id}, 'probability', this.value)">
+                        </div>
+                        <div class="risk-field">
+                            <label>Min Stories</label>
+                            <input type="number" 
+                                   value="${risk.minImpact}" 
+                                   min="0"
+                                   onchange="updateRisk(${risk.id}, 'minImpact', this.value)">
+                        </div>
+                        <div class="risk-field">
+                            <label>Max Stories</label>
+                            <input type="number" 
+                                   value="${risk.maxImpact}" 
+                                   min="0"
+                                   onchange="updateRisk(${risk.id}, 'maxImpact', this.value)">
+                        </div>
+                    </div>
+                    <div class="risk-description">
+                        <input type="text" 
+                               placeholder="Describe this risk (e.g., 'Integration issues')"
+                               value="${risk.description}"
+                               onchange="updateRisk(${risk.id}, 'description', this.value)">
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function getHistoricalSamples() {
+            const text = document.getElementById('historicalData').value;
+            return text.split('\n')
+                .map(line => parseFloat(line.trim()))
+                .filter(val => !isNaN(val) && val > 0);
+        }
+        
+        async function runSimulation() {
+            const button = document.getElementById('runButton');
+            button.disabled = true;
+            button.textContent = 'Running...';
+            
+            await new Promise(resolve => setTimeout(resolve, 100));
+            
+            const params = {
+                storyCountLow: parseInt(document.getElementById('storyCountLow').value),
+                storyCountHigh: parseInt(document.getElementById('storyCountHigh').value),
+                splitRateLow: parseFloat(document.getElementById('splitRateLow').value),
+                splitRateHigh: parseFloat(document.getElementById('splitRateHigh').value),
+                focusPercentage: parseFloat(document.getElementById('focusPercentage').value) / 100,
+                mode: mode
+            };
+            
+            if (mode === 'data') {
+                params.samples = getHistoricalSamples();
+                if (params.samples.length === 0) {
+                    alert('Please enter historical data');
+                    button.disabled = false;
+                    button.textContent = 'Generate Forecast';
+                    return;
+                }
+            } else {
+                params.throughputLow = parseFloat(document.getElementById('throughputLow').value);
+                params.throughputHigh = parseFloat(document.getElementById('throughputHigh').value);
+                params.throughputMostLikely = parseFloat(document.getElementById('throughputMostLikely').value) || null;
+            }
+            
+            results = [];
+            for (let i = 0; i < 500; i++) {
+                results.push(runTrial(params));
+            }
+            
+            results.sort((a, b) => a - b);
+            displayResults();
+            
+            button.disabled = false;
+            button.textContent = 'Generate Forecast';
+        }
+        
+        function runTrial(params) {
+            const baseStories = Math.floor(Math.random() * (params.storyCountHigh - params.storyCountLow + 1)) + params.storyCountLow;
+            const splitRate = params.splitRateLow + Math.random() * (params.splitRateHigh - params.splitRateLow);
+            let totalStories = Math.ceil(baseStories * splitRate);
+            
+            risks.forEach(risk => {
+                if (Math.random() * 100 < risk.probability) {
+                    const impact = Math.floor(Math.random() * (risk.maxImpact - risk.minImpact + 1)) + risk.minImpact;
+                    totalStories += impact;
+                }
+            });
+            
+            let remaining = totalStories;
+            let weeks = 0;
+            
+            while (remaining > 0 && weeks < 200) {
+                let throughput;
+                
+                if (params.mode === 'data') {
+                    throughput = params.samples[Math.floor(Math.random() * params.samples.length)];
+                } else {
+                    if (params.throughputMostLikely) {
+                        throughput = generateTriangular(params.throughputLow, params.throughputMostLikely, params.throughputHigh);
+                    } else {
+                        throughput = params.throughputLow + Math.random() * (params.throughputHigh - params.throughputLow);
+                    }
+                }
+                
+                remaining -= throughput * params.focusPercentage;
+                weeks++;
+            }
+            
+            return weeks;
+        }
+        
+        function generateTriangular(min, mode, max) {
+            const u = Math.random();
+            const fc = (mode - min) / (max - min);
+            
+            if (u <= fc) {
+                return min + Math.sqrt(u * (max - min) * (mode - min));
+            } else {
+                return max - Math.sqrt((1 - u) * (max - min) * (max - mode));
+            }
+        }
+        
+        function getPercentile(p) {
+            const index = Math.ceil((p / 100) * results.length) - 1;
+            return results[Math.max(0, Math.min(index, results.length - 1))];
+        }
+        
+        function displayResults() {
+            const p50 = getPercentile(50);
+            const p85 = getPercentile(85);
+            const p95 = getPercentile(95);
+            
+            const today = new Date();
+            const dateOptions = { month: 'short', day: 'numeric', year: 'numeric' };
+            
+            const p50Date = new Date(today.getTime() + p50 * 7 * 24 * 60 * 60 * 1000);
+            const p85Date = new Date(today.getTime() + p85 * 7 * 24 * 60 * 60 * 1000);
+            const p95Date = new Date(today.getTime() + p95 * 7 * 24 * 60 * 60 * 1000);
+            
+            const histogram = createHistogram();
+            
+            document.getElementById('results').innerHTML = `
+                <div class="section">
+                    <div class="section-title">Forecast Results</div>
+                    <div class="result-cards">
+                        <div class="result-card likely">
+                            <div class="result-label">50% Confidence</div>
+                            <div class="result-value">${Math.round(p50)} weeks</div>
+                            <div class="result-date">${p50Date.toLocaleDateString('en-US', dateOptions)}</div>
+                        </div>
+                        <div class="result-card safe">
+                            <div class="result-label">85% Confidence</div>
+                            <div class="result-value">${Math.round(p85)} weeks</div>
+                            <div class="result-date">${p85Date.toLocaleDateString('en-US', dateOptions)}</div>
+                        </div>
+                        <div class="result-card conservative">
+                            <div class="result-label">95% Confidence</div>
+                            <div class="result-value">${Math.round(p95)} weeks</div>
+                            <div class="result-date">${p95Date.toLocaleDateString('en-US', dateOptions)}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="section-title">Probability Distribution</div>
+                    <div class="chart">
+                        <div class="chart-inner">
+                            <div class="y-axis">
+                                <div class="y-axis-label">Frequency (%)</div>
+                                <div class="y-ticks">
+                                    <div class="y-tick">100</div>
+                                    <div class="y-tick">75</div>
+                                    <div class="y-tick">50</div>
+                                    <div class="y-tick">25</div>
+                                    <div class="y-tick">0</div>
+                                </div>
+                            </div>
+                            <div class="x-axis">
+                                <div class="x-axis-label">Weeks to Completion</div>
+                                <div class="x-ticks">
+                                    ${histogram.filter((_, i) => i % 5 === 0)
+                                        .map(bar => `<div class="x-tick">${bar.weeks}</div>`).join('')}
+                                </div>
+                            </div>
+                            <div class="bars-container">
+                                <div class="bars">
+                                    ${histogram.map(bar => `
+                                        <div class="bar" style="height: ${bar.height}%">
+                                            <div class="bar-tooltip">${bar.weeks} weeks: ${bar.count} runs</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function createHistogram() {
+            const buckets = 25;
+            const min = Math.min(...results);
+            const max = Math.max(...results);
+            const range = max - min;
+            const bucketSize = range / buckets;
+            
+            const histogram = [];
+            let maxCount = 0;
+            
+            for (let i = 0; i < buckets; i++) {
+                const bucketMin = min + i * bucketSize;
+                const bucketMax = bucketMin + bucketSize;
+                const count = results.filter(r => r >= bucketMin && r < bucketMax).length;
+                maxCount = Math.max(maxCount, count);
+                histogram.push({
+                    weeks: Math.round(bucketMin),
+                    count: count,
+                    height: 0
+                });
+            }
+            
+            histogram.forEach(bar => {
+                bar.height = (bar.count / maxCount) * 100;
+            });
+            
+            return histogram;
+        }
+        
+        // Initialize
+        renderRisks();
+    </script>
+</body>
+</html>

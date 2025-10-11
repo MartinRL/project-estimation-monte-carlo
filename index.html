@@ -647,7 +647,42 @@
             color: #6c757d;
             margin-top: 0.25rem;
         }
-        
+
+        /* AdSense Ad Container */
+        .ad-results-section {
+            margin: 2.5rem 0;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 250px;
+        }
+
+        .ad-label {
+            font-size: 0.7rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-content {
+            width: 100%;
+            max-width: 728px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .ad-results-section {
+                min-height: 100px;
+            }
+        }
+
         footer {
             background: #2c3e50;
             color: #ecf0f1;
@@ -1759,7 +1794,26 @@
                         </div>
                     </div>
                 </div>
-                
+
+                <!-- AdSense Ad Placeholder -->
+                <div class="ad-results-section" data-ad-unit="results-section">
+                    <div class="ad-label">Advertisement</div>
+                    <div class="ad-content">
+                        <!-- TODO: After AdSense approval, insert ad code here -->
+                        <!-- Example:
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5055720376895150"
+                             data-ad-slot="XXXXXXXXXX"
+                             data-ad-format="horizontal"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        -->
+                    </div>
+                </div>
+
                 <div class="chart-container">
                     <div class="section-title">
                         Probability Distribution

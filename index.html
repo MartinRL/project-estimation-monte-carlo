@@ -790,36 +790,12 @@
                     <span class="info-icon" onclick="showHelp('forecastMethod')">i</span>
                 </div>
                 <div class="toggle-group">
-                    <button class="toggle-btn active" onclick="setMode('data')">Historical Data</button>
-                    <button class="toggle-btn" onclick="setMode('estimate')">Three-Point Estimate</button>
+                    <button class="toggle-btn active" onclick="setMode('estimate')">Three-Point Estimate</button>
+                    <button class="toggle-btn" onclick="setMode('data')">Historical Data</button>
                 </div>
             </div>
-            
-            <div class="section" id="dataSection">
-                <div class="section-title">
-                    Historical Weekly Throughput
-                    <span class="info-icon" onclick="showHelp('historicalData')">i</span>
-                </div>
-                <div class="form-group">
-                    <label>
-                        Weekly Samples
-                        <span class="info-icon" onclick="showHelp('weeklySamples')">i</span>
-                    </label>
-                    <textarea id="historicalData" placeholder="Enter one value per line&#10;Example:&#10;3&#10;5&#10;2&#10;7&#10;4">3
-5
-2
-7
-4
-6
-3
-8
-5
-4</textarea>
-                    <div class="help-text">Stories completed per week from past sprints</div>
-                </div>
-            </div>
-            
-            <div class="section" id="estimateSection" style="display: none;">
+
+            <div class="section" id="estimateSection">
                 <div class="section-title">
                     Throughput Estimates
                     <span class="info-icon" onclick="showHelp('estimates')">i</span>
@@ -847,6 +823,30 @@
                     </label>
                     <input type="number" id="throughputMostLikely" value="3" min="0" step="0.5">
                     <div class="help-text">Leave empty for uniform distribution</div>
+                </div>
+            </div>
+
+            <div class="section" id="dataSection" style="display: none;">
+                <div class="section-title">
+                    Historical Weekly Throughput
+                    <span class="info-icon" onclick="showHelp('historicalData')">i</span>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Weekly Samples
+                        <span class="info-icon" onclick="showHelp('weeklySamples')">i</span>
+                    </label>
+                    <textarea id="historicalData" placeholder="Enter one value per line&#10;Example:&#10;3&#10;5&#10;2&#10;7&#10;4">3
+5
+2
+7
+4
+6
+3
+8
+5
+4</textarea>
+                    <div class="help-text">Stories completed per week from past sprints</div>
                 </div>
             </div>
             

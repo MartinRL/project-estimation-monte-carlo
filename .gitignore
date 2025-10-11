@@ -1,0 +1,29 @@
+# Obsidian workspace
+.obsidian/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Temporary files
+nul
+*.tmp
+
+# DNS setup scripts (local testing)
+porkbun-dns-setup.js
+setup-dns.sh
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

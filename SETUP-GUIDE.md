@@ -27,17 +27,17 @@ The following have been implemented and are ready to go:
 
 ## 🎯 Next Steps (Requires Manual Action)
 
-### ✅ Step 1: Enable HTTPS on GitHub Pages - COMPLETE
+### Step 1: Enable HTTPS on GitHub Pages - COMPLETE
 
-**Status**: ✅ DNS propagated and HTTPS enabled
+**Status**: DNS propagated and HTTPS enabled
 
 DNS verified pointing to GitHub Pages IPs (185.199.x.x).
 
 ---
 
-### ✅ Step 2: Create Google Analytics 4 Property - COMPLETE
+### Step 2: Create Google Analytics 4 Property - COMPLETE
 
-**Status**: ✅ GA4 tracking active
+**Status**: GA4 tracking active
 
 Property created and tracking code deployed to production.
 
@@ -45,9 +45,9 @@ Property created and tracking code deployed to production.
 
 ### Step 3: Apply for Google AdSense
 
-**Prerequisites** (✅ All complete!):
+**Prerequisites**:
 - [x] Site is live at custom domain
-- [x] HTTPS enabled (waiting for DNS)
+- [x] HTTPS enabled
 - [x] Privacy Policy published
 - [x] Quality content on site
 - [x] GA4 tracking active
@@ -55,12 +55,12 @@ Property created and tracking code deployed to production.
 **Where**: https://www.google.com/adsense
 
 **Steps**:
-1. Sign in with Google account
-2. Click "Get Started"
-3. Website URL: `https://montecarloestimation.com`
-4. Copy the AdSense verification code
-5. Paste it in `index.html` `<head>` section (below GA4 code)
-6. Submit for review
+- [x] 1. Sign in with Google account
+- [x] 2. Click "Get Started"
+- [x] 3. Website URL: `https://montecarloestimation.com`
+- [x] 4. Copy the AdSense verification code
+- [x] 5. Paste it in `index.html` `<head>` section (below GA4 code)
+- [ ] 6. Submit for review
 
 **Timeline**: 1-2 weeks for approval
 
@@ -71,33 +71,25 @@ Property created and tracking code deployed to production.
 
 ---
 
-### Step 4: Implement AdSense Ads (After Approval)
+### Step 4: Implement AdSense Ads (After Approval) - COMPLETE
 
-**Reference**: See `implementation-summary.md` lines 152-174 for full code
+**Status**: Auto Ads configured
 
-**Quick Implementation**:
+**Implementation**:
+- [x] AdSense verification script added to `index.html` (lines 13-14)
+- [x] Auto Ads selected (no manual ad placement needed)
+- [x] Site ready for Auto Ads activation after approval
 
-1. **Create 3 ad units** in AdSense dashboard:
-   - "Sidebar Bottom" - Display ad (300x250)
-   - "Results Section" - Display ad (Responsive)
-   - "Mobile Anchor" - Anchor ad (320x50)
+**After AdSense Approval**:
+1. Enable Auto Ads in AdSense Dashboard
+2. Auto Ads will automatically place and optimize ads on the site
+3. Monitor performance in AdSense Dashboard
 
-2. **Get ad codes** from each unit
+**Note**: Using Auto Ads instead of manual ad placement. Auto Ads handles placement, sizing, and optimization automatically.
 
-3. **Add ads to `index.html`**:
-   - Sidebar ad: After line 749 (after "Generate Forecast" button)
-   - Results ad: In `displayResults()` function between forecast cards and chart
-   - Anchor ad: Before closing `</body>` tag
-
-4. **Add CSS** for ad containers (see `implementation-summary.md` lines 261-319)
-
-5. **Uncomment ad viewability tracking** (lines 1710-1731 in current index.html)
-
-6. **Test on all devices**:
-   - Desktop Chrome
-   - Mobile Chrome (Android)
-   - iPhone Safari
-   - iPad
+**Manual Implementation Reference** (if needed later):
+- See `implementation-summary.md` lines 152-174 for manual ad unit code
+- See `adsense-strategy.md` for manual placement strategy
 
 ---
 
@@ -145,20 +137,19 @@ Property created and tracking code deployed to production.
 ## 🔍 Verification Checklist
 
 ### Before AdSense Application
-- [ ] DNS propagation complete
-- [ ] HTTPS enabled on GitHub Pages
-- [ ] Site accessible at https://montecarloestimation.com
-- [ ] Privacy policy visible with footer link
-- [ ] GA4 tracking active and events firing
-- [ ] No broken links or errors on site
+- [x] DNS propagation complete
+- [x] HTTPS enabled on GitHub Pages
+- [x] Site accessible at https://montecarloestimation.com
+- [x] Privacy policy visible with footer link
+- [x] GA4 tracking active and events firing
+- [x] No broken links or errors on site
 
 ### Before Implementing Ads
 - [ ] AdSense account approved
-- [ ] 3 ad units created in AdSense dashboard
-- [ ] Ad codes copied
-- [ ] Test on desktop and mobile
-- [ ] Verify ads labeled "Advertisement"
-- [ ] Check AdSense policy compliance
+- [x] Auto Ads configured (verification script added)
+- [ ] Test on desktop and mobile after approval
+- [ ] Verify ads displaying correctly
+- [x] Check AdSense policy compliance
 
 ---
 
@@ -225,6 +216,6 @@ git push
 
 ---
 
-**Current Status**: All code infrastructure is ready. Waiting for DNS propagation to enable HTTPS, then can proceed with GA4 and AdSense setup.
+**Current Status**: HTTPS enabled, GA4 tracking active, AdSense verification code deployed. Ready for AdSense application submission.
 
-**Next Immediate Action**: Check DNS propagation status and enable HTTPS on GitHub Pages.
+**Next Immediate Action**: Submit site for AdSense review (Step 3, substep 6).

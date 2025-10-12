@@ -1,10 +1,10 @@
 # AdSense + Analytics Implementation Summary
 
-## The Strategy (TL;DR)
+## Current Status
 
 **Goal**: Monetize montecarloestimation.com with Google AdSense while targeting premium B2B SaaS advertisers (Atlassian, Monday.com, etc.)
 
-**Approach**: 3 strategically placed ad units that work across all devices (desktop, tablet, mobile) without disrupting user experience
+**Approach**: Auto Ads - Google automatically places and optimizes ads across the site
 
 **Expected Revenue**:
 - Month 1-3: ~$70-150/month
@@ -13,520 +13,359 @@
 
 ---
 
-## Ad Placement Strategy
+## Implementation Complete
 
-### The 3 Ad Units
+### What's Live
 
-1. **Sidebar Bottom Ad** (Desktop/Tablet only)
-   - 300x250 Medium Rectangle
-   - Below "Generate Forecast" button
-   - Captures users while they configure inputs
-   - Hidden on mobile
+1. **HTTPS Enabled**
+   - Site accessible at https://montecarloestimation.com
+   - DNS configured and propagated
 
-2. **Results Ad** (All devices - HIGHEST CTR)
-   - Responsive: 728x90 (desktop) / 320x50 or 300x250 (mobile)
-   - Between forecast cards and distribution chart
-   - Only shows after user generates results
-   - Users are in "reading mode" = prime engagement
+2. **Google Analytics 4 Active**
+   - Measurement ID: G-10018M21B0
+   - Tracking code deployed to production
+   - Custom event tracking implemented:
+     - `generate_forecast` - Tool usage (most important metric)
+     - `view_help` - User learning behavior
+     - `select_estimation_mode` - Historical vs three-point preference
+     - `add_risk` - Advanced feature usage
 
-3. **Anchor Ad** (Mobile only)
-   - 320x50 sticky bottom banner
-   - Dismissible (AdSense auto-provides close button)
-   - Compensates for lack of sidebar on mobile
-   - Stays visible as user scrolls
+3. **Privacy Policy Published**
+   - Comprehensive privacy policy at /privacy.html
+   - Covers Google Analytics and AdSense
+   - GDPR and CCPA compliance sections
+   - Footer link on main site
 
-### Why This Works
+4. **AdSense Verification Code Added**
+   - Publisher ID: ca-pub-5055720376895150
+   - Verification script in index.html (lines 13-14)
+   - Auto Ads configured (no manual placement needed)
 
-✅ **Non-intrusive**: Ads don't block primary actions
-✅ **AdSense compliant**: Follows all policies
-✅ **High CTR potential**: 2-3% (above 1.5% industry average)
-✅ **Responsive**: Optimized for each device type
-✅ **Context-aware**: Results ad shows when user is most engaged
-✅ **Premium audience**: B2B project managers = high CPMs ($10-20+)
+### What's Next
+
+**Pending**: AdSense application review (1-2 weeks)
+
+**After Approval**: Enable Auto Ads in AdSense Dashboard - that's it! Auto Ads will automatically:
+- Place ads in optimal locations
+- Adjust ad sizes for different devices
+- Optimize ad density based on user experience
+- A/B test different placements
 
 ---
 
-## Device-Specific Behavior
+## Auto Ads vs Manual Placement
 
-### Desktop (≥1024px)
-```
-Sidebar                   Main Content
-├─ Input forms            ├─ Results
-├─ Generate button        ├─ Forecast cards
-└─ [AD #1: 300x250] ← └─ [AD #2: 728x90] ←
-                          └─ Distribution chart
-```
-**Active Ads**: 2 (Sidebar + Results)
+**Why Auto Ads**:
+- Simpler implementation (just verification script)
+- Google's ML optimizes placement automatically
+- Adapts to different screen sizes automatically
+- Tests different ad types and locations
+- Better policy compliance (Google knows what works)
+- Less maintenance
 
-### Mobile (<768px)
-```
-Full Width
-├─ Input forms (stacked)
-├─ Generate button
-├─ Results
-├─ Forecast cards
-├─ [AD #2: 300x250 or 320x50] ←
-├─ Distribution chart
-└─ [AD #3: Anchor 320x50 sticky] ←
-```
-**Active Ads**: 2 (Results + Anchor)
+**Trade-offs**:
+- Less control over exact ad placement
+- Can't optimize specific locations manually
+- Revenue may take longer to ramp up initially
 
 ---
 
 ## Analytics Tracking Strategy
 
-### Core Events to Track
+### Core Events Implemented
 
-1. **generate_forecast** - Most important! Actual tool usage
-2. **view_help** - User learning/confusion indicator
-3. **add_risk** - Advanced feature usage
-4. **select_estimation_mode** - Data vs estimates preference
-5. **ad_viewable** - When ads enter viewport (viewability tracking)
-6. **ad_click** - Ad engagement (if detectable)
+```javascript
+// Generate forecast (most important)
+gtag('event', 'generate_forecast', {
+    'event_category': 'engagement',
+    'event_label': 'three_point_estimate',
+    'value': 1
+});
+
+// View help
+gtag('event', 'view_help', {
+    'event_category': 'engagement',
+    'help_topic': 'throughput'
+});
+
+// Add risk
+gtag('event', 'add_risk', {
+    'event_category': 'configuration',
+    'risk_count': risks.length
+});
+
+// Select estimation mode
+gtag('event', 'select_estimation_mode', {
+    'event_category': 'configuration',
+    'mode': 'historical_data'
+});
+```
 
 ### Key Metrics to Monitor
 
-| Metric | Target |
-|--------|--------|
-| Forecast Completion Rate | >50% |
-| Help Engagement Rate | >30% |
-| Ad Viewability | >70% |
-| Bounce Rate | <60% |
-| Avg Session Duration | >2 min |
-| Week-1 Retention | >15% |
+| Metric | Target | Where to Check |
+|--------|--------|----------------|
+| Forecast Completion Rate | >50% | GA4: Engagement → Events |
+| Help Engagement Rate | >30% | GA4: Engagement → Events |
+| Bounce Rate | <60% | GA4: Reports → Engagement |
+| Avg Session Duration | >2 min | GA4: Reports → Engagement |
+| Week-1 Retention | >15% | GA4: Reports → Retention |
 
-### Device Tracking
-- Separate events for desktop/mobile/tablet
-- Track anchor ad visibility on mobile
-- Monitor ad performance by device type
+### GA4 Dashboard Access
+
+1. Go to https://analytics.google.com
+2. Select property: montecarloestimation.com
+3. Key reports:
+   - **Real-time** → See live users and events
+   - **Engagement** → Events → Check generate_forecast count
+   - **Acquisition** → Traffic sources
+   - **Tech** → Device breakdown
+
+**Debug Mode**: Add `?debug_mode=true` to URL and check Configure → DebugView
 
 ---
 
-## Revenue Projections by Scenario
+## Revenue Projections
 
 ### Conservative (Organic Growth)
-| Users/Day | Impressions/Day | CTR | Clicks/Day | CPM | Revenue/Day | Revenue/Month |
-|-----------|----------------|-----|------------|-----|-------------|---------------|
-| 100 | 300 | 1.5% | 4.5 | $8 | $2.40 | **$72** |
-| 500 | 1,500 | 2% | 30 | $12 | $18 | **$540** |
+| Users/Day | Est. Revenue/Month |
+|-----------|-------------------|
+| 100 | $70-150 |
+| 500 | $300-600 |
 
 ### Optimistic (Successful Launch)
-| Users/Day | Impressions/Day | CTR | Clicks/Day | CPM | Revenue/Day | Revenue/Month |
-|-----------|----------------|-----|------------|-----|-------------|---------------|
-| 2,000 | 6,000 | 2.5% | 150 | $15 | $90 | **$2,700** |
-| 5,000 | 15,000 | 2.5% | 375 | $15 | $225 | **$6,750** |
+| Users/Day | Est. Revenue/Month |
+|-----------|-------------------|
+| 2,000 | $1,500-3,000 |
+| 5,000 | $4,000-8,000 |
 
 **Key Assumptions**:
-- B2B SaaS advertisers (Atlassian, Monday, Asana) pay premium CPMs
+- B2B SaaS advertisers pay premium CPMs ($10-20+)
 - Project management niche = contextual targeting = higher CTR
-- Multiple devices = more ad inventory
+- Auto Ads optimization = 2-3% CTR over time
 
 ---
 
 ## Implementation Checklist
 
-### Phase 1: Prerequisites (Before AdSense Application)
-- [ ] Ensure site is live at montecarloestimation.com
-- [ ] Enable HTTPS on GitHub Pages (waiting for DNS)
-- [ ] Create Privacy Policy page
-- [ ] Add Privacy Policy link to footer
-- [ ] Ensure site has quality content (already done ✓)
+### Phase 1: Prerequisites
+- [x] Site live at montecarloestimation.com
+- [x] HTTPS enabled on GitHub Pages
+- [x] Privacy Policy page created
+- [x] Privacy Policy link in footer
+- [x] Quality content on site
 
 ### Phase 2: Google Analytics Setup
-- [ ] Create GA4 property at analytics.google.com
-- [ ] Get Measurement ID (G-XXXXXXXXXX)
-- [ ] Add GA4 tracking code to `<head>` of index.html
-- [ ] Implement custom events (generate_forecast, view_help, etc.)
-- [ ] Add device-specific tracking
-- [ ] Add ad viewability tracking (Intersection Observer)
-- [ ] Test all events in GA4 DebugView
-- [ ] Create monitoring dashboards
+- [x] GA4 property created
+- [x] Measurement ID obtained (G-10018M21B0)
+- [x] GA4 tracking code added to index.html
+- [x] Custom events implemented (generate_forecast, view_help, etc.)
+- [x] Events tested and verified in GA4
 
 ### Phase 3: AdSense Application
-- [ ] Apply at google.com/adsense
-- [ ] Add AdSense verification code to site
-- [ ] Wait for approval (1-2 weeks typically)
-- [ ] Review AdSense policies
-- [ ] Set up payment information
+- [x] Applied at google.com/adsense
+- [x] AdSense verification code added (ca-pub-5055720376895150)
+- [ ] Waiting for approval (1-2 weeks)
+- [ ] Payment information setup (after approval)
 
-### Phase 4: Ad Implementation (After Approval)
-- [ ] Create 3 ad units in AdSense dashboard:
-  - Sidebar Bottom (300x250)
-  - Results (Responsive)
-  - Anchor (320x50 mobile)
-- [ ] Get ad unit codes
-- [ ] Add ad containers to HTML (see code below)
-- [ ] Implement responsive CSS
-- [ ] Add ad initialization JavaScript
-- [ ] Test on all devices (desktop, tablet, mobile)
+### Phase 4: Ad Activation (After Approval)
+- [ ] Enable Auto Ads in AdSense Dashboard
+- [ ] Test on desktop, mobile, and tablet
 - [ ] Verify ads display correctly
 - [ ] Check AdSense policy compliance
+- [ ] Monitor for 48 hours
 
 ### Phase 5: Optimization
 - [ ] Monitor AdSense reports daily (first week)
-- [ ] Check GA4 for ad viewability metrics
-- [ ] A/B test ad sizes (300x250 vs 336x280)
-- [ ] Test anchor ad height (50px vs 100px)
-- [ ] Enable Auto Ads (experimental)
-- [ ] Configure placement targeting for B2B SaaS
-- [ ] Monitor and block low-quality advertisers
+- [ ] Check GA4 for traffic patterns
+- [ ] Review advertiser categories
+- [ ] Block low-quality advertisers if needed
+- [ ] Adjust Auto Ads settings based on performance
 
 ---
 
-## Code Implementation Examples
+## Code Reference
 
-### 1. Add to `<head>` Section
+### AdSense Verification Script (Already Added)
+
+Location: `index.html` lines 13-14
 
 ```html
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5055720376895150"
+     crossorigin="anonymous"></script>
+```
+
+### GA4 Tracking Script (Already Added)
+
+Location: `index.html` lines 7-12
+
+```html
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10018M21B0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-
-<!-- Google AdSense (after approval) -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"
-     crossorigin="anonymous"></script>
-```
-
-### 2. Add After "Generate Forecast" Button (Sidebar)
-
-```html
-<button class="run-btn" id="runButton" onclick="runSimulation()">
-    Generate Forecast
-</button>
-
-<!-- Ad Unit #1: Sidebar Bottom (Desktop/Tablet only) -->
-<div class="ad-sidebar-bottom">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-XXXXXXXX"
-         data-ad-slot="1111111111"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-</div>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+  gtag('config', 'G-10018M21B0');
 </script>
 ```
 
-### 3. Add to Results Section (Between Cards and Chart)
+### Event Tracking Examples (Already Implemented)
 
 ```javascript
-// In displayResults() function, after forecast cards, before chart:
+// In runSimulation() function
+gtag('event', 'generate_forecast', {
+    'event_category': 'engagement',
+    'event_label': mode,
+    'value': 1
+});
 
-document.getElementById('results').innerHTML = `
-    <div class="section">
-        <!-- Forecast cards here -->
-    </div>
-
-    <!-- Ad Unit #2: Results Ad (All devices) -->
-    <div class="ad-results-section">
-        <ins class="adsbygoogle ad-results"
-             style="display:block"
-             data-ad-client="ca-pub-XXXXXXXX"
-             data-ad-slot="2222222222"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-    </div>
-
-    <div class="chart-container">
-        <!-- Distribution chart here -->
-    </div>
-`;
-
-// Initialize the ad after inserting HTML
-(adsbygoogle = window.adsbygoogle || []).push({});
-```
-
-### 4. Add Anchor Ad (Mobile only)
-
-```html
-<!-- Add before closing </body> tag -->
-<script>
-    // Mobile anchor ad (Auto ads - Page level)
-    if (window.innerWidth < 768) {
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-XXXXXXXX",
-            enable_page_level_ads: true,
-            overlays: {bottom: true}
-        });
-    }
-</script>
-```
-
-### 5. Add CSS Styles
-
-```css
-/* Sidebar ad - Desktop/Tablet only */
-.ad-sidebar-bottom {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 6px;
-    text-align: center;
-    min-height: 250px; /* Prevent layout shift */
-}
-
-.ad-sidebar-bottom::before {
-    content: 'Advertisement';
-    display: block;
-    font-size: 0.7rem;
-    color: #999;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-@media (max-width: 767px) {
-    .ad-sidebar-bottom {
-        display: none; /* Hide on mobile */
-    }
-}
-
-/* Results ad - All devices */
-.ad-results-section {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 6px;
-    border: 1px solid #e1e4e8;
-    text-align: center;
-}
-
-.ad-results-section::before {
-    content: 'Advertisement';
-    display: block;
-    font-size: 0.7rem;
-    color: #999;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.ad-results {
-    min-height: 90px; /* Prevent layout shift */
-}
-
-@media (max-width: 767px) {
-    .ad-results {
-        min-height: 50px; /* Smaller on mobile */
-    }
-}
-```
-
-### 6. Add GA4 Event Tracking
-
-```javascript
-// Add to runSimulation() function
-async function runSimulation() {
-    // ... existing code ...
-
-    // Track forecast generation
-    gtag('event', 'generate_forecast', {
-        'event_category': 'engagement',
-        'event_label': mode,
-        'value': 1
-    });
-
-    // ... rest of function ...
-}
-
-// Add to showHelp() function
-function showHelp(topic) {
-    // ... existing code ...
-
-    // Track help views
-    gtag('event', 'view_help', {
-        'event_category': 'engagement',
-        'help_topic': topic
-    });
-}
-
-// Add to addRisk() function
-function addRisk() {
-    if (risks.length < 5) {
-        // ... existing code ...
-
-        // Track risk addition
-        gtag('event', 'add_risk', {
-            'event_category': 'configuration',
-            'risk_count': risks.length
-        });
-    }
-}
-
-// Add ad viewability tracking
-const adObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            const adUnit = entry.target.dataset.adUnit || 'unknown';
-            gtag('event', 'ad_viewable', {
-                'event_category': 'ad_performance',
-                'ad_unit': adUnit,
-                'non_interaction': true
-            });
-        }
-    });
-}, { threshold: [0.5] });
-
-// Observe all ad containers after page load
-window.addEventListener('load', function() {
-    document.querySelectorAll('.ad-sidebar-bottom, .ad-results-section').forEach(ad => {
-        adObserver.observe(ad);
-    });
+// In showHelp() function
+gtag('event', 'view_help', {
+    'event_category': 'engagement',
+    'help_topic': topic
 });
 ```
 
----
-
-## Privacy Policy Requirements
-
-### Must Include These Sections:
-
-1. **Third-party Vendors**
-   - Google uses cookies to serve ads
-   - Ads based on prior visits to your website
-
-2. **Cookie Usage**
-   - Google Analytics uses cookies to analyze traffic
-   - AdSense uses cookies for personalized ads
-
-3. **User Opt-out**
-   - Link to Google ad settings: http://www.google.com/settings/ads
-   - Link to Google Analytics opt-out: https://tools.google.com/dlpage/gaoptout
-
-4. **Data Collection**
-   - What data is collected (IP, browser, device type)
-   - How it's used (improve site, serve relevant ads)
-   - Who has access (Google, advertisers)
-
-5. **GDPR Compliance** (if targeting EU)
-   - Cookie consent banner
-   - Right to access/delete data
-   - Data retention policies
+All custom events are already implemented throughout the codebase. See index.html for full implementation.
 
 ---
 
-## Testing Checklist
+## After AdSense Approval
 
-### Before Going Live
-- [ ] Test on Chrome (desktop)
-- [ ] Test on Safari (desktop)
-- [ ] Test on Firefox (desktop)
-- [ ] Test on Chrome (Android mobile)
-- [ ] Test on Safari (iPhone)
-- [ ] Test on iPad
-- [ ] Verify ads don't overlap content
-- [ ] Verify ads are labeled "Advertisement"
-- [ ] Verify anchor ad is dismissible
-- [ ] Test with ad blocker (should degrade gracefully)
-- [ ] Check page load time with ads (<2 seconds)
-- [ ] Verify GA4 events fire in DebugView
-- [ ] Test AdSense policy compliance
+### Step 1: Enable Auto Ads
 
-### After Launch
-- [ ] Monitor AdSense for policy violations
-- [ ] Check GA4 for ad viewability metrics
-- [ ] Review actual CTR vs projected (adjust if needed)
-- [ ] Monitor revenue by device type
-- [ ] Check for low-quality/irrelevant ads (block them)
-- [ ] A/B test different ad sizes
-- [ ] Optimize based on data
+1. Log in to https://www.google.com/adsense
+2. Navigate to Ads → Overview
+3. Click "Get started" under Auto ads
+4. Select your site (montecarloestimation.com)
+5. Toggle Auto ads ON
+6. Choose ad formats (recommended: all enabled)
+7. Click "Apply to site"
 
----
+### Step 2: Test
 
-## Common Issues & Solutions
-
-### Issue: Low CTR (<1%)
-**Solutions**:
-- Check ad placement (too low on page?)
-- Review ads being served (relevant to audience?)
-- Test larger ad sizes (336x280 vs 300x250)
-- Ensure results ad shows after forecast generation
-- Check ad viewability metrics (ads actually seen?)
-
-### Issue: AdSense Policy Violation
-**Solutions**:
-- Review policy notification in AdSense dashboard
-- Common issues: ads too close to clickable elements, misleading placement
-- Adjust spacing/positioning
-- Request review after fixing
-
-### Issue: Ads Not Showing
-**Solutions**:
-- Check AdSense account status (approved?)
-- Verify ad code is correct
-- Check browser console for errors
+- Wait 10-20 minutes for ads to appear
+- Test on multiple devices:
+  - Desktop Chrome
+  - Mobile Chrome (Android)
+  - iPhone Safari
+  - iPad
 - Disable ad blocker for testing
-- Wait 24-48 hours after initial setup (ad serving ramp-up)
+- Check that ads don't disrupt user experience
 
-### Issue: Revenue Lower Than Expected
-**Solutions**:
-- Check traffic sources (low-value traffic?)
-- Review advertiser categories (enable B2B/software targeting)
-- Increase traffic to site (SEO, marketing)
-- Test different ad placements
-- Check seasonality (B2B ads lower on weekends)
+### Step 3: Monitor
+
+**First 48 Hours**:
+- Ads may be limited or not show (ramp-up period)
+- Check AdSense dashboard for errors
+- Verify policy compliance
+
+**First Week**:
+- Check AdSense Performance reports daily
+- Monitor CTR and RPM
+- Check which ad types perform best
+- Review advertiser categories
+
+**First Month**:
+- Analyze revenue by device type
+- Check correlation between traffic and revenue in GA4
+- Adjust Auto Ads settings if needed
+- Block low-quality advertisers
 
 ---
 
-## Next Steps
+## Monitoring Dashboard
 
-1. **Complete DNS setup** (waiting for propagation)
-2. **Enable HTTPS** on GitHub Pages
-3. **Create Privacy Policy page** (required for AdSense)
-4. **Set up GA4** (get data flowing immediately)
-5. **Apply for AdSense** (can take 1-2 weeks for approval)
-6. **Implement ad code** (after AdSense approval)
-7. **Monitor and optimize** based on real data
+### Google Analytics 4
+
+**Daily Checks**:
+1. Engagement → Events → Check `generate_forecast` count
+2. Real-time → See current users
+3. Acquisition → Traffic sources
+
+**Weekly Reviews**:
+1. Device breakdown (Desktop vs Mobile)
+2. Top pages by engagement
+3. User retention metrics
+
+### Google AdSense
+
+**Daily Checks** (first week):
+1. Performance → Overview → Today's earnings
+2. Check for policy violations
+3. Review estimated earnings
+
+**Weekly Reviews**:
+1. Performance → Reports → CTR by ad type
+2. Revenue by device
+3. Top performing pages
+4. Advertiser categories
+
+---
+
+## Troubleshooting
+
+### Ads Not Showing After Approval
+
+**Wait 24-48 hours**: Ads ramp up gradually
+**Check account status**: AdSense → Account → Review status
+**Disable ad blocker**: Required for testing
+**Check browser console**: Look for JavaScript errors
+**Verify verification code**: Should be in page source
+
+### Low Revenue
+
+**Increase traffic**: More visitors = more revenue
+**Check traffic sources**: Low-value traffic = low CPMs
+**Review advertiser categories**: Enable B2B/Software targeting
+**Check ad density**: Adjust Auto Ads settings
+**Seasonality**: B2B ads lower on weekends/holidays
+
+### Policy Violations
+
+**Review notification**: AdSense will email specifics
+**Common issues**:
+  - Ads too close to clickable elements
+  - Misleading ad placement
+  - Insufficient content
+**Fix and request review**: Usually resolved in 2-3 days
 
 ---
 
 ## Success Metrics Timeline
 
-### Week 1
-- GA4 data collection started
-- Baseline metrics established
-- AdSense application submitted
+**Week 1**:
+- GA4 collecting data
+- AdSense approval received (hopefully)
+- Auto Ads enabled
 
-### Week 2-3
-- AdSense approved (hopefully)
-- Ads implemented and live
-- Initial revenue data
-
-### Month 1
+**Month 1**:
 - Revenue: $50-150
-- Identify best-performing ad units
-- Optimize based on data
+- Traffic baseline established
+- Identify peak usage times
 
-### Month 3
+**Month 3**:
 - Revenue: $300-600
-- CTR optimized to 2%+
-- Device-specific strategies refined
+- Auto Ads optimization stabilized
+- Traffic growing organically
 
-### Month 6
+**Month 6**:
 - Revenue: $1,000-3,000
-- Premium targeting optimized
-- Consider Premium tier launch
+- Considering ProductHunt launch
+- Premium audience established
 
 ---
 
-## Questions or Issues?
+## Resources
 
+- **AdSense Dashboard**: https://www.google.com/adsense
+- **GA4 Dashboard**: https://analytics.google.com
 - **AdSense Help**: https://support.google.com/adsense
 - **GA4 Help**: https://support.google.com/analytics
-- **Policy Questions**: https://support.google.com/adsense/answer/48182
+- **AdSense Policies**: https://support.google.com/adsense/answer/48182
+- **Site**: https://montecarloestimation.com
+- **Privacy Policy**: https://montecarloestimation.com/privacy.html
 
 ---
 
-**IMPORTANT**: Don't implement ads until:
-1. ✅ Site is live and accessible
-2. ✅ HTTPS is enabled
-3. ✅ Privacy Policy is published
-4. ✅ AdSense account is approved
-
-Implementing ads before approval may delay or prevent approval!
+**Last Updated**: AdSense verification code deployed, awaiting approval

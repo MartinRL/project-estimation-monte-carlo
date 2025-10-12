@@ -1,986 +1,751 @@
-# Product Requirements Document: Monte Carlo Estimation Tool Commercialization
+# Product Requirements Document: AdSense & Analytics Monetization
 
-**Version:** 1.0
-**Date:** 2025-10-10
-**Last Updated:** 2025-10-10
-**Status:** 🚀 Foundation Phase
-**Progress:** Pull-based hobby project
+## Executive Summary
 
----
-
-## 🎯 Current Status
-
-**Domain Decision:** ✅ **montecarloestimation.com**
-- Purchased: 2025-10-10 via Porkbun
-- Cost: ~$10-15/year
-- SEO Score: 32/40 (.com trust + exact keyword match)
-- Status: Configuring DNS & GitHub Pages
-
-**Recent Progress:**
-- [x] ✅ Domain Registration - **Completed 2025-10-10**
-  - Domain: montecarloestimation.com
-  - Registrar: Porkbun
-- [x] ✅ CNAME file created and pushed to GitHub
-- [x] ✅ DNS configured at Porkbun (via Claude Desktop + Browser MCP)
-- [x] ✅ Custom domain configured in GitHub Pages
-
-**Up Next:**
-- [ ] Enable HTTPS on GitHub Pages (waiting for DNS propagation)
-- [ ] Google Analytics 4 Setup
-- [ ] Google AdSense Application
+**Project**: Monetize montecarloestimation.com with Google AdSense and Analytics 4
+**Goal**: Generate passive revenue from B2B project management audience
+**Strategy**: Auto Ads with comprehensive analytics tracking
+**Target Revenue**: $70-150/month (months 1-3), $300-600/month (months 4-6), $1,500-3,000/month (post-launch)
 
 ---
 
-## 🛠️ Pending DNS Configuration (Execute After CC Restart)
+## Current Status
 
-**Domain:** montecarloestimation.com
-**Registrar:** Porkbun (https://porkbun.com/account/domains)
-**GitHub Pages Target:** martinrl.github.io/project-estimation-monte-carlo
+### ✅ Completed
 
-**✅ Setup Complete:**
-- Browser MCP server added to Claude Code
-- Browser MCP extension running in Chrome browser
-- Need to restart Claude Code for tools to be available
+**Infrastructure:**
+- ✅ HTTPS enabled at https://montecarloestimation.com
+- ✅ DNS propagated to GitHub Pages IPs (185.199.x.x)
+- ✅ Privacy Policy published at /privacy.html
+- ✅ Privacy Policy linked in footer
+- ✅ Static site deployed via GitHub Pages
 
-**🔄 After Restart - Tell Claude:**
-> "Use Browser MCP to configure DNS for montecarloestimation.com at Porkbun"
+**Google Analytics 4:**
+- ✅ GA4 property created
+- ✅ Measurement ID obtained: G-10018M21B0
+- ✅ GA4 tracking code deployed (index.html lines 5-12)
+- ✅ Custom events implemented:
+  - `generate_forecast` - Tool usage tracking
+  - `view_help` - Help system engagement
+  - `select_estimation_mode` - Method preference
+  - `add_risk` - Advanced feature usage
+- ✅ Events verified in GA4 DebugView
 
-### DNS Records to Add:
+**Google AdSense:**
+- ✅ AdSense account created
+- ✅ Site approved by Google
+- ✅ Publisher ID: ca-pub-5055720376895150
+- ✅ Verification code deployed (index.html lines 13-14)
+- ✅ Auto Ads selected (no manual placement)
 
-#### Step 1: Add 4 A Records for GitHub Pages
-Navigate to: Porkbun → montecarloestimation.com → DNS Management
+### 🔄 In Progress
 
-| Type | Host | Answer | TTL |
-|------|------|--------|-----|
-| A | @ | 185.199.108.153 | 600 |
-| A | @ | 185.199.109.153 | 600 |
-| A | @ | 185.199.110.153 | 600 |
-| A | @ | 185.199.111.153 | 600 |
+**AdSense Activation:**
+- ⏳ Auto Ads need to be enabled in dashboard
+- ⏳ Ads may be ramping up (24-48 hour period)
+- ⏳ Waiting for first ad impressions
 
-#### Step 2: Add CNAME Record for www Subdomain
-| Type | Host | Answer | TTL |
-|------|------|--------|-----|
-| CNAME | www | martinrl.github.io | 600 |
+### ⏸️ Pending (Future)
 
-### GitHub Pages Configuration (After DNS)
-1. Go to: https://github.com/MartinRL/project-estimation-monte-carlo/settings/pages
-2. Under "Custom domain", enter: `montecarloestimation.com`
-3. Click "Save"
-4. Wait for DNS check (1-5 minutes)
-5. ✅ Enable "Enforce HTTPS" once available (may take 15min-24hrs)
-
-### Verification
-- Test: https://montecarloestimation.com
-- Test: https://www.montecarloestimation.com
-- Verify HTTPS green padlock
-
----
-
-## 1. Domain & Branding Strategy
-
-### Recommended Domains (Priority Order)
-1. **forecast.tools** - Short, memorable, category-defining
-2. **montecarlo.tools** - Descriptive, SEO-friendly
-3. **projectforecast.io** - Professional, tech-forward
-4. **agileforecast.com** - Target audience-specific
-
-### SEO Optimization Requirements
-- Current meta tags are adequate (already implemented)
-- **Add:** JSON-LD structured data for tools/calculators
-- **Add:** Blog subdomain for content marketing (blog.domain.com)
-- **Target Keywords:**
-  - "project estimation tool"
-  - "monte carlo simulation"
-  - "agile forecasting"
-  - "probabilistic project planning"
-  - "when will my project be done"
-
-### Technical SEO Checklist
-- [ ] sitemap.xml generation
-- [ ] robots.txt configuration
-- [ ] Open Graph meta tags for social sharing
-- [ ] Twitter Card meta tags
-- [ ] Canonical URL tags
-- [ ] Schema.org markup for SoftwareApplication
+**Optimization:**
+- ⏸️ Monitor AdSense performance
+- ⏸️ Review advertiser categories
+- ⏸️ Block low-quality advertisers if needed
+- ⏸️ A/B testing ad density
+- ⏸️ Create custom GA4 dashboards
 
 ---
 
-## 2. Monetization Model: Hybrid Freemium + Ads
+## Task List
 
-### Free Tier (Ad-Supported)
-**Features:**
-- All current functionality intact
-- Google AdSense integration (see Section 3)
-- Watermark: "Powered by [Brand]" in footer
-- Max 5 risks per simulation (current limit)
-- Anonymous usage (no accounts, no save feature)
-- No export capabilities
+### Phase 1: AdSense Activation (Current Priority)
 
-**Limitations:**
-- Cannot save/load simulations
-- Cannot export to PDF/CSV
-- Ads present in 3 locations
-- Branding watermark required
+**👱🏻‍♂️ Task 1.1: Enable Auto Ads**
+```
+Owner: Human
+Time: 5 minutes
+Priority: HIGH
 
-**Target Audience:** Individual users, small teams, trial users
+Steps:
+1. Go to https://www.google.com/adsense
+2. Navigate to Ads → Overview
+3. Click "Get started" under Auto ads
+4. Select site: montecarloestimation.com
+5. Toggle Auto ads ON
+6. Choose ad formats (recommend: all enabled)
+7. Click "Apply to site"
 
----
-
-### Premium Tier - $9/month or $79/year
-**Value Proposition:** "Save time and look professional"
-
-**Features:**
-- ✅ Ad-free experience
-- ✅ Export to PDF (professional reports)
-- ✅ Export to CSV (data analysis)
-- ✅ Save/load unlimited simulations
-- ✅ Unlimited risks (vs 5 max)
-- ✅ Custom branding removal (no "Powered by" footer)
-- ✅ Advanced charts:
-  - Cumulative distribution chart
-  - Risk impact breakdown chart
-  - Sensitivity analysis view
-- ✅ Template library (10+ pre-configured scenarios)
-- ✅ Historical tracking dashboard
-- ✅ Email support (48hr response)
-
-**Technical Requirements:**
-- User authentication system (Firebase/Supabase)
-- Stripe payment integration
-- Cloud database for saved simulations
-- PDF generation (jsPDF library)
-- CSV export functionality
-
-**Target Audience:** Project managers, consultants, team leads
-
-**Pricing Rationale:**
-- Below ActionableAgile ($20/month)
-- Psychological threshold at $9
-- Annual plan offers 26% discount ($79 vs $108)
-
----
-
-### Enterprise Tier - $49/month or $499/year
-**Value Proposition:** "Power tools for professional teams"
-
-**Features:**
-- ✅ Everything in Premium
-- ✅ Team collaboration:
-  - Shared workspaces
-  - Team member invitations (up to 20 users)
-  - Permission controls (view/edit/admin)
-  - Activity log
-- ✅ SSO/SAML authentication
-- ✅ API access (1000 requests/month)
-  - REST API for running simulations
-  - Webhook integrations
-  - API documentation
-- ✅ White-label deployment option
-  - Custom domain/subdomain
-  - Custom branding/logo
-  - Remove all references to main brand
-- ✅ Priority support:
-  - 24hr response SLA
-  - Video call support
-  - Dedicated account manager
-- ✅ Custom training sessions (2 hours/year included)
-- ✅ Advanced analytics:
-  - Team usage reports
-  - Accuracy tracking across projects
-  - Custom report builder
-
-**Technical Requirements:**
-- Multi-tenant architecture
-- SAML/OAuth integration
-- API infrastructure (REST endpoints)
-- White-label theming system
-- Team management dashboard
-- Admin panel for user/team management
-
-**Target Audience:** Consulting firms, large enterprises, agencies
-
----
-
-## 3. Google Analytics 4 Setup (Free Tier)
-
-### Overview
-Google Analytics 4 (GA4) is completely free and provides comprehensive tracking and insights for understanding user behavior.
-
-### Setup Steps
-
-**Step 1: Create GA4 Property**
-1. Go to https://analytics.google.com
-2. Click "Admin" (gear icon, bottom left)
-3. Under "Property" column, click "Create Property"
-4. Enter property name: "Monte Carlo Estimation Tool"
-5. Set timezone and currency
-6. Click "Next" → Choose "Web" → Enter: `montecarloestimation.com`
-7. Complete setup → Get Measurement ID (format: `G-XXXXXXXXXX`)
-
-**Step 2: Add Tracking Code**
-Add this code to `<head>` section of `index.html`:
-
-```html
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
+Success Criteria:
+- Auto ads toggle shows "ON"
+- Site listed as active in Auto ads section
 ```
 
-**Step 3: Set Up Custom Events**
-Track user interactions by adding event tracking:
+**👱🏻‍♂️ Task 1.2: Verify Ads Are Loading**
+```
+Owner: Human
+Time: 10 minutes (after 20-minute wait)
+Priority: HIGH
 
-```javascript
-// Track when user generates a forecast
-function trackForecastGenerated() {
-  gtag('event', 'generate_forecast', {
-    'event_category': 'simulation',
-    'event_label': 'forecast_generated',
-    'value': 1
-  });
-}
+Steps:
+1. Wait 20 minutes after enabling Auto Ads
+2. Open https://montecarloestimation.com in incognito window
+3. Disable ad blocker if present
+4. Press F12 → Console tab
+5. Type: typeof adsbygoogle
+6. Should return "object" (not "undefined")
+7. Look for ads appearing on page
 
-// Track estimation mode used
-function trackEstimationMode(mode) {
-  gtag('event', 'select_mode', {
-    'event_category': 'simulation',
-    'event_label': mode, // 'historical' or 'three_point'
-  });
-}
-
-// Track risk additions
-function trackRiskAdded() {
-  gtag('event', 'add_risk', {
-    'event_category': 'risk_modeling',
-    'event_label': 'risk_added',
-  });
-}
-
-// Track export attempts (for conversion tracking)
-function trackExportAttempt(type) {
-  gtag('event', 'export_attempt', {
-    'event_category': 'conversion',
-    'event_label': type, // 'pdf' or 'csv'
-  });
-}
+Success Criteria:
+- AdSense script loads successfully
+- Ads begin appearing on site (may be limited initially)
+- No errors in browser console
 ```
 
-### Key Metrics to Track
+**👱🏻‍♂️ Task 1.3: Test on Multiple Devices**
+```
+Owner: Human
+Time: 15 minutes
+Priority: MEDIUM
 
-**Engagement Metrics:**
-- Daily/Weekly/Monthly Active Users
-- Session duration
-- Pages per session
+Steps:
+1. Test on desktop Chrome
+2. Test on mobile Chrome (Android)
+3. Test on iPhone Safari
+4. Test on iPad
+5. Verify ads don't disrupt user experience
+6. Check that ads are labeled "Advertisement"
+
+Success Criteria:
+- Ads visible on all devices
+- No layout issues
+- User experience intact
+```
+
+---
+
+### Phase 2: Monitoring & Troubleshooting
+
+**👱🏻‍♂️ Task 2.1: Monitor AdSense Dashboard (Daily - First Week)**
+```
+Owner: Human
+Time: 5 minutes/day
+Priority: HIGH
+Start: After ads go live
+
+Checklist:
+- Go to AdSense Dashboard → Performance → Overview
+- Check today's estimated earnings
+- Review impressions count
+- Look for policy violations
+- Check account status
+
+Success Criteria:
+- Earnings > $0
+- No policy warnings
+- Impressions increasing daily
+```
+
+**👱🏻‍♂️ Task 2.2: Monitor GA4 Events (Daily - First Week)**
+```
+Owner: Human
+Time: 5 minutes/day
+Priority: MEDIUM
+Start: Ongoing
+
+Checklist:
+- Go to https://analytics.google.com
+- Navigate to Engagement → Events
+- Check generate_forecast count (most important)
+- Review view_help count
+- Monitor Real-time → Overview for live users
+
+Success Criteria:
+- generate_forecast events recorded
+- Events correlate with site usage
+- No tracking errors
+```
+
+**👱🏻‍♂️ Task 2.3: Review First Week Performance**
+```
+Owner: Human
+Time: 30 minutes
+Priority: MEDIUM
+Start: 7 days after ads go live
+
+Analysis:
+- AdSense Performance:
+  - Total earnings
+  - CTR by ad type
+  - RPM (revenue per 1000 impressions)
+  - Revenue by device
+- GA4 Metrics:
+  - Total users
+  - Forecast completion rate
+  - Bounce rate
+  - Avg session duration
+- Identify issues or optimization opportunities
+
+Deliverable:
+- Document findings
+- List optimization ideas
+```
+
+---
+
+### Phase 3: Optimization (Week 2+)
+
+**👱🏻‍♂️ Task 3.1: Review Advertiser Categories**
+```
+Owner: Human
+Time: 15 minutes
+Priority: LOW
+Start: After 2 weeks of data
+
+Steps:
+1. AdSense → Blocking controls → All sites
+2. Review advertiser categories
+3. Block low-quality or irrelevant advertisers
+4. Ensure B2B/Software/Productivity ads are allowed
+5. Monitor impact on revenue
+
+Success Criteria:
+- Higher quality ads displayed
+- CPM increases or stays stable
+- User experience improves
+```
+
+**👱🏻‍♂️ Task 3.2: Adjust Auto Ads Settings**
+```
+Owner: Human
+Time: 10 minutes
+Priority: LOW
+Start: After 1 month of data
+
+Steps:
+1. AdSense → Ads → Overview
+2. Click on montecarloestimation.com
+3. Adjust ad density slider if needed
+4. Enable/disable specific ad formats based on performance
+5. Save and monitor for 1 week
+
+Success Criteria:
+- Revenue increases or stays stable
+- User experience maintained or improved
+```
+
+**🤖 Task 3.3: Implement Advanced GA4 Tracking**
+```
+Owner: AI
+Time: 30 minutes
+Priority: LOW
+Start: As requested by human
+
+Implementation:
+- Add ad viewability tracking (Intersection Observer)
+- Add device-specific tracking
+- Add error tracking for simulations
+- Create custom dimensions for:
+  - estimation_method (data/estimate)
+  - risk_count (0-5)
+  - forecast_weeks
+
+Code Location: index.html (JavaScript section)
+
+Success Criteria:
+- New events visible in GA4
+- Custom dimensions populated
+- Data actionable for optimization
+```
+
+**👱🏻‍♂️ Task 3.4: Create GA4 Custom Reports**
+```
+Owner: Human
+Time: 45 minutes
+Priority: LOW
+Start: After 1 month of data
+
+Reports to Create:
+1. Monetization Dashboard:
+   - Daily revenue trend
+   - Traffic vs revenue correlation
+   - Device breakdown
+   - Top performing pages
+
+2. User Engagement Dashboard:
+   - Forecast completion funnel
+   - Help engagement rate
+   - Risk usage rate
+   - Return user behavior
+
+3. Weekly Summary:
+   - New users
+   - Total forecasts generated
+   - Top traffic sources
+   - Key metrics vs targets
+
+Success Criteria:
+- Dashboards created in GA4
+- Insights actionable
+- Weekly review takes <10 minutes
+```
+
+---
+
+### Phase 4: Advanced Features (Future)
+
+**🤖 Task 4.1: Implement Premium Tier**
+```
+Owner: AI
+Time: 4-8 hours
+Priority: FUTURE
+Start: When requested
+
+Features:
+- PDF export of forecast results
+- Historical data storage
+- Team collaboration
+- Advanced risk modeling
+- API access
+
+Implementation:
+- Add paywall UI
+- Integrate Stripe for payments
+- Add user authentication
+- Implement premium features
+- Add GA4 e-commerce tracking
+
+Revenue Target: $500-2,000/month additional
+```
+
+**🤖 Task 4.2: A/B Testing Framework**
+```
+Owner: AI
+Time: 2-4 hours
+Priority: FUTURE
+Start: When traffic > 1,000 users/day
+
+Tests to Run:
+- Ad density variations
+- Help system prominence
+- Results presentation format
+- CTA placement for premium tier
+
+Implementation:
+- Integrate Google Optimize or custom A/B framework
+- Define test metrics in GA4
+- Run tests for minimum 2 weeks
+- Document results
+
+Success Criteria:
+- Statistically significant results
+- Actionable insights
+- Revenue or engagement improvement
+```
+
+---
+
+## Technical Reference
+
+### Code Locations
+
+**GA4 Tracking Script:**
+```
+File: index.html
+Lines: 5-12
+```
+
+**AdSense Verification Script:**
+```
+File: index.html
+Lines: 13-14
+```
+
+**Custom Event Tracking:**
+```
+File: index.html
+Lines: 996-1000 (trackEvent helper)
+Lines: 1482-1486 (view_help event)
+Lines: 1516-1520 (select_estimation_mode event)
+Lines: 1536-1540 (add_risk event)
+Lines: 1688-1693 (generate_forecast event)
+```
+
+**Privacy Policy:**
+```
+File: privacy.html
+Link: https://montecarloestimation.com/privacy.html
+Footer: index.html line 1919
+```
+
+### Configuration
+
+**GA4 Measurement ID:** G-10018M21B0
+**AdSense Publisher ID:** ca-pub-5055720376895150
+**Site URL:** https://montecarloestimation.com
+**GitHub Repository:** https://github.com/MartinRL/project-estimation-monte-carlo
+
+### Key Events (GA4)
+
+| Event Name | Category | Purpose | Priority |
+|------------|----------|---------|----------|
+| `generate_forecast` | engagement | Track tool usage | HIGH |
+| `view_help` | engagement | Track help engagement | MEDIUM |
+| `select_estimation_mode` | configuration | Track method preference | LOW |
+| `add_risk` | configuration | Track advanced feature | LOW |
+
+---
+
+## Success Metrics & KPIs
+
+### Traffic Metrics
+
+| Metric | Target | Excellent | Current |
+|--------|--------|-----------|---------|
+| Bounce Rate | <60% | <40% | TBD |
+| Avg Session Duration | >2 min | >4 min | TBD |
+| Forecast Completion Rate | >50% | >70% | TBD |
+| Help Engagement Rate | >30% | >50% | TBD |
+| Week-1 Retention | >15% | >25% | TBD |
+
+### Revenue Metrics
+
+| Period | Conservative | Target | Optimistic |
+|--------|-------------|--------|------------|
+| Month 1 | $50 | $100 | $200 |
+| Month 3 | $150 | $300 | $600 |
+| Month 6 | $300 | $750 | $1,500 |
+| Month 12 | $500 | $1,500 | $3,000 |
+
+**Assumptions:**
+- B2B SaaS advertisers (Atlassian, Monday, Asana)
+- Premium CPMs: $10-20+
+- CTR: 2-3% (above 1.5% industry average)
+- Auto Ads optimization over time
+
+### Performance Metrics
+
+| Metric | Target | Status |
+|--------|--------|--------|
+| AdSense Approval | ✅ Approved | ✅ Complete |
+| Auto Ads Enabled | Enabled | ⏳ Pending |
+| Ads Displaying | Yes | ⏳ Pending |
+| First Revenue | >$0 | ⏳ Pending |
+| GA4 Events Firing | Yes | ✅ Complete |
+| Policy Compliance | 100% | ✅ Complete |
+
+---
+
+## Monitoring & Maintenance
+
+### Daily Checks (First 2 Weeks)
+
+**👱🏻‍♂️ AdSense Dashboard (2 minutes)**
+- Performance → Overview → Today's earnings
+- Check for policy violations
+- Review estimated earnings trend
+
+**👱🏻‍♂️ GA4 Real-time (2 minutes)**
+- Real-time → Overview → Current users
+- Engagement → Events → generate_forecast count
+- No errors or anomalies
+
+### Weekly Review (Ongoing)
+
+**👱🏻‍♂️ AdSense Performance (15 minutes)**
+- Total earnings (vs previous week)
+- CTR by ad format
+- RPM trends
+- Revenue by device
+- Top performing pages
+
+**👱🏻‍♂️ GA4 Engagement (15 minutes)**
+- Total users (vs previous week)
+- Forecast completion rate
+- Help engagement rate
+- Traffic sources
+- Device breakdown
 - Bounce rate
 
-**Feature Usage:**
-- Forecast generation count
-- Historical vs Three-Point mode preference
-- Number of risks added per simulation
-- Help modal interactions
+### Monthly Analysis (Ongoing)
 
-**Conversion Tracking:**
-- Export button clicks (PDF/CSV)
-- "Upgrade to Premium" CTA clicks
-- Pricing page views
-- Outbound link clicks (AdSense/affiliates)
-
-### GA4 Reports to Monitor
-
-1. **Realtime Report**: See live user activity
-2. **Acquisition Report**: Where users come from (Google, Reddit, ProductHunt, etc.)
-3. **Engagement Report**: Which features users interact with most
-4. **Retention Report**: How many users return after first visit
-5. **Demographics**: User location, device, browser
-
-### Privacy Compliance
-
-Add this to privacy policy:
-- "We use Google Analytics to understand how visitors use our site"
-- "Analytics collects anonymous usage data via cookies"
-- "Users can opt-out via browser settings or Google Analytics opt-out add-on"
-
-### Integration Points
-
-Call tracking functions in these locations:
-- `runSimulation()` → `trackForecastGenerated()`
-- `toggleMode()` → `trackEstimationMode(mode)`
-- `addRisk()` → `trackRiskAdded()`
-- Export buttons → `trackExportAttempt(type)`
-- Help modal open → `gtag('event', 'help_view')`
+**👱🏻‍♂️ Comprehensive Review (60 minutes)**
+- Revenue vs target
+- Traffic trends
+- User behavior patterns
+- Optimization opportunities
+- Budget for paid marketing (if warranted)
 
 ---
 
-## 4. Google AdSense Implementation Strategy
+## Troubleshooting Guide
 
-### Ad Placement Locations
+### Issue: Ads Not Showing
 
-**Placement 1: Header Banner**
-- **Type:** 728x90 Leaderboard (desktop) / 320x50 Mobile Banner
-- **Location:** Above page title, below browser chrome
-- **Rationale:** High visibility without interfering with tool functionality
-- **Implementation:** Sticky header, collapses on scroll
+**Diagnosis Steps (👱🏻‍♂️):**
+1. Check Auto Ads toggle in AdSense (should be ON)
+2. Check browser console for errors (F12)
+3. Verify `typeof adsbygoogle` returns "object"
+4. Disable ad blocker
+5. Test in incognito window
+6. Check account status for policy violations
 
-**Placement 2: Sidebar Bottom**
-- **Type:** 300x250 Medium Rectangle
-- **Location:** Below "Generate Forecast" button in sidebar
-- **Rationale:** Visible while user reviews inputs, natural scroll position
-- **Implementation:** Fixed position in sidebar
+**Solutions:**
+- Wait 24-48 hours after enabling (ramp-up period)
+- Clear browser cache
+- Test from different location/device
+- Contact AdSense support if >48 hours
 
-**Placement 3: Results Section Top**
-- **Type:** 336x280 Large Rectangle or 300x600 Half-Page Ad
-- **Location:** Between forecast cards and distribution chart
-- **Rationale:** User is in "reading mode" after generating results
-- **Implementation:** Only renders after results are generated
-- **Frequency Cap:** Show once per session
+### Issue: Low Revenue
 
-**Placement 4: Help Modal (Native Ads)**
-- **Type:** Native ads or In-article ads
-- **Location:** Within help modal content sections
-- **Rationale:** Blends with educational content, less intrusive
-- **Implementation:** Google AdSense Auto Ads with exclusion zones
+**Diagnosis Steps (👱🏻‍♂️):**
+1. Check traffic volume (low traffic = low revenue)
+2. Review CTR in AdSense dashboard (target: 2-3%)
+3. Check ad density settings
+4. Review advertiser categories
+5. Verify traffic quality (geography, sources)
 
-### Ad Configuration
+**Solutions:**
+- Increase traffic through SEO, marketing
+- Adjust Auto Ads density slider
+- Block low-quality advertisers
+- Enable all ad formats
+- Consider manual ad placement for key positions
+
+### Issue: GA4 Events Not Firing
+
+**Diagnosis Steps (👱🏻‍♂️):**
+1. Open site with `?debug_mode=true` in URL
+2. Go to GA4 → Configure → DebugView
+3. Trigger actions (generate forecast, view help)
+4. Check if events appear in DebugView
+5. Check browser console for gtag errors
+
+**Solutions (🤖):**
+- Verify gtag is defined: `typeof gtag !== 'undefined'`
+- Check event names match exactly
+- Ensure GA4 script loads before event tracking
+- Test in multiple browsers
+- Review GA4 implementation code
+
+### Issue: Policy Violation
+
+**Diagnosis Steps (👱🏻‍♂️):**
+1. Check AdSense → Account → Policy center
+2. Read violation details carefully
+3. Review AdSense policies: https://support.google.com/adsense/answer/48182
+
+**Common Issues:**
+- Ads too close to clickable elements (fix: adjust spacing)
+- Misleading ad placement (fix: add "Advertisement" labels)
+- Insufficient content (fix: add more valuable content)
+- Invalid clicks (fix: don't click own ads)
+
+**Solutions:**
+- Fix issues immediately
+- Request review in AdSense dashboard
+- Document changes made
+- Wait for re-review (typically 2-3 days)
+
+---
+
+## Resources & Links
+
+### Dashboards
+
+- **AdSense**: https://www.google.com/adsense
+- **GA4**: https://analytics.google.com
+- **GitHub Repository**: https://github.com/MartinRL/project-estimation-monte-carlo
+- **Live Site**: https://montecarloestimation.com
+- **Privacy Policy**: https://montecarloestimation.com/privacy.html
+
+### Documentation
+
+- **AdSense Help**: https://support.google.com/adsense
+- **AdSense Policies**: https://support.google.com/adsense/answer/48182
+- **GA4 Help**: https://support.google.com/analytics
+- **GA4 Events Reference**: https://developers.google.com/analytics/devguides/collection/ga4/events
+- **GA4 DebugView**: https://support.google.com/analytics/answer/7201382
+- **GitHub Pages Docs**: https://docs.github.com/en/pages
+
+### Tools
+
+- **DNS Checker**: https://dnschecker.org
+- **GA4 DebugView**: Add `?debug_mode=true` to URL
+- **Browser Console**: Press F12 → Console tab
+- **AdSense Verification**: View page source, search for "adsbygoogle"
+
+---
+
+## Next Actions (Prioritized)
+
+### Immediate (This Week)
+
+**👱🏻‍♂️ Priority 1: Enable Auto Ads** (Task 1.1)
+- ⏱️ Time: 5 minutes
+- 🎯 Outcome: Ads begin displaying on site
+- ⚠️ Blocker: Cannot generate revenue without this
+
+**👱🏻‍♂️ Priority 2: Verify Ads Load** (Task 1.2)
+- ⏱️ Time: 10 minutes (after 20-minute wait)
+- 🎯 Outcome: Confirm technical implementation works
+- 📊 Success: `typeof adsbygoogle === "object"`
+
+**👱🏻‍♂️ Priority 3: Test on Devices** (Task 1.3)
+- ⏱️ Time: 15 minutes
+- 🎯 Outcome: Ensure cross-device compatibility
+- ✅ Checklist: Desktop, mobile, tablet
+
+### Short-term (Next 2 Weeks)
+
+**👱🏻‍♂️ Priority 4: Daily Monitoring** (Tasks 2.1, 2.2)
+- ⏱️ Time: 5 minutes/day
+- 🎯 Outcome: Catch issues early, understand baseline performance
+- 📈 Metrics: Earnings, impressions, events
+
+**👱🏻‍♂️ Priority 5: First Week Review** (Task 2.3)
+- ⏱️ Time: 30 minutes
+- 🎯 Outcome: Understand initial performance, identify quick wins
+- 📊 Deliverable: Performance summary document
+
+### Medium-term (Months 2-3)
+
+**👱🏻‍♂️ Priority 6: Optimize Advertisers** (Task 3.1)
+- ⏱️ Time: 15 minutes
+- 🎯 Outcome: Improve ad quality and CPM
+- 💰 Impact: 10-20% revenue increase
+
+**👱🏻‍♂️ Priority 7: Create Dashboards** (Task 3.4)
+- ⏱️ Time: 45 minutes
+- 🎯 Outcome: Faster weekly reviews, better insights
+- 📊 Deliverable: 3 custom GA4 dashboards
+
+### Long-term (Months 4-6)
+
+**🤖 Priority 8: Advanced Tracking** (Task 3.3)
+- ⏱️ Time: 30 minutes
+- 🎯 Outcome: Deeper insights, better optimization
+- 🔧 Implementation: Ad viewability, custom dimensions
+
+**👱🏻‍♂️ Priority 9: A/B Testing** (Task 4.2)
+- ⏱️ Time: Ongoing
+- 🎯 Outcome: Data-driven improvements
+- 📈 Impact: 5-15% revenue increase
+
+**🤖 Priority 10: Premium Tier** (Task 4.1)
+- ⏱️ Time: 4-8 hours
+- 🎯 Outcome: Additional revenue stream
+- 💰 Target: $500-2,000/month
+
+---
+
+## Revision History
+
+| Date | Version | Author | Changes |
+|------|---------|--------|---------|
+| 2025-10-12 | 1.0 | AI | Initial PRD creation, merged SETUP-GUIDE, implementation-summary, and ga4-strategy |
+
+---
+
+## Approval & Sign-off
+
+**Document Owner:** Human
+**Technical Implementation:** AI (Claude Code)
+**Status:** Draft - Pending auto ads enablement
+
+---
+
+## Appendix A: Complete Event Tracking Reference
+
+### Core Events (Implemented)
+
 ```javascript
-// Ad unit IDs (to be generated)
-const AD_UNITS = {
-  headerBanner: 'ca-pub-XXXXXXXX/XXXXXXXX',
-  sidebarRect: 'ca-pub-XXXXXXXX/XXXXXXXX',
-  resultsRect: 'ca-pub-XXXXXXXX/XXXXXXXX',
-  helpNative: 'ca-pub-XXXXXXXX/XXXXXXXX'
-};
+// Generate forecast - Most important event
+gtag('event', 'generate_forecast', {
+    'event_category': 'engagement',
+    'event_label': mode, // 'estimate' or 'data'
+    'value': 1
+});
+
+// View help modal
+gtag('event', 'view_help', {
+    'event_category': 'engagement',
+    'help_topic': topic // e.g., 'throughput', 'risks'
+});
+
+// Select estimation mode
+gtag('event', 'select_estimation_mode', {
+    'event_category': 'configuration',
+    'method': mode // 'historical' or 'three_point'
+});
+
+// Add risk
+gtag('event', 'add_risk', {
+    'event_category': 'configuration',
+    'risk_count': risks.length
+});
 ```
 
-### Ad Performance Targets
-- **CTR Goal:** 1-2% (industry average)
-- **Viewability:** >70%
-- **Ad Load Time:** <500ms impact on page load
+### Future Events (Not Yet Implemented)
 
-### Revenue Projections
-| Daily Users | Ad Impressions/User | Daily Revenue ($2 CPM) | Monthly Revenue |
-|-------------|---------------------|------------------------|-----------------|
-| 1,000       | 3                   | $6/day                 | $180/month      |
-| 5,000       | 3                   | $30/day                | $900/month      |
-| 10,000      | 3                   | $60/day                | $1,800/month    |
-| 50,000      | 3                   | $300/day               | $9,000/month    |
+```javascript
+// Ad viewability tracking
+gtag('event', 'ad_viewable', {
+    'event_category': 'ad_performance',
+    'ad_unit': adUnit, // 'sidebar', 'results', 'anchor'
+    'viewport_percentage': intersectionRatio,
+    'non_interaction': true
+});
 
-**Note:** Assumes $2 CPM (conservative for project management niche)
+// Premium CTA view
+gtag('event', 'view_premium_cta', {
+    'event_category': 'conversion',
+    'cta_location': 'upgrade_modal'
+});
 
----
-
-## 5. Additional Revenue Streams
-
-### Affiliate Partnerships
-
-**Integration Partners:**
-1. **Jira Cloud** (Atlassian Partner Program - 20% commission)
-   - "Export to Jira" button integration
-   - Pre-filled epic/story templates
-   - OAuth connection
-
-2. **Asana** (Affiliate program - $50/signup)
-   - "Create Asana project" integration
-   - Import historical data from Asana
-
-3. **Monday.com** (Affiliate program - 30% recurring)
-   - Timeline export to Monday boards
-   - Bi-directional sync
-
-4. **Books & Training:**
-   - Monte Carlo simulation books (Amazon Associates - 4-8%)
-   - Agile training courses (Udemy - 20%)
-   - Project management certification programs
-
-**Implementation Requirements:**
-- OAuth integrations for each platform
-- Affiliate tracking pixels
-- "Export" dropdown menu with partner options
-- Landing pages explaining integrations
-
-**Revenue Projection:** $500-2,000/month at 10K daily users
+// Error tracking
+gtag('event', 'simulation_error', {
+    'event_category': 'errors',
+    'error_type': errorType
+});
+```
 
 ---
 
-### Sponsored Content/Tools Integration
+## Appendix B: Revenue Calculation Examples
 
-**Opportunities:**
-1. **Featured Templates** from industry leaders
-   - PMI, Scrum Alliance, SAFe sponsors
-   - $500-1,000/month per sponsor slot
-   - "Recommended by [Company]" badge
+### Example 1: Conservative Month 1
+```
+Daily Users: 100
+Avg Sessions per User: 1.2
+Ad Impressions per Session: 2
+Daily Impressions: 100 × 1.2 × 2 = 240
+Monthly Impressions: 240 × 30 = 7,200
+CPM: $10
+Monthly Revenue: (7,200 / 1,000) × $10 = $72
+```
 
-2. **Agile Training Companies**
-   - Sponsored help content
-   - "Learn more" sections in modals
-   - $1,000-2,500/month
+### Example 2: Target Month 6
+```
+Daily Users: 500
+Avg Sessions per User: 1.5
+Ad Impressions per Session: 3
+Daily Impressions: 500 × 1.5 × 3 = 2,250
+Monthly Impressions: 2,250 × 30 = 67,500
+CPM: $15
+Monthly Revenue: (67,500 / 1,000) × $15 = $1,012
+```
 
-3. **Certification Programs**
-   - PMI-ACP, PSM, SAFe certified courses
-   - Banner placement for courses
-   - $500-1,500/month
-
-**Implementation:**
-- "Featured Templates" section in UI
-- Sponsored badge/disclosure
-- Click tracking and reporting
-
-**Revenue Projection:** $2,000-5,000/month at scale
-
----
-
-### One-Time Purchase Option
-
-**Offering:** "Lifetime Premium Access"
-- **Price:** $249 one-time
-- **Includes:** All Premium features forever
-- **Rationale:** Appeals to consultants, agencies, power users
-- **Conversion Goal:** 3-5% of visitors who view pricing
-
-**Implementation:**
-- Add to pricing page as third option
-- Highlight "Most popular for consultants"
-- Same technical access as monthly Premium
-
-**Revenue Projection:**
-- 10,000 monthly visitors × 3% view pricing × 3% convert = 9 lifetime sales/month
-- 9 × $249 = $2,241/month
-- **Note:** Higher initial revenue, lower LTV than subscriptions
+### Example 3: Optimistic Post-Launch
+```
+Daily Users: 2,000
+Avg Sessions per User: 1.8
+Ad Impressions per Session: 3.5
+Daily Impressions: 2,000 × 1.8 × 3.5 = 12,600
+Monthly Impressions: 12,600 × 30 = 378,000
+CPM: $18
+Monthly Revenue: (378,000 / 1,000) × $18 = $6,804
+```
 
 ---
 
-## 6. Premium Feature Implementation Roadmap
-
-### Phase 1: Quick Wins
-**Goal:** Launch Premium tier with minimal backend complexity
-
-**Features to Build:**
-- [ ] PDF Export
-  - Library: jsPDF + jsPDF-AutoTable
-  - Template: Professional report with logo, charts, summary
-  - Download filename: `forecast-{project-name}-{date}.pdf`
-
-- [ ] CSV Export
-  - Client-side generation (no server needed)
-  - Two files: raw results data + summary statistics
-  - Format: Compatible with Excel/Google Sheets
-
-- [ ] LocalStorage Save/Load
-  - Save up to 10 simulations (free tier limit)
-  - Store: parameters, risks, results
-  - JSON format for forward compatibility
-
-- [ ] Stripe Integration
-  - Checkout page for Premium ($9/mo)
-  - Customer portal for subscription management
-  - Webhook handler for subscription events
-
-- [ ] Simple Paywall Modal
-  - "Upgrade to Premium" messaging
-  - Feature comparison table
-  - Trial offer: 7-day free trial
-
-**Technical Stack:**
-- Frontend: Pure JavaScript (keep single-file architecture initially)
-- Payments: Stripe Checkout (hosted page)
-- Storage: LocalStorage → migrate to cloud later
-
----
-
-### Phase 2: Backend & Cloud Features
-**Goal:** Enable true multi-device, persistent storage
-
-**Features to Build:**
-- [ ] User Authentication
-  - Provider: Supabase or Firebase Auth
-  - Methods: Email/password + Google OAuth
-  - Session management
-
-- [ ] Cloud-Saved Simulations
-  - Database: PostgreSQL (Supabase) or Firestore
-  - Unlimited saves for Premium users
-  - Sync across devices
-
-- [ ] User Dashboard
-  - View all saved simulations
-  - Sort/filter by date, project name
-  - Quick-load functionality
-  - Delete/archive options
-
-- [ ] Email Notifications
-  - Welcome email on signup
-  - Payment receipts (via Stripe)
-  - Weekly usage summary for Premium users
-  - Newsletter signup option
-
-**Technical Stack:**
-- Backend: Supabase (PostgreSQL + Auth + Storage)
-- Email: SendGrid or Postmark
-- Hosting: Netlify/Vercel (serverless functions)
-
----
-
-### Phase 3: Advanced Features
-**Goal:** Enterprise-ready capabilities
-
-**Features to Build:**
-- [ ] Team Workspaces
-  - Create/join teams
-  - Shared simulations library
-  - Role-based permissions (owner/editor/viewer)
-  - Activity feed
-
-- [ ] Advanced Visualizations
-  - Cumulative distribution function (CDF) chart
-  - Risk impact breakdown (tornado chart)
-  - Sensitivity analysis (which parameter affects outcome most)
-  - Historical accuracy tracking
-
-- [ ] Template Library
-  - 10+ pre-configured scenarios (software dev, construction, marketing, etc.)
-  - User-created templates (save as template)
-  - Template marketplace (future: user-submitted templates)
-
-- [ ] Historical Comparison
-  - Track: estimated vs actual completion
-  - Accuracy metrics over time
-  - Calibration feedback ("your estimates tend to be 15% optimistic")
-
-- [ ] API Development
-  - REST API for running simulations
-  - API key management
-  - Rate limiting (1000 req/month for Enterprise)
-  - Webhook support
-
-**Technical Stack:**
-- Frontend: Refactor to React/Vue (if needed for complexity)
-- API: Node.js serverless functions or FastAPI
-- Charts: D3.js or Recharts
-- API Docs: Swagger/OpenAPI
-
----
-
-## 7. Competitive Analysis & Pricing
-
-### Direct Competitors
-
-| Tool                          | Price/Month | Strengths                    | Weaknesses                   | Our Advantage              |
-|-------------------------------|-------------|------------------------------|------------------------------|----------------------------|
-| ActionableAgile Analytics     | $20         | Jira integration, mature     | Expensive, complex UI        | Half the price, simpler    |
-| FocusedObjective tools        | Free        | Simple, trusted source       | Very basic, no save/export   | Premium features           |
-| Excel Monte Carlo templates   | Free        | Flexible, customizable       | Clunky UX, no guidance       | Beautiful UX, help system  |
-| PM consultants (manual)       | $500-5000   | Personalized advice          | Expensive, slow turnaround   | Instant, $9/month          |
-| LeanKit/Planview              | $20-50/user | Enterprise features          | Overkill, high commitment    | Lightweight, no commitment |
-
-### Market Positioning
-
-**Target Market Segments:**
-1. **Individual PMs/Scrum Masters** (50% of users)
-   - Price sensitivity: High
-   - Target tier: Free → Premium ($9)
-   - Conversion goal: 2-3%
-
-2. **Small Teams (5-15 people)** (30% of users)
-   - Price sensitivity: Medium
-   - Target tier: Premium ($9) or Enterprise ($49)
-   - Conversion goal: 5-8%
-
-3. **Consultants/Agencies** (15% of users)
-   - Price sensitivity: Low
-   - Target tier: Lifetime ($249) or Enterprise ($49)
-   - Conversion goal: 10-15%
-
-4. **Enterprise** (5% of users)
-   - Price sensitivity: Very low
-   - Target tier: Enterprise ($49+) or custom
-   - Conversion goal: 15-20% (high-touch sales)
-
-### Pricing Psychology
-
-**Why $9/month works:**
-- Below psychological threshold of $10
-- "Less than two coffees per month"
-- 55% cheaper than main competitor ($20)
-- Annual option ($79) = 2 months free
-
-**Anchoring Strategy:**
-- Show Enterprise tier ($49) first to make Premium ($9) seem like a bargain
-- Lifetime option ($249) anchors against annual ($79)
-
-**Free Trial Strategy:**
-- 7-day free trial for Premium (no credit card required initially)
-- 14-day money-back guarantee
-- Converts 25-40% of trial users (industry average)
-
----
-
-## 8. Growth & Marketing Strategy
-
-### Content Marketing Plan
-
-**Blog Topics (SEO-focused):**
-1. "Why Your Project Estimates Are Always Wrong (And How to Fix Them)"
-2. "Monte Carlo Simulation Explained for Project Managers (No Math Required)"
-3. "Case Study: How [Fake Company] Improved Estimation Accuracy 40%"
-4. "The #NoEstimates Movement vs Probabilistic Forecasting"
-5. "5 Cognitive Biases That Ruin Your Project Estimates"
-6. "Historical Data vs Three-Point Estimates: Which Should You Use?"
-7. "How to Sell Uncertainty to Stakeholders (And Why You Should)"
-8. "Agile Estimation: Story Points vs Throughput"
-9. "What to Do When Your Monte Carlo Forecast Shows a 6-Month Delay"
-10. "Building a Culture of Forecasting: Metrics That Matter"
-
-**Publishing:** As capacity allows
-
-**Guest Post Targets:**
-- MindTheProduct.com
-- ProjectManagement.com
-- Scrum.org blog
-- AgileAlliance.org
-- Medium publications (Better Programming, The Startup)
-
----
-
-### SEO Strategy
-
-**On-Page SEO:**
-- Title tags optimized for long-tail keywords
-- Meta descriptions with CTR-optimized copy
-- H1/H2 hierarchy with keyword inclusion
-- Internal linking between blog and tool
-- Image alt text optimization
-- Page load speed <2 seconds
-
-**Off-Page SEO:**
-- Submit to tool directories:
-  - ProductHunt (launch campaign)
-  - AlternativeTo
-  - Capterra
-  - G2
-  - SaaSHub
-- Backlink outreach to PM blogs
-- HARO (Help A Reporter Out) responses
-- Reddit/HackerNews (organic, not spammy)
-
-**Technical SEO:**
-- Sitemap submission to Google Search Console
-- Mobile-first responsive design (already done)
-- Structured data markup (JSON-LD)
-- Core Web Vitals optimization
-- SSL/HTTPS (via GitHub Pages/Netlify)
-
-**Target Keywords & Difficulty:**
-| Keyword                          | Monthly Searches | Difficulty | Priority |
-|----------------------------------|------------------|------------|----------|
-| project estimation tool          | 1,200            | Medium     | High     |
-| monte carlo simulation project   | 800              | Low        | High     |
-| when will my project be done     | 500              | Low        | High     |
-| agile forecasting tool           | 300              | Low        | Medium   |
-| probabilistic project planning   | 200              | Low        | Medium   |
-
----
-
-### Viral Growth Mechanisms
-
-**Share Feature:**
-- "Share your forecast" button generates shareable link
-- Social preview cards with results summary
-- Twitter/LinkedIn one-click share
-- Trackable UTM parameters for viral loop analytics
-
-**Embed Widget:**
-- `<iframe>` embed code for blogs/intranets
-- Customizable width/height
-- Branding watermark with link back to site
-- Analytics tracking for embedded usage
-
-**Public Template Gallery:**
-- User-submitted templates (curated)
-- Upvote/downvote system
-- Attribution to creator (with backlink)
-- "Use this template" button
-
-**Referral Program (Phase 2):**
-- Give 1 month free for each successful referral
-- Referee gets 1 month free on signup
-- Unique referral links per user
-- Leaderboard for top referrers
-
----
-
-### Community Building
-
-**Reddit Strategy:**
-- Active participation (not spamming) in:
-  - r/projectmanagement (650K members)
-  - r/agile (50K members)
-  - r/scrum (80K members)
-  - r/ProductManagement (140K members)
-- Share blog posts (follow subreddit rules)
-- Answer questions, provide value first
-- Periodic "Ask Me Anything" sessions
-
-**LinkedIn Strategy:**
-- Posts as capacity allows
-- Share tool tips, forecasting insights
-- Engage with PM influencers
-- LinkedIn polls for engagement
-- Sponsored content (if/when budget allows)
-
-**Workshop & Webinars:**
-- Free webinar: "Probabilistic Forecasting 101"
-- Lead generation for Premium conversions
-- Partner with agile training companies
-- Recording becomes evergreen content
-
-**Open Source Contributions:**
-- Open-source blog posts explaining algorithm
-- Sample datasets for practice
-- Contribute to PM communities (PMI, Scrum Alliance)
-- Thought leadership on forecasting
-
----
-
-## 9. Technical Implementation Plan
-
-### Immediate Phase: No Backend Required
-
-**Foundation (Completed):**
-1. ✅ Register domain (montecarloestimation.com)
-2. ✅ Set up GitHub Pages deployment
-3. ✅ Configure custom domain DNS
-4. [ ] Add Google Analytics 4 tracking
-5. [ ] Add Google AdSense account + ad units
-6. [ ] Implement client-side save/load (LocalStorage)
-
-**Phase 1 - Core Features:**
-7. [ ] Build PDF export (jsPDF)
-8. [ ] Build CSV export (client-side)
-9. [ ] Create paywall modal UI
-10. [ ] Add Stripe Checkout integration (redirect to hosted page)
-
-**Phase 2 - Launch:**
-11. [ ] Test payment flow end-to-end
-12. [ ] Create pricing page
-13. [ ] Add "Powered by" branding for free tier
-14. [ ] Launch Beta + ProductHunt submission
-
-**Technology Stack (Immediate):**
-- Hosting: GitHub Pages (free) or Netlify (free tier)
-- Domain: Porkbun/Namecheap ($10-15/year)
-- Analytics: Google Analytics 4 (free)
-- Ads: Google AdSense (free to set up)
-- Payments: Stripe (2.9% + 30¢ per transaction)
-- Storage: Browser LocalStorage (free)
-- CDN: GitHub Pages/Netlify CDN (included)
-
-**Total Startup Cost: <$100**
-
----
-
-### Phase 3: Backend & Cloud Features
-
-**When Ready:**
-1. Set up Supabase project (PostgreSQL + Auth + Storage)
-2. Migrate from LocalStorage to cloud database
-3. Implement user authentication (email/password + Google OAuth)
-4. Build user dashboard for managing saved simulations
-5. Email service integration (SendGrid/Postmark)
-6. Stripe webhook handler for subscription events
-7. Customer portal for subscription management
-
-**Technology Stack (Backend):**
-- Backend-as-a-Service: Supabase ($25/month Pro plan)
-  - PostgreSQL database
-  - Authentication
-  - Realtime subscriptions
-  - Storage for exports
-- Serverless Functions: Netlify/Vercel Functions (free tier)
-- Email: SendGrid (free tier: 100 emails/day)
-- CDN: Cloudflare (free tier)
-
-**Monthly Operating Costs: ~$30-50**
-
----
-
-### Phase 4: Scale Infrastructure
-
-**Future Enhancement:**
-1. Team features database schema
-2. API infrastructure (REST endpoints)
-3. API authentication (JWT tokens)
-4. Rate limiting middleware
-5. Admin panel for user/team management
-6. Advanced analytics dashboard
-7. White-label theming system
-
-**Technology Stack (Scale):**
-- Frontend: Refactor to React/Next.js (if needed)
-- Backend: Node.js + Express or FastAPI (Python)
-- Database: Supabase PostgreSQL or AWS RDS
-- Caching: Redis (Upstash - serverless)
-- File Storage: AWS S3 or Supabase Storage
-- CDN: Cloudflare Pro ($20/month)
-- Monitoring: Sentry (error tracking)
-- Uptime: UptimeRobot or BetterUptime
-
-**Monthly Operating Costs: ~$100-200** (at 10K users)
-
----
-
-### Scalability Considerations
-
-**Performance Targets:**
-- Page load time: <2 seconds (First Contentful Paint)
-- Time to Interactive: <3 seconds
-- Lighthouse score: 90+ on all metrics
-- API response time: <200ms p95
-- Simulation run time: <500ms (client-side)
-
-**Scaling Triggers:**
-| Metric          | Action Required                                 |
-|-----------------|-------------------------------------------------|
-| 10K daily users | Upgrade Supabase to Pro ($25/month)             |
-| 50K daily users | Implement caching layer (Redis)                 |
-| 100K daily users| Consider dedicated backend infrastructure       |
-| 500K daily users| Multi-region deployment, load balancing         |
-
----
-
-## 10. Next Actions (Pull-Based)
-
-### Foundation & Setup
-- [x] **Domain Registration**
-  - ✅ Purchased montecarloestimation.com via Porkbun
-  - ✅ DNS configured at Porkbun
-  - ✅ CNAME file created and pushed to GitHub
-  - ✅ Custom domain configured in GitHub Pages
-  - [ ] Enable HTTPS (waiting for DNS propagation)
-
-- [ ] **Analytics & Ads Setup**
-  - [ ] Create Google Analytics 4 property
-  - [ ] Add GA4 tracking code to index.html
-  - [ ] Add GA4 custom event tracking
-  - [ ] Create privacy policy page
-  - [ ] Apply for Google AdSense account
-  - [ ] Add AdSense ad placement divs
-
----
-
-### Monetization Foundation
-- [ ] **Stripe Account Setup**
-  - [ ] Create Stripe account
-  - [ ] Set up Premium subscription product ($9/month)
-  - [ ] Set up annual subscription ($79/year)
-  - [ ] Create Lifetime purchase ($249)
-  - [ ] Test webhook endpoints
-
-- [ ] **Paywall Modal UI**
-  - [ ] Design upgrade modal
-  - [ ] Feature comparison table
-  - [ ] Add "Upgrade" CTAs in strategic locations
-
----
-
-### Premium Features (Phase 1)
-- [ ] **LocalStorage Save/Load**
-  - [ ] Save simulation configuration to LocalStorage
-  - [ ] Load saved simulations (max 5 for free tier)
-  - [ ] UI for managing saved simulations
-
-- [ ] **PDF Export (Premium Feature)**
-  - [ ] Integrate jsPDF library
-  - [ ] Design professional PDF template
-  - [ ] Generate report with charts (canvas to image)
-
-- [ ] **CSV Export (Premium Feature)**
-  - [ ] Client-side CSV generation
-  - [ ] Export raw simulation results
-  - [ ] Export summary statistics
-
----
-
-### Launch Preparation
-- [ ] **Create Pricing Page**
-  - [ ] Build `/pricing.html` or modal
-  - [ ] Free vs Premium vs Enterprise comparison
-  - [ ] FAQ section
-
-- [ ] **Marketing Preparation**
-  - [ ] Write ProductHunt launch post
-  - [ ] Create Twitter announcement thread
-  - [ ] Draft LinkedIn post
-
-- [ ] **Beta Testing**
-  - [ ] Test full payment flow (test mode)
-  - [ ] Test ad placements
-  - [ ] Cross-browser testing
-  - [ ] Mobile responsiveness check
-
----
-
-### Success Metrics
-
-| Metric                  | Initial Target | Growth Target |
-|-------------------------|----------------|---------------|
-| Daily users             | 50             | 500           |
-| AdSense approval        | Approved       | -             |
-| Premium signups         | 1              | 10            |
-| ProductHunt upvotes     | 50             | 200           |
-| Blog posts published    | 1              | 5             |
-
----
-
-### Risk Mitigation
-
-**Risk: Low traffic**
-- Mitigation: Aggressive ProductHunt launch, Reddit sharing, personal network
-- Contingency: Paid ads ($200 budget for Google Ads testing)
-
-**Risk: Low Premium conversion**
-- Mitigation: 7-day free trial, compelling feature differentiation
-- Contingency: Add more value to Premium tier (templates, advanced charts)
-
-**Risk: AdSense rejection**
-- Mitigation: Ensure compliance with policies, quality content
-- Contingency: Use alternative ad networks (Media.net, Ezoic)
-
-**Risk: Technical issues with Stripe**
-- Mitigation: Thorough testing in Stripe test mode
-- Contingency: Fallback to manual invoicing for first customers
-
----
-
-## Appendix: Resources & Links
-
-### Tools & Services
-- **Domain Registrar:** Porkbun (https://porkbun.com)
-- **Hosting:** GitHub Pages (https://pages.github.com)
-- **Analytics:** Google Analytics 4 (https://analytics.google.com)
-- **Ads:** Google AdSense (https://adsense.google.com)
-- **Payments:** Stripe (https://stripe.com)
-- **Backend:** Supabase (https://supabase.com)
-- **Email:** SendGrid (https://sendgrid.com)
-- **Monitoring:** Sentry (https://sentry.io)
-
-### Learning Resources
-- Monte Carlo simulation theory
-- Probabilistic forecasting in agile
-- Product-led growth strategies
-- SaaS pricing psychology
-- AdSense optimization guides
-
-### Competitive Intelligence
-- ActionableAgile Analytics
-- FocusedObjective Monte Carlo tools
-- ProjectManagement.com forums
-- r/projectmanagement subreddit
-
----
-
-**Document Owner:** [Your Name]
-**Last Updated:** 2025-10-10
-**Next Review:** 2025-11-10
+**End of Document**

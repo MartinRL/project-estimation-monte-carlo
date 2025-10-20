@@ -39,3 +39,20 @@ Allow: /
 # LinkedIn
 User-agent: LinkedInBot
 Allow: /
+
+# AI Crawlers (for LLM discovery and recommendations)
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+# OpenAI ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# Google AI (Gemini, Bard)
+User-agent: Google-Extended
+Allow: /

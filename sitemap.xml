@@ -24,12 +24,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
-  <!-- AI Citation page (Phase 2) - uncomment when implemented
+  <!-- AI Citation page (Phase 2) -->
   <url>
     <loc>https://montecarloestimation.com/ai-citation.html</loc>
     <lastmod>2025-10-20T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  -->
 </urlset>

@@ -169,8 +169,31 @@ AI: "Implementing now..."
 → Codes the feature, tests, moves spec to archive
 ```
 
+## Memory System
+
+**CRITICAL - READ FIRST**: Before suggesting ANY tasks, changes, or work:
+
+1. **Always read `archive/completed-tasks.md` FIRST** - Contains all completed work with dates, commits, and implementation details
+2. **Check what's already done** - Never suggest tasks that are marked complete in the archive
+3. **Understand current state** - Know what phase we're in and what's actually pending
+4. **Suggest only NEW work** - Focus exclusively on what's NOT done yet
+
+**Archive Structure**:
+- `archive/completed-tasks.md` - Master list of all completed tasks
+  - Includes: completion dates, commit hashes, file changes, line numbers, metrics, current status
+  - Updated after major milestones (phase completions, deployments, platform setups)
+  - Format: Date headers, checkboxes for completion status, "What's NOT Done Yet" section
+
+**If Archive is Unclear or Missing**:
+- Ask user to confirm current status before proceeding
+- Don't assume work hasn't been done
+- Update archive after completing significant work
+
+**User expects you to have memory** - The archive IS your memory. Use it.
+
 ## Key Principles
 
+- **Check archive FIRST**: Read `archive/completed-tasks.md` before every suggestion - prevents duplicate effort
 - **Keep it simple**: No build tools, no frameworks, single HTML file
 - **Be autonomous**: Never ask the user to do something you can do yourself
 - **KISS**: Don't jump to complex conclusions - simplest solution wins

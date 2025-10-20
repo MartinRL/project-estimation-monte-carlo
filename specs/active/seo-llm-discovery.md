@@ -246,7 +246,7 @@ All Phase 1 objectives achieved. Implementation added ~500 lines of enhanced sch
   - [x] Note: ChatGPT uses Bing's index, so this is mandatory!
 
 - [ ] **Verify indexing**
-  - [ ] Google: Search "site:montecarloestimation.com"
+  - [x] Google: Search "site:montecarloestimation.com"
   - [ ] Bing: Search "site:montecarloestimation.com"
   - [ ] Check if pages appear
 

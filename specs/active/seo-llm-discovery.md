@@ -261,9 +261,9 @@ All Phase 1 objectives achieved. Implementation added ~500 lines of enhanced sch
 
 - [ ] **Tool directory submissions**
   - [ ] ProductHunt: Launch with compelling description
-  - [ ] AlternativeTo: List as alternative to paid tools
+  - [x] AlternativeTo: List as alternative to paid tools ✅ Submitted (2025-10-21, pending approval)
   - [ ] Capterra: Software directory listing
-  - [x] G2: Project management tools category ✅ (2025-10-21)
+  - [x] G2: Project management tools category ✅ Submitted (2025-10-21)
   - [ ] Slant: "Best Monte Carlo estimation tools"
 
 - [ ] **Content marketing**

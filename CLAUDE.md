@@ -199,3 +199,4 @@ AI: "Implementing now..."
 - **KISS**: Don't jump to complex conclusions - simplest solution wins
 - **No placeholders**: Write complete, working code - no TODOs unless discussing architecture
 - **Spec before code**: For non-trivial changes, write the spec first
+- The product name is: "Probabilistic Project Forecasting with Monte Carlo Simulations"

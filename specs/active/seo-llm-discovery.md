@@ -337,11 +337,11 @@ All Phase 1 objectives achieved. Implementation added ~500 lines of enhanced sch
 - [x] "For AI Assistants" page content (ai-citation.html - Phase 2 complete)
 - [x] Natural language Q&A sections (integrated in FAQ)
 - [x] Meta descriptions for all pages (optimized to 147 chars)
-- [x] ProductHunt launch description ✅ (specs/active/backlink-building/)
-- [x] AlternativeTo listing ✅ (specs/active/backlink-building/)
-- [x] Capterra listing ✅ (specs/active/backlink-building/)
-- [x] G2 listing ✅ (specs/active/backlink-building/)
-- [x] Slant recommendations ✅ (specs/active/backlink-building/)
+- [x] ProductHunt launch materials drafted ✅ (specs/active/backlink-building/producthunt-launch.md)
+- [x] AlternativeTo listing drafted ✅ (specs/active/backlink-building/alternativeto-listing.md)
+- [x] Capterra listing drafted ✅ (specs/active/backlink-building/capterra-listing.md)
+- [x] G2 listing drafted ✅ (specs/active/backlink-building/g2-listing.md)
+- [x] Slant recommendations drafted ✅ (specs/active/backlink-building/slant-listing.md)
 - [ ] Medium article draft (Phase 4 - backlink building)
 
 ### Tools & Resources

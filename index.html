@@ -137,7 +137,44 @@ martin.rosenlidholm@gmail.com
         .header-help:hover {
             background: rgba(255,255,255,0.2);
         }
-        
+
+        .logo-title-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .logo-title-link:hover {
+            opacity: 0.9;
+        }
+
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header .header-subtitle {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -738,6 +775,49 @@ martin.rosenlidholm@gmail.com
             .result-cards {
                 grid-template-columns: 1fr;
             }
+
+            .header-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            header .header-subtitle {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-logo {
+                width: 36px;
+                height: 36px;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header .header-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .header-subtitle {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 200px;
+            }
+
+            header {
+                padding: 1.5rem 1rem;
+            }
+
+            .header-help {
+                right: 1rem;
+            }
         }
     </style>
 
@@ -1116,8 +1196,18 @@ martin.rosenlidholm@gmail.com
 </head>
 <body>
     <header>
-        <h1>Project Estimation</h1>
-        <p>Probabilistic Forecasting with Monte Carlo Simulations</p>
+        <a href="/" class="logo-title-link" aria-label="Go to home page">
+            <svg class="header-logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Monte Carlo histogram logo">
+                <title>Monte Carlo histogram logo</title>
+                <rect x="30" y="75" width="40" height="100" fill="#28a745"/>
+                <rect x="80" y="25" width="40" height="150" fill="#ffc107"/>
+                <rect x="130" y="75" width="40" height="100" fill="#dc3545"/>
+            </svg>
+            <div class="header-text">
+                <h1>Project Estimation</h1>
+                <p class="header-subtitle">Probabilistic Forecasting with Monte Carlo Simulations</p>
+            </div>
+        </a>
         <div class="header-help" onclick="showHelp('overview')">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"></circle>

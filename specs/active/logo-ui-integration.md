@@ -288,13 +288,24 @@ Manual testing recommended:
 - **Fix**: Changed to relative path `assets/logo.svg`
 - **Result**: Logo displayed on `file://` but still failed on `http://` dev server
 
-**Fix #2 - Inline SVG (Final Solution)**:
+**Fix #2 - Inline SVG (Initial Attempt)**:
 - **Issue**: Logo not displaying on VSCode live server (`http://127.0.0.1:3000`)
 - **Cause**: External file path issues with different server configurations
 - **Fix**: Inlined SVG directly in HTML (lines 1200-1205)
+- **Result**: SVG inlined but still not rendering
+
+**Fix #3 - SVG Rendering Issues (Final Solution)**:
+- **Issue**: Inline SVG not rendering on any environment
+- **Root Cause Analysis**:
+  1. SVG had `fill="none"` on root element, preventing child rectangles from displaying
+  2. Missing explicit `width` and `height` attributes on SVG element
+  3. Missing `display: block` CSS property for proper rendering
+- **Fixes Applied** (2025-10-23):
+  1. Removed `fill="none"` from SVG root element (line 1200)
+  2. Added explicit `width="48" height="48"` attributes to SVG (line 1200)
+  3. Added `display: block` to `.header-logo` CSS (line 159)
 - **Benefits**:
-  - Works everywhere: local files, dev servers, deployed site
-  - No HTTP requests needed (faster page load)
-  - No path resolution issues
-  - Maintains all accessibility features (role="img", aria-label, <title>)
-- **Result**: Logo now displays universally without any dependencies
+  - SVG renders properly across all browsers
+  - Explicit dimensions ensure consistent sizing
+  - Display property ensures proper box model
+- **Result**: Logo displays universally without dependencies

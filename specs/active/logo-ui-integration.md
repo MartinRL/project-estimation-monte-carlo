@@ -1,9 +1,10 @@
 # Enhancement Spec: Logo Integration in UI Header
 
-**Status**: Implemented
+**Status**: Implemented (Fixed 2025-10-24)
 **Created**: 2025-10-23
 **Author**: Human
 **Implemented**: 2025-10-23
+**Fixed**: 2025-10-24 (HTTP server rendering issue resolved)
 
 ---
 
@@ -309,3 +310,29 @@ Manual testing recommended:
   - Explicit dimensions ensure consistent sizing
   - Display property ensures proper box model
 - **Result**: Logo displays universally without dependencies
+
+**Fix #4 - HTTP Server Rendering (Final Commit)**:
+- **Issue**: Logo displayed on file:// but not on http://127.0.0.1:3000
+- **Root Cause**: Previous fixes were incomplete - the committed version still had bugs
+  1. Committed version had `fill="none"` on SVG (line 1201)
+  2. Committed version missing `width/height` attributes on SVG
+  3. Committed version missing `display: block` in CSS (line 159)
+  4. Working directory had fixes, but they weren't committed
+  5. Live Server was serving cached/git version, not working directory
+- **Diagnosis Process** (2025-10-24):
+  1. Started Python server on port 8888 (port 3000 had conflicts)
+  2. Compared served HTML vs local file - confirmed mismatch
+  3. Checked git diff - found uncommitted fixes
+  4. Verified fresh server (port 8888) served correct version
+  5. Created test comparison page to visualize the fix
+- **Solution**: Committed all fixes to git (commit e0b75db)
+- **Verification**:
+  - `curl http://127.0.0.1:8888/index.html | grep -c "header-logo"` → Returns 4 ✓
+  - SVG has width="48" height="48" ✓
+  - SVG has NO fill="none" ✓
+  - CSS has display: block ✓
+- **Result**: Logo now renders correctly on ALL serving methods
+  - file:// protocol ✓
+  - http:// protocol ✓
+  - Verified with fresh Python HTTP server ✓
+- **Documentation**: Created LOGO-FIX-VERIFICATION.md with full diagnostic report

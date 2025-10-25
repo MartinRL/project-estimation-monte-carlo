@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Debug Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #ccc;
+        }
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            display: block;
+        }
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>SVG Logo Debug Tests</h1>
+
+    <div class="test-container">
+        <h2>Test 1: Current Implementation (from index.html line 1201)</h2>
+        <svg class="header-logo" width="48" height="48" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Monte Carlo histogram logo">
+            <title>Monte Carlo histogram logo</title>
+            <rect x="30" y="75" width="40" height="100" fill="#28a745"/>
+            <rect x="80" y="25" width="40" height="150" fill="#ffc107"/>
+            <rect x="130" y="75" width="40" height="100" fill="#dc3545"/>
+        </svg>
+        <p id="test1-result">Checking...</p>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 2: SVG with explicit xmlns</h2>
+        <svg class="header-logo" width="48" height="48" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="75" width="40" height="100" fill="#28a745"/>
+            <rect x="80" y="25" width="40" height="150" fill="#ffc107"/>
+            <rect x="130" y="75" width="40" height="100" fill="#dc3545"/>
+        </svg>
+        <p id="test2-result">Checking...</p>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 3: Inline SVG with border for visibility</h2>
+        <svg class="header-logo" width="48" height="48" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid red;">
+            <rect x="30" y="75" width="40" height="100" fill="#28a745"/>
+            <rect x="80" y="25" width="40" height="150" fill="#ffc107"/>
+            <rect x="130" y="75" width="40" height="100" fill="#dc3545"/>
+        </svg>
+        <p id="test3-result">Checking...</p>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 4: Simpler SVG</h2>
+        <svg width="48" height="48" viewBox="0 0 48 48">
+            <rect x="5" y="10" width="10" height="28" fill="#28a745"/>
+            <rect x="19" y="5" width="10" height="38" fill="#ffc107"/>
+            <rect x="33" y="10" width="10" height="28" fill="#dc3545"/>
+        </svg>
+        <p id="test4-result">Checking...</p>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            // Check if SVGs are rendering
+            const svgs = document.querySelectorAll('svg');
+            svgs.forEach((svg, index) => {
+                const testNum = index + 1;
+                const resultEl = document.getElementById(`test${testNum}-result`);
+
+                const bbox = svg.getBBox();
+                const computed = window.getComputedStyle(svg);
+                const rects = svg.querySelectorAll('rect');
+
+                resultEl.innerHTML = `
+                    <strong>BBox:</strong> width=${bbox.width}, height=${bbox.height}<br>
+                    <strong>Computed:</strong> display=${computed.display}, width=${computed.width}, height=${computed.height}<br>
+                    <strong>Rects found:</strong> ${rects.length}<br>
+                    <strong>SVG in DOM:</strong> ${svg.parentElement ? 'Yes' : 'No'}
+                `;
+            });
+
+            // Console logging
+            console.log('All SVGs:', svgs);
+            console.log('Test complete');
+        });
+    </script>
+</body>
+</html>

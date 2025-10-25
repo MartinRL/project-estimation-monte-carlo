@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Test - Minimal</title>
+    <style>
+        body {
+            background: #f0f0f0;
+            padding: 20px;
+            font-family: sans-serif;
+        }
+
+        .test-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-title-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            display: block;
+            border: 2px solid yellow; /* VISIBLE BORDER FOR TESTING */
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>SVG Logo Test - Minimal Version</h1>
+    <p><strong>Protocol:</strong> <span id="protocol"></span></p>
+    <script>
+        document.getElementById('protocol').textContent = window.location.protocol;
+    </script>
+
+    <div class="test-header">
+        <a href="/" class="logo-title-link">
+            <svg class="header-logo" width="48" height="48" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Monte Carlo histogram logo">
+                <title>Monte Carlo histogram logo</title>
+                <rect x="30" y="75" width="40" height="100" fill="#28a745"/>
+                <rect x="80" y="25" width="40" height="150" fill="#ffc107"/>
+                <rect x="130" y="75" width="40" height="100" fill="#dc3545"/>
+            </svg>
+            <div class="header-text">
+                <h2 style="margin: 0;">Test Title</h2>
+                <p style="margin: 0;">Test Subtitle</p>
+            </div>
+        </a>
+    </div>
+
+    <div style="margin-top: 20px; padding: 20px; background: white; border: 1px solid #ccc;">
+        <h3>Diagnostic Checklist:</h3>
+        <ul>
+            <li>Do you see a <strong>yellow border</strong> (48x48px box)?</li>
+            <li>Do you see <strong>3 colored bars</strong> inside (green, yellow, red)?</li>
+            <li>Protocol showing above: file:// or http://?</li>
+        </ul>
+
+        <h3>Expected Results:</h3>
+        <table border="1" cellpadding="5" style="border-collapse: collapse;">
+            <tr>
+                <th>Scenario</th>
+                <th>Yellow Border?</th>
+                <th>Colored Bars?</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td>YES + YES</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>✅ SVG works perfectly</td>
+            </tr>
+            <tr>
+                <td>YES + NO</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>❌ SVG container exists, bars not rendering</td>
+            </tr>
+            <tr>
+                <td>NO + NO</td>
+                <td>✗</td>
+                <td>✗</td>
+                <td>❌ Entire SVG element not rendering</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-top: 20px; padding: 20px; background: #ffe; border: 1px solid #cc0;">
+        <h3>Console Check:</h3>
+        <p>Press <strong>F12</strong> and check Console tab for errors</p>
+        <script>
+            console.log('✓ JavaScript is working');
+            console.log('Protocol:', window.location.protocol);
+            console.log('SVG element:', document.querySelector('.header-logo'));
+        </script>
+    </div>
+</body>
+</html>

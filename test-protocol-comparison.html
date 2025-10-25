@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Comparison Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #ccc;
+        }
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            display: block;
+            border: 2px solid red; /* Debug border */
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            color: white;
+        }
+        .logo-title-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <h1>SVG Protocol Test</h1>
+    <p><strong>Current protocol:</strong> <span id="protocol"></span></p>
+    <p><strong>Current URL:</strong> <span id="url"></span></p>
+
+    <div class="test-box">
+        <h2>Test 1: Exact Copy from index.html (line 1201)</h2>
+        <header>
+            <a href="/" class="logo-title-link" aria-label="Go to home page">
+                <svg class="header-logo" width="48" height="48" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Monte Carlo histogram logo">
+                    <title>Monte Carlo histogram logo</title>
+                    <rect x="30" y="75" width="40" height="100" fill="#28a745"/>
+                    <rect x="80" y="25" width="40" height="150" fill="#ffc107"/>
+                    <rect x="130" y="75" width="40" height="100" fill="#dc3545"/>
+                </svg>
+                <div class="header-text">
+                    <h1 style="margin: 0; font-size: 2rem;">Project Estimation</h1>
+                    <p style="margin: 0; font-size: 0.95rem; opacity: 0.95;">Probabilistic Forecasting with Monte Carlo Simulations</p>
+                </div>
+            </a>
+        </header>
+        <p id="test1-result"></p>
+    </div>
+
+    <div class="test-box">
+        <h2>Test 2: SVG with Simplified ViewBox</h2>
+        <svg class="header-logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="18" width="10" height="24" fill="#28a745"/>
+            <rect x="19" y="6" width="10" height="36" fill="#ffc107"/>
+            <rect x="31" y="18" width="10" height="24" fill="#dc3545"/>
+        </svg>
+        <p id="test2-result"></p>
+    </div>
+
+    <div class="test-box">
+        <h2>Test 3: SVG with Style Attribute</h2>
+        <svg class="header-logo" width="48" height="48" viewBox="0 0 200 200" style="display: block; border: 2px solid blue;">
+            <rect x="30" y="75" width="40" height="100" fill="#28a745"/>
+            <rect x="80" y="25" width="40" height="150" fill="#ffc107"/>
+            <rect x="130" y="75" width="40" height="100" fill="#dc3545"/>
+        </svg>
+        <p id="test3-result"></p>
+    </div>
+
+    <div class="test-box">
+        <h2>Test 4: SVG with Explicit xmlns and Version</h2>
+        <svg class="header-logo" xmlns="http://www.w3.org/2000/svg" version="1.1" width="48" height="48" viewBox="0 0 200 200">
+            <rect x="30" y="75" width="40" height="100" fill="#28a745"/>
+            <rect x="80" y="25" width="40" height="150" fill="#ffc107"/>
+            <rect x="130" y="75" width="40" height="100" fill="#dc3545"/>
+        </svg>
+        <p id="test4-result"></p>
+    </div>
+
+    <script>
+        // Display current protocol and URL
+        document.getElementById('protocol').textContent = window.location.protocol;
+        document.getElementById('url').textContent = window.location.href;
+
+        // Test each SVG
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const svgs = document.querySelectorAll('.header-logo');
+                svgs.forEach((svg, index) => {
+                    const testNum = index + 1;
+                    const resultEl = document.getElementById(`test${testNum}-result`);
+                    if (!resultEl) return;
+
+                    try {
+                        const bbox = svg.getBBox();
+                        const computed = window.getComputedStyle(svg);
+                        const rects = svg.querySelectorAll('rect');
+                        const svgRect = svg.getBoundingClientRect();
+
+                        const visible = svgRect.width > 0 && svgRect.height > 0;
+
+                        resultEl.innerHTML = `
+                            <strong>Status:</strong> ${visible ? '✓ VISIBLE' : '✗ NOT VISIBLE'}<br>
+                            <strong>BBox:</strong> ${bbox.width}x${bbox.height}<br>
+                            <strong>BoundingRect:</strong> ${svgRect.width}x${svgRect.height}<br>
+                            <strong>Computed:</strong> display=${computed.display}, width=${computed.width}, height=${computed.height}<br>
+                            <strong>Rects:</strong> ${rects.length} found<br>
+                            <strong>Color Check:</strong> ${Array.from(rects).map(r => r.getAttribute('fill')).join(', ')}
+                        `;
+                        resultEl.style.color = visible ? 'green' : 'red';
+                    } catch (e) {
+                        resultEl.innerHTML = `<strong>Error:</strong> ${e.message}`;
+                        resultEl.style.color = 'red';
+                    }
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

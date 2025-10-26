@@ -139,6 +139,35 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 
 ---
 
+## 2025-10-25: Phase 4 Backlink Building - IN PROGRESS
+
+### AlternativeTo Listing ✅ COMPLETE
+
+**Platform**: https://alternativeto.net
+**Completion Date**: October 25, 2025
+**Priority**: MEDIUM | **Estimated Time**: 1 hour | **Backlink Value**: MEDIUM
+
+**Submitted Content**:
+- **Short Description**: "Free Monte Carlo simulation tool that generates probabilistic project forecasts with confidence intervals—no signup, runs entirely in your browser." (147 chars)
+- **Full Description**: Complete description covering how it works, key features, why probabilistic forecasting, and target audience (~1,680 chars)
+- **Tags**: 15 primary tags including Project Management Software, Monte Carlo Simulation, Probabilistic Forecasting, Agile, Free, Web-based, No signup required, Privacy-focused
+
+**Listing Details**:
+- Application Type: Project Management Software
+- Core positioning: Free alternative to paid PM forecasting tools
+- Differentiation: Privacy-focused, no signup, browser-based, open source
+
+**Expected Outcomes**:
+- ✅ Submission complete, awaiting approval/indexing
+- ⏳ Backlink from DA 87 domain
+- ⏳ Ongoing referral traffic (10-50 visits/month estimated)
+- ⏳ Discovery in "best free project estimation tools" searches
+- ⏳ Comparison visibility vs JIRA, LiquidPlanner, ActionableAgile
+
+**Status**: Submitted - awaiting AlternativeTo moderation and indexing
+
+---
+
 ## What's NOT Done Yet
 
 ### Phase 3: Platform Registration - IN PROGRESS (90%)
@@ -147,9 +176,12 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 - [ ] Request re-indexing in GSC for Phase 1 & 2 updates (user manual action)
 - [ ] Verify indexing: Search "site:montecarloestimation.com" in Google and Bing
 
-### Phase 4: Backlink Building (Week 4+) - NOT STARTED
-- [ ] ProductHunt launch
-- [ ] Directory submissions (AlternativeTo, Capterra, G2)
+### Phase 4: Backlink Building - IN PROGRESS (20%)
+- [x] AlternativeTo submission ✅ (Oct 25, 2025)
+- [ ] Slant recommendations (5+ questions)
+- [ ] Capterra listing (DA 94 - high priority)
+- [ ] G2 listing (DA 93 - high priority)
+- [ ] ProductHunt launch (DA 91 - requires launch prep)
 - [ ] Content marketing (Medium article, guest posts)
 - [ ] Community engagement (Reddit, Quora, Stack Exchange)
 
@@ -160,7 +192,7 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 **Baseline (2025-10-20)**:
 - Organic traffic: TBD (need GA4 access)
 - Google ranking for "monte carlo project estimation": Not ranking
-- Backlinks: 0
+- Backlinks: 0 → 1 pending (AlternativeTo submitted Oct 25)
 - Domain Authority: TBD
 
 **Targets (90 days)**:
@@ -185,12 +217,13 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 - Schema markup detected by Google ✅
 
 **Next Actions**:
-1. Request re-indexing in GSC (user manual action)
-2. Set up Bing Webmaster Tools (critical for ChatGPT!)
-3. Validate Phase 1 & 2 with Google Rich Results Test
-4. Begin Phase 4: Backlink building
+1. Submit to Slant (answer 5+ questions for quick wins)
+2. Request re-indexing in GSC for Phase 1 & 2 updates (user manual action)
+3. Prepare Capterra listing (2 hours, DA 94 backlink)
+4. Prepare G2 listing (2-3 hours, DA 93 backlink)
+5. Plan ProductHunt launch (Tuesday-Thursday, 2-3 weeks out)
 
 ---
 
-**Last Updated**: 2025-10-20 (Phase 2 complete)
+**Last Updated**: 2025-10-25 (Phase 4 started - AlternativeTo complete)
 **Updated By**: Claude Code (AI)

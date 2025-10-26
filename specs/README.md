@@ -9,10 +9,17 @@ specs/
 ├── README.md                    # This file
 ├── TEMPLATE-feature.md          # Template for new features
 ├── TEMPLATE-enhancement.md      # Template for improvements
+├── TEMPLATE-marketing.md        # Template for marketing initiatives
+├── reference/                   # Reference documentation
+│   ├── PRD.md                  # Product requirements
+│   ├── SETUP-GUIDE.md          # Setup instructions
+│   └── *-strategy.md           # Strategy documents
 ├── active/                      # Work in progress
 │   └── [feature-name].md       # Current specs being worked on
-└── archive/                     # Completed work
-    └── [feature-name].md       # Implemented specs (reference)
+└── options-pool/                # Future ideas and options
+    └── [option-name].md        # Potential features to consider
+
+Completed specs are archived in: project-archive/specs/
 ```
 
 ## Workflow
@@ -60,8 +67,8 @@ cp specs/TEMPLATE-marketing.md specs/active/my-campaign.md
 When implementation is done:
 ```bash
 # Update spec status to "Implemented" with date
-# Move spec to archive
-mv specs/active/my-feature.md specs/archive/my-feature.md
+# Move spec to project archive
+mv specs/active/my-feature.md project-archive/specs/my-feature.md
 ```
 
 ## When to Use Specs
@@ -81,7 +88,7 @@ mv specs/active/my-feature.md specs/archive/my-feature.md
 
 ## Examples
 
-See `specs/archive/ga4-event-tracking.md` for a completed spec example.
+See `project-archive/specs/ga4-event-tracking.md` for a completed spec example.
 
 ## Philosophy
 

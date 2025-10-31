@@ -202,5 +202,6 @@ AI: "Implementing now..."
 - **KISS**: Don't jump to complex conclusions - simplest solution wins
 - **No placeholders**: Write complete, working code - no TODOs unless discussing architecture
 - **Spec before code**: For non-trivial changes, write the spec first
+- **Secrets management**: ALWAYS store credentials in `secrets.md` (in .gitignore), NEVER commit secrets to git, reference with "See secrets.md" in docs
 - The product name is: "Monte Carlo Project Estimation"
 - never be cautious about interactive rebase not force push, since I'm the sole software engineer on this web app

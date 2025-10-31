@@ -1,167 +1,161 @@
-# Slant Submission TODO List
+# Slant Submission TODO List - CORRECTED
 
-**Strategy**: I (🤖) will do all research and prep work autonomously. You (👱) handle the final form submissions.
+**Strategy**: I (🤖) will handle account creation and submissions via browser automation. You (👱) approve each submission.
 
 **Estimated Time**:
-- 🤖 Robot work: ~20 minutes (research + verification)
-- 👱 Human work: ~15-20 minutes (form submissions)
+- 🤖 Robot work: ~30 minutes (account + 4 submissions)
+- 👱 Human work: ~5 minutes (approvals only)
 
 ---
 
-## Phase 1: Research & Discovery (🤖 Robot) ✅ COMPLETE
+## Phase 1: Research & Discovery (🤖 Robot) ✅ COMPLETE (2025-10-30)
 
 ### 🤖 Search Results Summary
 
-**FOUND - 4 Existing Questions to Target:**
-1. ✅ "What are the best agile project management tools for software?" - https://www.slant.co/topics/106
-2. ✅ "What are the best project management tools for freelancers?" (22 recs) - https://www.slant.co/topics/7445
-3. ✅ "What are the best JIRA alternatives?" (19 recs) - https://www.slant.co/topics/11659
-4. ✅ "What are the best project management tools?" (32 recs) - https://www.slant.co/topics/3185
+**CRITICAL FINDING**: Slant has **ZERO coverage** of estimation methodologies! It's full of PM tools (JIRA, Trello) but has NO questions about HOW to estimate projects.
 
-**NOT FOUND - Consider Creating These:**
-- ❌ "What are the best Monte Carlo simulation tools for project management?" - **CREATE THIS** (own the space!)
-- ❌ "What are the best free project estimation tools?" - **CREATE THIS** (high search value)
-- ❌ "What are the best alternatives to ActionableAgile?" - Skip (niche)
-- ❌ "What are the best alternatives to LiquidPlanner?" - Skip (niche)
-- ❌ "What are the best risk management tools for PMs?" - Skip (not core focus)
-- ❌ "What are the best tools for scrum masters?" - Skip (covered by agile PM tools)
+**FOUND - 1 Existing Question (EMPTY!):**
+1. ✅ "What are the best scrum poker services online?" - **0 RECOMMENDATIONS** 🎯
+   - URL: https://www.slant.co/improve/topics/22981/~scrum-poker-services-online
+   - Competitors: NONE (we'll be FIRST!)
+   - Perfect fit: Monte Carlo is an alternative to planning poker
+   - **Positioning**: Modern statistical alternative to scrum poker estimation
 
-**Key Findings:**
-- ✅ No existing Monte Carlo Estimation listings found
-- ✅ Top competitors: Trello, JIRA, Asana, Redmine, Taiga, Kanban Tool
-- ✅ Positioning: Lightweight forecasting tool, not full PM suite
-- ✅ Best differentiators: Free, no signup, privacy-focused, fast
+**NOT FOUND - Create These Questions:**
+2. ❌ "What are the best project estimation techniques for agile teams?" - **CREATE THIS**
+3. ❌ "What are the best Monte Carlo simulation tools for project forecasting?" - **CREATE THIS**
+4. ❌ "What are the best alternatives to Planning Poker?" - **CREATE THIS**
 
-**Recommendation**: Target 3-4 HIGH priority questions first (~10-15 min), then optionally create 2 new questions (~5 min)
+**Wrong Questions (Ignore These - They're PM Tools, Not Estimation):**
+- ❌ "What are the best agile project management tools?" (39 recs - Trello, JIRA, Asana)
+- ❌ "What are the best PM tools for freelancers?" (80 recs - wrong category)
+- ❌ "What are the best JIRA alternatives?" (wrong category)
 
----
-
-## Phase 2: Account Setup (👱 Human)
-
-### 👱 Create/Login to Slant Account
-- [ ] Go to https://slant.co
-- [ ] Create account OR login with existing credentials
-- [ ] Verify email (if new account)
-- [ ] Set up profile (optional but builds credibility)
-
-**Note**: Keep browser logged in for next phase
+**Key Insight**: Slant is **heavily PM-tool focused** but has **zero estimation methodology coverage**. This is a golden opportunity to CREATE and OWN the entire "project estimation" category!
 
 ---
 
-## Phase 3: Submit Recommendations (👱 Human)
+## Phase 2: Account Setup (🤖 Robot)
 
-### 👱 Question 1: "What are the best agile project management tools for software?" ⭐ HIGH PRIORITY
-- [ ] Navigate to: **https://www.slant.co/topics/106**
+### 🤖 Create Slant Account
+- [ ] Navigate to Slant homepage
+- [ ] Create account with provided email/password
+- [ ] Verify email if needed
+- [ ] Keep browser session active
+
+**Credentials**: See `secrets.md` (not committed to git)
+
+---
+
+## Phase 3: Submit Recommendations (🤖 Robot + 👱 Approvals)
+
+### 👱 Question 1: "What are the best scrum poker services online?" ⭐ HIGHEST PRIORITY
+
+**Why This is PERFECT**:
+- **EMPTY** question (0 recommendations - we'll be FIRST!)
+- Direct competitor to planning poker/scrum poker
+- Perfect positioning for Monte Carlo as modern alternative
+
+**Submission Steps**:
+- [ ] Navigate to: **https://www.slant.co/improve/topics/22981/~scrum-poker-services-online**
 - [ ] Click "Recommend" or "Add Option"
 - [ ] Enter product name: **Monte Carlo Estimation**
 - [ ] Enter website: **https://montecarloestimation.com**
-- [ ] Paste one-line description from spec (lines 54)
-- [ ] Paste full description from spec (lines 57-77)
-- [ ] Add all 10 pros from spec (lines 82-111)
-- [ ] Add all 8 cons from spec (lines 115-139)
-- [ ] Submit recommendation
-- [ ] **Positioning**: Emphasize forecasting for agile teams, sprint/release planning, complements tools like JIRA/Trello
-
-**Why this question**: Slant's most popular PM question. Competitors: Trello, JIRA, Taiga, Kanban Tool. Position as lightweight forecasting complement.
-
----
-
-### 👱 Question 2: "What are the best project management tools for freelancers?" ⭐ HIGH PRIORITY
-- [ ] Navigate to: **https://www.slant.co/topics/7445**
-- [ ] Click "Recommend" or "Add Option"
-- [ ] Enter product name: **Monte Carlo Estimation**
-- [ ] Enter website: **https://montecarloestimation.com**
-- [ ] Paste one-line description from spec (lines 54)
-- [ ] Paste full description - **CUSTOMIZE**: Add "Perfect for freelancers who need to give clients realistic delivery dates without expensive PM software."
-- [ ] Add all 10 pros - **EMPHASIZE**: "Completely free," "No signup," "Simple and fast"
-- [ ] Add all 8 cons from spec
-- [ ] Submit recommendation
-- [ ] **Positioning**: Free, fast, no signup - perfect for solo freelancers
-
-**Why this question**: 22 recommendations. Freelancers need quick estimates without enterprise overhead. Emphasize zero cost.
-
----
-
-### 👱 Question 3: "What are the best JIRA alternatives?" ⭐ HIGH PRIORITY
-- [ ] Navigate to: **https://www.slant.co/topics/11659**
-- [ ] Click "Recommend" or "Add Option"
-- [ ] Enter product name: **Monte Carlo Estimation**
-- [ ] Enter website: **https://montecarloestimation.com**
-- [ ] Paste one-line description from spec
-- [ ] Paste full description - **CUSTOMIZE**: Add "Not a full JIRA replacement—just the forecasting part. Pair with your existing task tracker for lightweight, free forecasting without JIRA's complexity or cost."
-- [ ] Add all 10 pros - **EMPHASIZE**: "Completely free" (vs JIRA's $7.75+/user), "Simple and fast" (vs JIRA's learning curve)
-- [ ] Add cons - **ADD NEW CON**: "Not a full project management suite like JIRA (no issue tracking, workflows, boards)"
-- [ ] Submit recommendation
-- [ ] **Positioning**: Not a replacement, but a free forecasting supplement for teams that hate JIRA's complexity
-
-**Why this question**: 19 recommendations. Top results: Redmine, Trello, Asana. Position as "forecasting-only alternative" for teams that just need estimates.
-
----
-
-### 👱 Question 4: "What are the best project management tools?" ⭐ MEDIUM PRIORITY
-- [ ] Navigate to: **https://www.slant.co/topics/3185**
-- [ ] Click "Recommend" or "Add Option"
-- [ ] Enter product name: **Monte Carlo Estimation**
-- [ ] Enter website: **https://montecarloestimation.com**
-- [ ] Paste one-line description from spec
-- [ ] Paste full description from spec (lines 57-77)
+- [ ] Paste one-line description (see reference section below)
+- [ ] Paste full description with CUSTOM positioning:
+  - "**A modern statistical alternative to scrum poker.** Instead of card-based consensus, use Monte Carlo simulation for probabilistic forecasting with confidence intervals."
 - [ ] Add all 10 pros from spec
 - [ ] Add all 8 cons from spec
 - [ ] Submit recommendation
-- [ ] **Positioning**: Niche tool - just forecasting, no task management
-
-**Why this question**: 32 recommendations (very broad). Lower priority since question is generic. Do this if you have time after top 3.
+- [ ] **Positioning**: Statistical evolution beyond planning poker - same goal (realistic estimates), better method (math instead of gut feel)
 
 ---
 
-### 👱 Question 5: [OPTIONAL] Create "What are the best Monte Carlo simulation tools for project management?"
-- [ ] Go to Slant homepage and click "Ask a Question"
-- [ ] Enter question title: **"What are the best Monte Carlo simulation tools for project management?"**
-- [ ] Enter question description: "I'm looking for tools that use Monte Carlo simulation to forecast project completion dates with confidence intervals. Preferably something that works with agile/scrum teams and doesn't require a statistics PhD to use."
+### 👱 Question 2: [CREATE] "What are the best project estimation techniques for agile teams?" ⭐ HIGH PRIORITY
+
+**Why Create This**:
+- Doesn't exist on Slant
+- Broad appeal - covers ALL estimation methods
+- We can position Monte Carlo as one of several techniques
+
+**Creation Steps**:
+- [ ] Go to Slant homepage, click "Ask a Question"
+- [ ] Enter question title: **"What are the best project estimation techniques for agile teams?"**
+- [ ] Enter question description:
+  ```
+  I'm looking for estimation techniques that work well with agile/scrum workflows. Interested in both collaborative methods (like planning poker, t-shirt sizing) and statistical methods (like Monte Carlo simulation). What are the most reliable ways to forecast project completion dates?
+  ```
 - [ ] Submit question
-- [ ] Immediately recommend Monte Carlo Estimation
-- [ ] Add all pros/cons
-- [ ] **Why**: This question doesn't exist yet! Create it and own the space.
+- [ ] **IMMEDIATELY** recommend **Monte Carlo Estimation** on the new question
+- [ ] Use standard description + pros/cons
+- [ ] **Positioning**: "Statistical estimation method" competing with Planning Poker, Story Points, T-shirt sizing, WSJF
 
 ---
 
-### 👱 Question 6: [OPTIONAL] Create "What are the best free project estimation tools?"
-- [ ] Go to Slant homepage and click "Ask a Question"
-- [ ] Enter question title: **"What are the best free project estimation tools?"**
-- [ ] Enter question description: "Need a free tool for estimating project timelines. Not looking for paid trials or freemium—actually free. Bonus if it uses probabilistic methods instead of just Gantt charts."
+### 👱 Question 3: [CREATE] "What are the best Monte Carlo simulation tools for project forecasting?" ⭐ HIGH PRIORITY
+
+**Why Create This**:
+- Own the "Monte Carlo" keyword space
+- Direct match to our tool name
+- Niche but high-intent audience
+
+**Creation Steps**:
+- [ ] Go to Slant homepage, click "Ask a Question"
+- [ ] Enter question title: **"What are the best Monte Carlo simulation tools for project forecasting?"**
+- [ ] Enter question description:
+  ```
+  I need a tool that uses Monte Carlo simulation to forecast project completion dates with confidence intervals (50%, 85%, 95% probabilities). Preferably something designed for agile teams that doesn't require a statistics degree to use.
+  ```
 - [ ] Submit question
-- [ ] Immediately recommend Monte Carlo Estimation
-- [ ] Add all pros/cons
-- [ ] **Why**: This question doesn't exist! Capture long-tail "free estimation" searches.
+- [ ] **IMMEDIATELY** recommend **Monte Carlo Estimation**
+- [ ] Use standard description + pros/cons
+- [ ] **Positioning**: Own this category - we ARE the Monte Carlo tool
 
 ---
 
-## Phase 4: Create New Questions - NOW INTEGRATED INTO PHASE 3
-*(Questions 5 and 6 above are the new questions to create if you have time)*
+### 👱 Question 4: [CREATE] "What are the best alternatives to Planning Poker?" ⭐ MEDIUM PRIORITY
+
+**Why Create This**:
+- Long-tail keyword opportunity
+- Positions us as modern alternative
+- Captures teams frustrated with planning poker
+
+**Creation Steps**:
+- [ ] Go to Slant homepage, click "Ask a Question"
+- [ ] Enter question title: **"What are the best alternatives to Planning Poker?"**
+- [ ] Enter question description:
+  ```
+  Our team has been using planning poker for story point estimation, but it's time-consuming and often devolves into guessing. What are better alternatives for estimating project timelines? Open to both collaborative and statistical methods.
+  ```
+- [ ] Submit question
+- [ ] **IMMEDIATELY** recommend **Monte Carlo Estimation**
+- [ ] Use description + customize: "Replace consensus-based guessing with statistical forecasting"
+- [ ] **Positioning**: Modern statistical alternative to planning poker
 
 ---
 
-## Phase 5: Verification (🤖 + 👱)
+## Phase 4: Verification (🤖 + 👱)
 
 ### 🤖 Verify Submissions
-- [ ] Check that recommendations appear publicly
+- [ ] Check that all 4 recommendations appear publicly
 - [ ] Verify links work
 - [ ] Check pros/cons display correctly
 - [ ] Confirm no formatting issues
+- [ ] Screenshot each submission
 
 ### 👱 Self-Upvote (Allowed by Slant)
 - [ ] Upvote your own recommendations (Slant permits this)
-- [ ] Share with any teammates to upvote
+- [ ] Share with teammates to upvote (if applicable)
 
 ### 🤖 Document Completion
 - [ ] Update `project-archive/completed-tasks.md`
-- [ ] Record URLs of all submitted recommendations
+- [ ] Record URLs of all 4 recommendations
 - [ ] Note expected traffic impact
 - [ ] Set reminder for monthly monitoring
 
 ---
 
-## Phase 6: Ongoing Engagement (👱 Human - Weekly/Monthly)
+## Phase 5: Ongoing Engagement (👱 Human - Weekly/Monthly)
 
 ### Weekly Monitoring
 - [ ] Check for comments on recommendations
@@ -193,7 +187,7 @@ https://montecarloestimation.com
 Free probabilistic project forecasting with Monte Carlo simulation—get realistic timelines with confidence intervals.
 ```
 
-### Full Description
+### Full Description (Standard)
 ```
 Monte Carlo Estimation is a **free, web-based forecasting tool** that uses statistical simulation to help teams create realistic project timelines.
 
@@ -217,6 +211,36 @@ Agile teams, scrum masters, project managers, and startup founders who need quic
 Based on proven Monte Carlo methods used in project management since the 1960s.
 ```
 
+### Full Description (For Scrum Poker Question)
+```
+Monte Carlo Estimation is a **statistical alternative to scrum poker** that uses Monte Carlo simulation instead of consensus-based card voting.
+
+**How it's different from planning poker:**
+- No need for group meetings or card voting
+- Uses math (Monte Carlo simulation) instead of gut feel
+- Gives you probability ranges, not single-point estimates
+- Forecasts actual completion dates, not just relative story points
+
+**How it works:**
+Input your team's throughput data and story count. The tool runs 500+ simulations and gives you realistic forecasts with confidence intervals:
+
+- 50% confidence: "You're 50% likely to finish by this date"
+- 85% confidence: "You're 85% likely to finish by this date"
+- 95% confidence: "You're 95% likely to finish by this date"
+
+**Key features:**
+- Two modes: Historical throughput OR three-point estimates
+- Risk modeling with probability and impact
+- Visual histogram showing probability distribution
+- 100% free, no signup, runs in browser
+- Privacy-focused (no data collection)
+
+**Best for:**
+Teams that want data-driven forecasts instead of consensus-based estimation games.
+
+Based on proven Monte Carlo methods used in project management since the 1960s.
+```
+
 ### 10 Pros (Copy individually as separate entries)
 1. Completely free with no paid tiers or paywalls
 2. No signup or account creation required
@@ -229,8 +253,6 @@ Based on proven Monte Carlo methods used in project management since the 1960s.
 9. Mobile-responsive interface works on phones/tablets
 10. Perfect for teams that don't need enterprise complexity
 
-*(Full details for each pro are in `slant-listing.md` lines 82-111 if needed)*
-
 ### 8 Cons (Copy individually as separate entries)
 1. No team collaboration features
 2. No integrations with JIRA, Trello, or other PM tools (yet)
@@ -241,39 +263,40 @@ Based on proven Monte Carlo methods used in project management since the 1960s.
 7. Manual data entry required
 8. Not suitable for multi-project portfolio management
 
-*(Full details for each con are in `slant-listing.md` lines 115-139 if needed)*
-
 ---
 
 ## Notes
 
 **Slant Strategy**: Be honest and authentic. The platform rewards genuine engagement over promotional spam. Including cons builds credibility and trust.
 
-**Time Estimate Per Question**: ~2-3 minutes per recommendation (after first one is done, it's copy-paste)
+**Time Estimate Per Question**: ~5-7 minutes per submission (account creation, question creation, recommendation)
 
 **Expected Outcome**:
-- Backlinks from DA 87 domain
-- Referral traffic (10-30 visits/month per question)
+- 4 backlinks from DA 87 domain
+- **Own the entire "estimation methodology" category** on Slant
+- Be the FIRST or ONLY recommendation for estimation-related questions
+- Referral traffic: 20-40 visits/month (estimated)
 - Social proof via community upvotes
-- Discovery in comparison searches
+- Discovery in "estimation method" comparison searches
 
 ---
 
 ## Status Update
 
-**Phase 1 Research**: ✅ COMPLETE (2025-10-27)
-- 🤖 Found 4 existing high-value questions to target
-- 🤖 Identified 2 new questions to create
-- 🤖 Prepared customized submission checklists with positioning strategies
-- 🤖 All URLs, descriptions, and guidance ready
+**Phase 1 Research**: ✅ COMPLETE (2025-10-30)
+- 🤖 Discovered Slant has ZERO estimation methodology coverage
+- 🤖 Found 1 EMPTY question (scrum poker services)
+- 🤖 Identified 3 high-value questions to CREATE
+- 🤖 Corrected targeting from PM tools to estimation methodologies
 
-**Next Step**: 👱 Human Phase 2 - Create Slant account and start submitting recommendations (estimated 15-20 min total)
+**Next Step**: 🤖 Robot Phase 2 - Create account and submit all 4 recommendations (estimated 30 min)
 
 **Expected Outcomes**:
-- 4-6 backlinks from DA 87 domain
-- Referral traffic: 20-60 visits/month (estimated)
-- Social proof via community upvotes
-- Discovery in "best [X] tools" comparison searches
-- Foundation for ongoing community engagement
+- 4 backlinks from DA 87 domain
+- **Own the entire estimation methodology category** on Slant
+- Be FIRST recommendation on empty question
+- Create 3 new questions and be first to recommend
+- Referral traffic: 20-40 visits/month
+- Position as THE estimation methodology tool on Slant
 
-**Ready to Go!** 🚀
+**Ready to Execute!** 🚀

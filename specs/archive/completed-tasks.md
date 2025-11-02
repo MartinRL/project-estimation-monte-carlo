@@ -168,6 +168,67 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 
 ---
 
+### Slant Research & Documentation ❌ PLATFORM DEFUNCT
+
+**Platform**: https://slant.co **⚠️ DEFUNCT as of October 31, 2024**
+**Research Date**: October 30, 2024
+**Discovery of Defunct Status**: October 31, 2024
+**Priority**: ~~HIGH~~ N/A - Platform no longer operational | **Backlink Value**: ~~HIGH~~ ZERO
+
+**Research Findings** (2025-10-30):
+- **CRITICAL DISCOVERY**: Slant has **ZERO coverage** of estimation methodologies
+- Platform is saturated with PM tools (JIRA, Trello, Asana) but NO estimation methods
+- Found 1 EMPTY question: "What are the best scrum poker services online?" (0 recommendations)
+- Identified 3 new questions to CREATE: estimation techniques, Monte Carlo tools, Planning Poker alternatives
+- **Opportunity**: Create and own the entire "estimation methodology" category on Slant
+
+**Target Questions Identified**:
+1. ✅ "What are the best scrum poker services online?" - **0 RECS** (BE FIRST!)
+   - URL: https://www.slant.co/improve/topics/22981/~scrum-poker-services-online
+   - Positioning: Statistical alternative to planning poker
+2. ❌ "What are the best project estimation techniques for agile teams?" - CREATE THIS
+   - Positioning: Monte Carlo vs Planning Poker, T-shirt sizing, Story Points
+3. ❌ "What are the best Monte Carlo simulation tools for project forecasting?" - CREATE THIS
+   - Positioning: Own the Monte Carlo keyword space
+4. ❌ "What are the best alternatives to Planning Poker?" - CREATE THIS
+   - Positioning: Modern statistical alternative
+
+**Documentation Updated**:
+- ✅ `specs/active/backlink-building/slant-todo.md` - Complete submission guide with all 4 questions
+  - Corrected from PM tools (JIRA, Trello) to estimation methodologies
+  - Step-by-step checklists for each question
+  - Custom positioning for each (vs Planning Poker, not vs JIRA)
+  - All copy ready to paste (descriptions, pros, cons)
+- ✅ `specs/active/backlink-building/slant-listing.md` - Updated positioning strategy
+  - Competitor analysis: Planning Poker, T-shirt sizing, Story Points, WSJF (NOT PM tools)
+  - Positioning table: how to position vs each estimation method
+  - When to recommend / not recommend (estimation methodology context)
+
+**Competitive Positioning - CORRECTED**:
+- **OLD (WRONG)**: Compete with PM tools like JIRA, Trello, Asana
+- **NEW (CORRECT)**: Compete with estimation methods like Planning Poker, T-shirt sizing, Story Points
+- **Key message**: "Math instead of gut feel" - statistical evolution of planning poker
+
+**Status**:
+- ✅ Research complete
+- ✅ Documentation prepared (archived at `specs/archive/slant-documentation-defunct.md`)
+- ❌ Submissions ABORTED - Platform discovered defunct Oct 31, 2024
+- ❌ No backlinks obtained - Platform no longer operational
+
+**Expected Outcomes (Never Realized)**:
+- ~~4 backlinks from DA 87 domain~~ - PLATFORM DEFUNCT
+- ~~Own the estimation methodology category on Slant~~ - PLATFORM DEFUNCT
+- ~~Be FIRST recommendation on empty question~~ - PLATFORM DEFUNCT
+- ~~Create 3 new questions~~ - PLATFORM DEFUNCT
+- ~~Referral traffic: 20-40 visits/month~~ - PLATFORM DEFUNCT
+
+**Action Taken**:
+- All Slant documentation merged and archived
+- Credentials secured in secrets.md (not in git)
+- Focus shifted to other backlink opportunities (Capterra, G2, ProductHunt)
+
+---
+
 ## What's NOT Done Yet
 
 ### Phase 3: Platform Registration - IN PROGRESS (90%)
@@ -176,9 +237,12 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 - [ ] Request re-indexing in GSC for Phase 1 & 2 updates (user manual action)
 - [ ] Verify indexing: Search "site:montecarloestimation.com" in Google and Bing
 
-### Phase 4: Backlink Building - IN PROGRESS (20%)
-- [x] AlternativeTo submission ✅ (Oct 25, 2025)
-- [ ] Slant recommendations (5+ questions)
+### Phase 4: Backlink Building - IN PROGRESS (25%)
+- [x] AlternativeTo submission ✅ (Oct 25, 2024)
+- [x] ~~Slant~~ ❌ PLATFORM DEFUNCT (discovered Oct 31, 2024)
+  - Research completed Oct 30, 2024
+  - Platform went down before submissions
+  - Documentation archived at `specs/archive/slant-documentation-defunct.md`
 - [ ] Capterra listing (DA 94 - high priority)
 - [ ] G2 listing (DA 93 - high priority)
 - [ ] ProductHunt launch (DA 91 - requires launch prep)
@@ -217,13 +281,14 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 - Schema markup detected by Google ✅
 
 **Next Actions**:
-1. Submit to Slant (answer 5+ questions for quick wins)
-2. Request re-indexing in GSC for Phase 1 & 2 updates (user manual action)
-3. Prepare Capterra listing (2 hours, DA 94 backlink)
-4. Prepare G2 listing (2-3 hours, DA 93 backlink)
-5. Plan ProductHunt launch (Tuesday-Thursday, 2-3 weeks out)
+1. **Prepare Capterra listing** (2 hours, DA 94 backlink) - **HIGHEST PRIORITY**
+2. Prepare G2 listing (2-3 hours, DA 93 backlink)
+3. Plan ProductHunt launch (Tuesday-Thursday, 2-3 weeks out)
+4. Request re-indexing in GSC for Phase 1 & 2 updates (user manual action)
+5. Content marketing (Medium article about Monte Carlo estimation)
+6. Community engagement (Reddit r/agile, r/projectmanagement)
 
 ---
 
-**Last Updated**: 2025-10-25 (Phase 4 started - AlternativeTo complete)
+**Last Updated**: 2024-10-31 (Slant platform discovered defunct, documentation archived)
 **Updated By**: Claude Code (AI)

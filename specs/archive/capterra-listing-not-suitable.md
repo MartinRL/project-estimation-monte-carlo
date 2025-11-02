@@ -1,4 +1,53 @@
-# Capterra Listing
+# Capterra Listing - NOT SUITABLE FOR THIS PROJECT
+
+## 🚫 REALITY CHECK (Oct 31, 2024) - DO NOT SUBMIT
+
+**This tool is NOT appropriate for Gartner/Capterra submission.**
+
+### Why This Won't Work
+
+**Gartner Digital Markets (Capterra/GetApp/Software Advice) is designed for:**
+- Enterprise B2B software with pricing tiers ($$$)
+- Products with user accounts, dashboards, and APIs
+- Companies with support teams and SLAs
+- Software that requires demos and sales calls
+- Tools competing with Jira ($35k/year), Monday.com ($30/user/month), MS Project
+
+**Monte Carlo Estimation is:**
+- A single HTML file (literally one file)
+- A simple calculator (like a mortgage calculator)
+- No backend, no accounts, no database
+- No pricing model (nothing to upsell)
+- No "vendor" organization behind it
+- More of a **useful formula** than "enterprise software"
+
+### The Mismatch
+
+Submitting this to Capterra would be like:
+- Listing a paper airplane next to Boeing 747s
+- Putting a lemonade stand in the Fortune 500
+- Submitting a calculator app to compete with SAP
+
+**It would either:**
+- ❌ Get rejected as "not substantial enough"
+- 😬 Look ridiculous next to $50k/year enterprise tools
+- 🦗 Get zero traffic (Capterra users want "real" software with support)
+
+### Better Alternatives
+
+This tool belongs on:
+1. **ProductHunt** - Loves simple, useful indie tools
+2. **Hacker News** - "Show HN: Monte Carlo estimation in one HTML file"
+3. **Reddit** - r/agile, r/projectmanagement would appreciate it
+4. **Medium/Dev.to** - Write about WHY you built it
+5. **GitHub** - You're already there, just need promotion
+6. **Twitter/LinkedIn** - PM influencers share free tools
+
+The tool is GREAT because it's simple. Don't pretend it's enterprise software.
+
+---
+
+## ⚠️ ORIGINAL SUBMISSION DOCS BELOW (ARCHIVED FOR REFERENCE)
 
 ## ⚠️ IMPORTANT UPDATE (Oct 31, 2024)
 **The web submission form is currently not working (404 error).**

@@ -237,17 +237,23 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 - [ ] Request re-indexing in GSC for Phase 1 & 2 updates (user manual action)
 - [ ] Verify indexing: Search "site:montecarloestimation.com" in Google and Bing
 
-### Phase 4: Backlink Building - IN PROGRESS (25%)
+### Phase 4: Backlink Building - IN PROGRESS (20%)
 - [x] AlternativeTo submission ✅ (Oct 25, 2024)
 - [x] ~~Slant~~ ❌ PLATFORM DEFUNCT (discovered Oct 31, 2024)
   - Research completed Oct 30, 2024
   - Platform went down before submissions
   - Documentation archived at `specs/archive/slant-documentation-defunct.md`
-- [ ] Capterra listing (DA 94 - high priority)
-- [ ] G2 listing (DA 93 - high priority)
-- [ ] ProductHunt launch (DA 91 - requires launch prep)
-- [ ] Content marketing (Medium article, guest posts)
-- [ ] Community engagement (Reddit, Quora, Stack Exchange)
+- [x] ~~Capterra~~ ❌ NOT SUITABLE (Oct 31, 2024)
+  - Tool too simple for enterprise B2B marketplace
+  - No pricing model, accounts, or vendor organization
+  - Archived at `specs/archive/capterra-listing-not-suitable.md`
+- [x] ~~G2~~ ❌ NOT SUITABLE (Oct 31, 2024)
+  - Same issue as Capterra - requires enterprise software
+  - Single HTML file doesn't fit their model
+  - Archived at `specs/archive/g2-listing-not-suitable.md`
+- [ ] **ProductHunt launch** ⭐ GOOD FIT - requires launch prep
+- [ ] **Content marketing** ⭐ GOOD FIT (Medium article, Dev.to)
+- [ ] **Community engagement** ⭐ GOOD FIT (Reddit, Hacker News, Twitter)
 
 ---
 
@@ -280,15 +286,22 @@ This file tracks all completed work to prevent duplicate effort. **CHECK THIS FI
 - Sitemap submitted and validated ✅
 - Schema markup detected by Google ✅
 
-**Next Actions**:
-1. **Prepare Capterra listing** (2 hours, DA 94 backlink) - **HIGHEST PRIORITY**
-2. Prepare G2 listing (2-3 hours, DA 93 backlink)
-3. Plan ProductHunt launch (Tuesday-Thursday, 2-3 weeks out)
-4. Request re-indexing in GSC for Phase 1 & 2 updates (user manual action)
-5. Content marketing (Medium article about Monte Carlo estimation)
-6. Community engagement (Reddit r/agile, r/projectmanagement)
+**Next Actions** (Revised for Tool Fit):
+1. **Plan ProductHunt launch** ⭐ BEST FIT (Tuesday-Thursday, 2-3 weeks out)
+   - Perfect for simple, useful indie tools
+   - Community loves free calculators that solve real problems
+2. **Write Medium/Dev.to article** ⭐ GOOD FIT
+   - "Why Your Project Estimates Are Lies - Here's the Math"
+   - Include tool link, explain Monte Carlo simply
+3. **Share on Hacker News** ⭐ GOOD FIT
+   - "Show HN: Monte Carlo estimation in one HTML file"
+   - HN appreciates elegant simplicity
+4. **Reddit engagement** ⭐ GOOD FIT
+   - Share in r/agile, r/projectmanagement, r/scrum
+   - Frame as "I made a free tool that..."
+5. Request re-indexing in GSC (user manual action)
 
 ---
 
-**Last Updated**: 2024-10-31 (Slant platform discovered defunct, documentation archived)
+**Last Updated**: 2024-10-31 (Capterra/G2 deemed unsuitable for simple tools, strategy revised)
 **Updated By**: Claude Code (AI)

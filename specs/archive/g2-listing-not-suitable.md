@@ -1,4 +1,39 @@
-# G2 Listing
+# G2 Listing - NOT SUITABLE FOR THIS PROJECT
+
+## 🚫 REALITY CHECK (Oct 31, 2024) - DO NOT SUBMIT
+
+**This tool is NOT appropriate for G2 submission.**
+
+### Same Problem as Capterra
+
+G2 is an **enterprise software marketplace** for:
+- B2B SaaS products with monthly/annual subscriptions
+- Software that requires implementation and onboarding
+- Products with customer success teams
+- Tools that justify procurement processes and vendor evaluations
+- Software competing with Salesforce, HubSpot, Atlassian, Microsoft
+
+**Monte Carlo Estimation doesn't fit because:**
+- It's a single HTML file (not SaaS)
+- No pricing = no commission for G2
+- No vendor organization to verify
+- No customers to review it (just users of a free calculator)
+- Would compete with $100k+/year enterprise PM suites
+
+**G2 would likely:**
+- Reject during verification (no real company)
+- Require business documentation you don't have
+- Look absurd in their Grid® Reports next to enterprise tools
+- Generate zero leads (G2 users have procurement budgets)
+
+### Better Fit
+
+Focus on platforms that celebrate **simplicity and free tools**:
+- ProductHunt, Hacker News, Reddit, GitHub, IndieHackers
+
+---
+
+## ⚠️ ORIGINAL SUBMISSION DOCS BELOW (ARCHIVED FOR REFERENCE)
 
 ## Submission Process
 

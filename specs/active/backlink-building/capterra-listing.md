@@ -1,7 +1,65 @@
 # Capterra Listing
 
-## Submission URL
-https://www.capterra.com/vendors/add-software
+## ⚠️ IMPORTANT UPDATE (Oct 31, 2024)
+**The web submission form is currently not working (404 error).**
+
+**Current Submission Method**: Email gdmcatalogteam@gartner.com
+
+Capterra is now part of Gartner Digital Markets. The old submission URLs (/add-software, /vendors/sign-up) are returning 404 or 403 errors.
+
+## Submission Process
+1. **Primary Method**: Email submission to gdmcatalogteam@gartner.com
+2. **Processing Time**: 6+ weeks for review and publication
+3. **Coverage**: One submission covers all Gartner Digital Markets sites (Capterra, GetApp, Software Advice)
+
+## Email Template for Submission
+
+**To**: gdmcatalogteam@gartner.com
+**Subject**: New Software Listing Request - Monte Carlo Estimation (Project Management)
+
+```
+Dear Gartner Digital Markets Catalog Team,
+
+I would like to request a free basic listing for our software on Capterra, GetApp, and Software Advice.
+
+**Product Information:**
+- Product Name: Monte Carlo Estimation
+- Website: https://montecarloestimation.com
+- Primary Category: Project Management Software
+- Secondary Categories: Agile Project Management, Forecasting Software
+
+**Product Type Confirmation:**
+✓ B2B solution (for project managers and agile teams)
+✓ Packaged/off-the-shelf web application (not custom)
+✓ Publicly available with free access
+✓ Working product (not in beta)
+
+**Brief Description:**
+Monte Carlo Estimation is a free web-based tool for probabilistic project forecasting. It uses Monte Carlo simulation to provide realistic project timelines with confidence intervals (50%, 85%, 95% likelihood) instead of single-point estimates. The tool helps project managers communicate uncertainty honestly and set realistic stakeholder expectations.
+
+**Key Features:**
+- Two estimation modes (historical throughput or three-point estimates)
+- Risk modeling with probability and impact
+- Visual probability distribution histogram
+- 100% free, no signup required
+- Privacy-focused (all calculations in browser)
+
+**Pricing:**
+FREE - No paid tiers, no freemium model, completely free forever
+
+**Target Market:**
+- Small to mid-size businesses
+- Agile teams and scrum masters
+- Individual project managers
+- Startup founders
+
+Please let me know if you need any additional information to process this listing. I understand the review process can take 6+ weeks and appreciate your consideration.
+
+Best regards,
+[Your Name]
+[Your Email]
+[Your Phone - optional]
+```
 
 ## Basic Information
 

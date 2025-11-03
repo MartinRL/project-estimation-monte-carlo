@@ -1589,7 +1589,7 @@ martin.rosenlidholm@gmail.com
         }
 
         async function shareConfiguration() {
-            const url = serializeToURL();
+            const url = window.location.href;
 
             try {
                 await navigator.clipboard.writeText(url);
@@ -2324,6 +2324,10 @@ martin.rosenlidholm@gmail.com
 
             button.disabled = false;
             button.textContent = 'Generate Forecast';
+
+            // Update browser URL to reflect current configuration
+            const shareableUrl = serializeToURL();
+            history.replaceState(null, '', shareableUrl);
         }
         
         function runTrial(params) {

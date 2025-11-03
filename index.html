@@ -519,7 +519,57 @@ martin.rosenlidholm@gmail.com
             background: #6c757d;
             cursor: not-allowed;
         }
-        
+
+        /* Button Row for Generate & Share */
+        .button-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .button-row .run-btn {
+            margin-top: 0;
+            flex: 1;
+        }
+
+        /* Share Button */
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .share-btn:hover:not(:disabled) {
+            background: #5a6268;
+        }
+
+        .share-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .share-btn.copied {
+            background: #28a745;
+        }
+
+        .share-btn svg {
+            flex-shrink: 0;
+        }
+
+        .share-btn-hidden {
+            display: none !important;
+        }
+
         /* Results */
         .result-cards {
             display: grid;
@@ -1348,9 +1398,22 @@ martin.rosenlidholm@gmail.com
                 <button class="add-risk-btn" onclick="addRisk()">+ Add Risk</button>
             </div>
             
-            <button class="run-btn" id="runButton" onclick="runSimulation()">
-                Generate Forecast
-            </button>
+            <div class="button-row">
+                <button class="run-btn" id="runButton" onclick="runSimulation()">
+                    Generate Forecast
+                </button>
+                <button type="button"
+                        id="shareButton"
+                        class="share-btn share-btn-hidden"
+                        onclick="shareConfiguration()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                    </svg>
+                    <span id="shareButtonText">Share</span>
+                </button>
+            </div>
         </div>
         
         <div class="results">
@@ -1378,7 +1441,7 @@ martin.rosenlidholm@gmail.com
     </div>
 
     <script>
-        let mode = 'data';
+        let mode = 'estimate'; // Default mode matches the active button in HTML
         let risks = [];
         let results = [];
 
@@ -1389,7 +1452,183 @@ martin.rosenlidholm@gmail.com
                 gtag('event', eventName, eventParams);
             }
         }
-        
+
+        // URL Sharing Functions
+        function serializeToURL() {
+            const params = new URLSearchParams();
+
+            // Mode
+            params.set('m', mode === 'estimate' ? 'e' : 'd');
+
+            // Common parameters (skip defaults to keep URL short)
+            const scl = parseInt(document.getElementById('storyCountLow').value);
+            const sch = parseInt(document.getElementById('storyCountHigh').value);
+            const srl = parseFloat(document.getElementById('splitRateLow').value);
+            const srh = parseFloat(document.getElementById('splitRateHigh').value);
+            const fp = parseInt(document.getElementById('focusPercentage').value);
+
+            if (scl !== 20) params.set('scl', scl);
+            if (sch !== 40) params.set('sch', sch);
+            if (srl !== 1.0) params.set('srl', srl);
+            if (srh !== 1.5) params.set('srh', srh);
+            if (fp !== 80) params.set('fp', fp);
+
+            // Mode-specific parameters
+            if (mode === 'estimate') {
+                const tl = parseFloat(document.getElementById('throughputLow').value);
+                const th = parseFloat(document.getElementById('throughputHigh').value);
+                const tm = document.getElementById('throughputMostLikely').value;
+
+                params.set('tl', tl);
+                params.set('th', th);
+                if (tm) params.set('tm', parseFloat(tm));
+            } else {
+                // Historical data mode
+                const samples = getHistoricalSamples();
+                if (samples.length > 0) {
+                    params.set('hd', samples.join(','));
+                }
+            }
+
+            // Risks (if any)
+            risks.forEach((risk, index) => {
+                params.set(`r${index}p`, risk.probability);
+                params.set(`r${index}i`, risk.minImpact);
+                params.set(`r${index}a`, risk.maxImpact);
+                // Only include description if it's not empty and keep it short
+                if (risk.description && risk.description.trim()) {
+                    params.set(`r${index}d`, risk.description.substring(0, 30));
+                }
+            });
+
+            return window.location.origin + '/?' + params.toString();
+        }
+
+        function loadFromURL() {
+            const params = new URLSearchParams(window.location.search);
+
+            // Check if there's a configuration in the URL
+            if (!params.has('m')) return false;
+
+            try {
+                // Set mode
+                const modeParam = params.get('m');
+                mode = modeParam === 'e' ? 'estimate' : 'data';
+                updateModeUI();
+
+                // Load common parameters with defaults
+                document.getElementById('storyCountLow').value = params.get('scl') || '20';
+                document.getElementById('storyCountHigh').value = params.get('sch') || '40';
+                document.getElementById('splitRateLow').value = params.get('srl') || '1.0';
+                document.getElementById('splitRateHigh').value = params.get('srh') || '1.5';
+                document.getElementById('focusPercentage').value = params.get('fp') || '80';
+
+                // Load mode-specific parameters
+                if (mode === 'estimate') {
+                    document.getElementById('throughputLow').value = params.get('tl') || '1';
+                    document.getElementById('throughputHigh').value = params.get('th') || '10';
+                    const tm = params.get('tm');
+                    if (tm) {
+                        document.getElementById('throughputMostLikely').value = tm;
+                    }
+                } else {
+                    // Historical data mode
+                    const hdParam = params.get('hd');
+                    if (hdParam) {
+                        document.getElementById('historicalData').value = hdParam.split(',').join('\n');
+                    }
+                }
+
+                // Load risks
+                risks = [];
+                for (let i = 0; i < 5; i++) { // Max 5 risks
+                    if (params.has(`r${i}p`)) {
+                        const risk = {
+                            id: Date.now() + i,
+                            name: `Risk ${i + 1}`,
+                            probability: parseInt(params.get(`r${i}p`)) || 20,
+                            minImpact: parseInt(params.get(`r${i}i`)) || 0,
+                            maxImpact: parseInt(params.get(`r${i}a`)) || 10,
+                            description: params.get(`r${i}d`) || ''
+                        };
+                        risks.push(risk);
+                    }
+                }
+
+                // Render risks if any were loaded
+                if (risks.length > 0) {
+                    renderRisks();
+                }
+
+                return true;
+            } catch (error) {
+                console.error('Error loading configuration from URL:', error);
+                return false;
+            }
+        }
+
+        function updateModeUI() {
+            // Update toggle buttons to reflect current mode
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Find the correct button based on mode
+            const buttons = document.querySelectorAll('.toggle-btn');
+            if (mode === 'estimate') {
+                buttons[0].classList.add('active'); // First button is Three-Point Estimate
+            } else {
+                buttons[1].classList.add('active'); // Second button is Historical Data
+            }
+
+            // Show/hide sections
+            document.getElementById('dataSection').style.display =
+                mode === 'data' ? 'block' : 'none';
+            document.getElementById('estimateSection').style.display =
+                mode === 'estimate' ? 'block' : 'none';
+        }
+
+        async function shareConfiguration() {
+            const url = serializeToURL();
+
+            try {
+                await navigator.clipboard.writeText(url);
+
+                // Visual feedback
+                const button = document.getElementById('shareButton');
+                const buttonText = document.getElementById('shareButtonText');
+                const originalText = buttonText.textContent;
+
+                button.classList.add('copied');
+                buttonText.textContent = 'Copied!';
+                button.disabled = true;
+
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    buttonText.textContent = originalText;
+                    button.disabled = false;
+                }, 2000);
+
+                // Track analytics event
+                trackEvent('share_forecast', {
+                    'event_category': 'engagement',
+                    'event_action': 'share',
+                    'url_length': url.length,
+                    'mode': mode,
+                    'has_risks': risks.length > 0,
+                    'risk_count': risks.length
+                });
+            } catch (err) {
+                // Fallback for older browsers - show alert with URL
+                alert('Copy this link to share your forecast configuration:\n\n' + url);
+
+                trackEvent('share_forecast', {
+                    'event_category': 'engagement',
+                    'event_action': 'share_fallback'
+                });
+            }
+        }
+
         const helpContent = {
             overview: {
                 title: "How Monte Carlo Project Estimation Works",
@@ -2223,6 +2462,9 @@ martin.rosenlidholm@gmail.com
                     </div>
                 </div>
             `;
+
+            // Show share button after results are displayed
+            document.getElementById('shareButton').classList.remove('share-btn-hidden');
         }
         
         // Add help content for results
@@ -2304,6 +2546,17 @@ martin.rosenlidholm@gmail.com
             });
         });
         */
+
+        // Load configuration from URL on page load
+        window.addEventListener('load', function() {
+            // Try to load configuration from URL
+            if (loadFromURL()) {
+                trackEvent('load_from_url', {
+                    'event_category': 'engagement',
+                    'event_label': 'success'
+                });
+            }
+        });
     </script>
 
     <!-- Methodology Section -->
